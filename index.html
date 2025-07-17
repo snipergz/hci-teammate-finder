@@ -13,10 +13,22 @@
         <!-- Main List View -->
         <div id="main-view" class="view">
             <div class="header">
-                <div class="header-icon">👥</div>
-                <div class="header-text">
-                    <h1>Teammate Finder</h1>
-                    <p>Discover and connect with potential teammates</p>
+                <div>
+                    <div class="header-icon">👥</div>
+                    <div class="header-text">
+                        <h1>Teammate Finder</h1>
+                        <p>Discover and connect with potential teammates</p>
+                    </div>
+                </div>
+                <div class="action-buttons" style="display: flex; align-items: center;">
+                    <!-- new "Show All Groups" button -->
+                    <button id="show-groups" class="form-button secondary" onclick="showAllGroups()">
+                        📋 Show All Groups
+                    </button>
+                    <a style="text-decoration: none;" href="#" class="form-button primary"
+                        onclick="navigateToCreateProfile()">
+                        + Create Your Profile
+                    </a>
                 </div>
             </div>
 
@@ -129,7 +141,6 @@
                             <option value="Visual Designer">Visual Designer</option>
                         </select>
                     </div>
-
                 </div>
             </div>
 
@@ -146,8 +157,82 @@
                 </div>
             </div>
             <div class="table-footer">
-                Showing 10 teammates
+                <span id="teammate-count">Showing 10 teammates</span>
             </div>
+        </div>
+
+        <!-- Create Profile View -->
+        <div id="create-profile-view" class="view hidden">
+            <div class="header">
+                <div class="header-icon">👤</div>
+                <div class="header-text">
+                    <h1>Create Your Profile</h1>
+                    <p>Join the teammate finder community</p>
+                </div>
+            </div>
+
+            <form id="create-profile-form">
+                <div class="form-section">
+                    <h3>Basic Information</h3>
+                    <div class="form-group">
+                        <label for="profile-name">Full Name</label>
+                        <input type="text" id="profile-name" name="name" required>
+                        <div class="form-error" id="name-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-timezone">Timezone</label>
+                        <select id="profile-timezone" name="timezone" required>
+                            <option value="">Select timezone</option>
+                            <option value="UTC-8">UTC-8</option>
+                            <option value="UTC-7">UTC-7</option>
+                            <option value="UTC-6">UTC-6</option>
+                            <option value="UTC-5">UTC-5</option>
+                            <option value="UTC+0">UTC+0</option>
+                            <option value="UTC+1">UTC+1</option>
+                            <option value="UTC+2">UTC+2</option>
+                            <option value="UTC+3">UTC+3</option>
+                            <option value="UTC+4">UTC+4</option>
+                            <option value="UTC+9">UTC+9</option>
+                        </select>
+                        <div class="form-error" id="timezone-error"></div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Skills</h3>
+                    <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;">Select all skills that apply to
+                        you</p>
+                    <div class="multi-select" id="skills-select">
+                        <!-- Skills options will be inserted here -->
+                    </div>
+                    <div class="form-error" id="skills-error"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Project Interests</h3>
+                    <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;">What types of projects interest
+                        you?</p>
+                    <div class="multi-select" id="interests-select">
+                        <!-- Interests options will be inserted here -->
+                    </div>
+                    <div class="form-error" id="interests-error"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Roles You're Interested In</h3>
+                    <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;">What roles would you like to
+                        take on in projects?</p>
+                    <div class="multi-select" id="roles-select">
+                        <!-- Roles options will be inserted here -->
+                    </div>
+                    <div class="form-error" id="roles-error"></div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" class="form-button" onclick="navigateToMain()">Cancel</button>
+                    <button type="submit" class="form-button primary">Create Profile</button>
+                </div>
+            </form>
         </div>
 
         <!-- Profile View -->
@@ -183,6 +268,10 @@
                     Your request to connect with <span id="success-name"></span> has been sent.
                 </div>
             </div>
+        </div>
+        <!-- All Groups View -->
+        <div id="groups-view" class="view hidden">
+            <!-- JS can inject the grouped data here -->
         </div>
     </div>
 
