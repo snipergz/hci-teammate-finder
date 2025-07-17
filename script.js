@@ -1,5 +1,4 @@
 // Data
-// Updated data for all 10 teammates
 const teammates = [
   {
     id: 1,
@@ -9,6 +8,7 @@ const teammates = [
     skills: ["React", "Figma", "User Research"],
     interests: ["EdTech", "Accessibility"],
     roles: ["Frontend Developer", "UX Designer"],
+    email: "achen7@gatech.edu",
   },
   {
     id: 2,
@@ -18,6 +18,7 @@ const teammates = [
     skills: ["Python", "Machine Learning", "Data Visualization"],
     interests: ["AI", "Sustainability"],
     roles: ["Data Scientist", "Technical Writer"],
+    email: "jsmith12@gatech.edu",
   },
   {
     id: 3,
@@ -27,6 +28,7 @@ const teammates = [
     skills: ["Copywriting", "Marketing Strategy", "SEO"],
     interests: ["Health", "Startups"],
     roles: ["Content Strategist", "Marketing Lead"],
+    email: "falmansoori3@gatech.edu",
   },
   {
     id: 4,
@@ -36,6 +38,7 @@ const teammates = [
     skills: ["UI Design", "Branding", "Illustration"],
     interests: ["Civic Tech", "Education"],
     roles: ["Visual Designer", "Product Designer"],
+    email: "drivera17@gatech.edu",
   },
   {
     id: 5,
@@ -45,6 +48,7 @@ const teammates = [
     skills: ["Excel", "User Interviews", "Project Coordination"],
     interests: ["Climate", "Social Impact"],
     roles: ["Project Manager", "Business Analyst"],
+    email: "sdubois5@gatech.edu",
   },
   {
     id: 6,
@@ -54,6 +58,7 @@ const teammates = [
     skills: ["UX Writing", "Information Architecture", "Prototyping"],
     interests: ["Productivity", "Mental Health"],
     roles: ["Backend Developer", "Full-Stack Engineer"],
+    email: "enguyen9@gatech.edu",
   },
   {
     id: 7,
@@ -63,6 +68,7 @@ const teammates = [
     skills: ["JavaScript", "Node.js", "API Integration"],
     interests: ["Smart Cities", "Healthcare"],
     roles: ["Backend Developer", "Full-Stack Engineer"],
+    email: "mraza10@gatech.edu",
   },
   {
     id: 8,
@@ -72,6 +78,7 @@ const teammates = [
     skills: ["Agile Methodology", "Scrum", "Stakeholder Management"],
     interests: ["Finance", "Open Source"],
     roles: ["Project Manager", "Team Facilitator"],
+    email: "kmensah4@gatech.edu",
   },
   {
     id: 9,
@@ -81,6 +88,7 @@ const teammates = [
     skills: ["SQL", "Data Cleaning", "Business Intelligence"],
     interests: ["E-Commerce", "Consumer Behavior"],
     roles: ["Data Analyst", "BI Developer"],
+    email: "lhoshino16@gatech.edu",
   },
   {
     id: 10,
@@ -90,26 +98,830 @@ const teammates = [
     skills: ["Public Speaking", "User Research", "Workshop Facilitation"],
     interests: ["Civic Tech", "Education"],
     roles: ["Community Manager", "Design Researcher"],
+    email: "zlee2@gatech.edu",
   },
+  {
+    id: 11,
+    name: "Isabella Rossi",
+    initials: "IR",
+    timezone: "UTC+1",
+    skills: ["Graphic Design", "Illustrator", "Typography"],
+    interests: ["Art", "Culture"],
+    roles: ["Graphic Designer"],
+    email: "irossi14@gatech.edu",
+  },
+  {
+    id: 12,
+    name: "Raj Patel",
+    initials: "RP",
+    timezone: "UTC+5:30",
+    skills: ["Java", "Spring", "Microservices"],
+    interests: ["FinTech", "Blockchain"],
+    roles: ["Backend Developer"],
+    email: "rpatel8@gatech.edu",
+  },
+  {
+    id: 13,
+    name: "Chen Wei",
+    initials: "CW",
+    timezone: "UTC+8",
+    skills: ["Kubernetes", "Docker", "CI/CD"],
+    interests: ["DevOps", "Cloud"],
+    roles: ["DevOps Engineer"],
+    email: "cwei19@gatech.edu",
+  },
+  {
+    id: 14,
+    name: "Sara López",
+    initials: "SL",
+    timezone: "UTC-3",
+    skills: ["Research", "Data Analysis", "Report Writing"],
+    interests: ["Public Policy", "Social Justice"],
+    roles: ["Research Analyst"],
+    email: "slopez6@gatech.edu",
+  },
+  {
+    id: 15,
+    name: "Max Müller",
+    initials: "MM",
+    timezone: "UTC+2",
+    skills: ["C++", "Game Development", "3D Modeling"],
+    interests: ["Gaming", "VR"],
+    roles: ["Game Developer"],
+    email: "mmuller11@gatech.edu",
+  },
+  {
+    id: 16,
+    name: "Nina Kim",
+    initials: "NK",
+    timezone: "UTC+9",
+    skills: ["Swift", "iOS Development", "UI/UX"],
+    interests: ["Mobile Apps"],
+    roles: ["iOS Developer"],
+    email: "nkim4@gatech.edu",
+  },
+  {
+    id: 17,
+    name: "Lars Johansson",
+    initials: "LJ",
+    timezone: "UTC+1",
+    skills: ["Go", "Distributed Systems", "Performance Tuning"],
+    interests: ["IoT"],
+    roles: ["Systems Engineer"],
+    email: "ljohansson2@gatech.edu",
+  },
+  {
+    id: 18,
+    name: "Amelie Dubois",
+    initials: "AD",
+    timezone: "UTC+2",
+    skills: ["Photography", "Video Editing", "Storytelling"],
+    interests: ["Documentaries", "Travel"],
+    roles: ["Media Producer"],
+    email: "adubois15@gatech.edu",
+  },
+  {
+    id: 19,
+    name: "Carlos Silva",
+    initials: "CS",
+    timezone: "UTC-3",
+    skills: ["UX Research", "Persona Development"],
+    interests: ["User Experience"],
+    roles: ["UX Researcher"],
+    email: "csilva18@gatech.edu",
+  },
+  {
+    id: 20,
+    name: "Ayodele Okafor",
+    initials: "AO",
+    timezone: "UTC+1",
+    skills: ["Ethnography", "Field Studies"],
+    interests: ["Cultural Studies"],
+    roles: ["Anthropologist"],
+    email: "aokafor1@gatech.edu",
+  },
+  {
+    id: 21,
+    name: "Yuki Tanaka",
+    initials: "YT",
+    timezone: "UTC+9",
+    skills: ["Python", "Flask", "REST APIs"],
+    interests: ["Startups"],
+    roles: ["Full-Stack Developer"],
+    email: "ytanaka20@gatech.edu",
+  },
+];
+
+const groups = [
+  // 3 Full Groups
+  {
+    id: 1,
+    teammates: [
+      {
+        id: 1,
+        name: "Alicia Chen",
+        initials: "AC",
+        timezone: "UTC-5",
+        skills: ["React", "Figma", "User Research"],
+        interests: ["EdTech", "Accessibility"],
+        roles: ["Frontend Developer", "UX Designer"],
+        email: "achen7@gatech.edu",
+      },
+      {
+        id: 2,
+        name: "Jordan Smith",
+        initials: "JS",
+        timezone: "UTC+1",
+        skills: ["Python", "Machine Learning", "Data Visualization"],
+        interests: ["AI", "Sustainability"],
+        roles: ["Data Scientist", "Technical Writer"],
+        email: "jsmith12@gatech.edu",
+      },
+      {
+        id: 3,
+        name: "Fatima Al‑Mansoori",
+        initials: "FA",
+        timezone: "UTC+4",
+        skills: ["Copywriting", "Marketing Strategy", "SEO"],
+        interests: ["Health", "Startups"],
+        roles: ["Content Strategist", "Marketing Lead"],
+        email: "falmansoori3@gatech.edu",
+      },
+      {
+        id: 4,
+        name: "Diego Rivera",
+        initials: "DR",
+        timezone: "UTC-6",
+        skills: ["UI Design", "Branding", "Illustration"],
+        interests: ["Civic Tech", "Education"],
+        roles: ["Visual Designer", "Product Designer"],
+        email: "drivera17@gatech.edu",
+      },
+      {
+        id: 5,
+        name: "Sophie Dubois",
+        initials: "SD",
+        timezone: "UTC+2",
+        skills: ["Excel", "User Interviews", "Project Coordination"],
+        interests: ["Climate", "Social Impact"],
+        roles: ["Project Manager", "Business Analyst"],
+        email: "sdubois5@gatech.edu",
+      },
+    ],
+    timezones: ["UTC-5", "UTC+1", "UTC+4", "UTC-6", "UTC+2"],
+    skills: [
+      "React",
+      "Figma",
+      "User Research",
+      "Python",
+      "Machine Learning",
+      "Data Visualization",
+      "Copywriting",
+      "Marketing Strategy",
+      "SEO",
+      "UI Design",
+      "Branding",
+      "Illustration",
+      "Excel",
+      "User Interviews",
+      "Project Coordination",
+    ],
+    interests: [
+      "EdTech",
+      "Accessibility",
+      "AI",
+      "Sustainability",
+      "Health",
+      "Startups",
+      "Civic Tech",
+      "Education",
+      "Climate",
+      "Social Impact",
+    ],
+    roles: [
+      "Frontend Developer",
+      "UX Designer",
+      "Data Scientist",
+      "Technical Writer",
+      "Content Strategist",
+      "Marketing Lead",
+      "Visual Designer",
+      "Product Designer",
+      "Project Manager",
+      "Business Analyst",
+    ],
+    isFull: true,
+    maxSize: 5,
+    slotsAvailable: 0,
+    mainContact: "achen7@gatech.edu",
+  },
+  {
+    id: 2,
+    teammates: [
+      {
+        id: 6,
+        name: "Emily Nguyen",
+        initials: "EN",
+        timezone: "UTC-8",
+        skills: ["UX Writing", "Information Architecture", "Prototyping"],
+        interests: ["Productivity", "Mental Health"],
+        roles: ["Backend Developer", "Full-Stack Engineer"],
+        email: "enguyen9@gatech.edu",
+      },
+      {
+        id: 7,
+        name: "Mohammed Raza",
+        initials: "MR",
+        timezone: "UTC+3",
+        skills: ["JavaScript", "Node.js", "API Integration"],
+        interests: ["Smart Cities", "Healthcare"],
+        roles: ["Backend Developer", "Full-Stack Engineer"],
+        email: "mraza10@gatech.edu",
+      },
+      {
+        id: 8,
+        name: "Kofi Mensah",
+        initials: "KM",
+        timezone: "UTC+0",
+        skills: ["Agile Methodology", "Scrum", "Stakeholder Management"],
+        interests: ["Finance", "Open Source"],
+        roles: ["Project Manager", "Team Facilitator"],
+        email: "kmensah4@gatech.edu",
+      },
+      {
+        id: 9,
+        name: "Lina Hoshino",
+        initials: "LH",
+        timezone: "UTC+9",
+        skills: ["SQL", "Data Cleaning", "Business Intelligence"],
+        interests: ["E-Commerce", "Consumer Behavior"],
+        roles: ["Data Analyst", "BI Developer"],
+        email: "lhoshino16@gatech.edu",
+      },
+      {
+        id: 10,
+        name: "Zachary Lee",
+        initials: "ZL",
+        timezone: "UTC-7",
+        skills: ["Public Speaking", "User Research", "Workshop Facilitation"],
+        interests: ["Civic Tech", "Education"],
+        roles: ["Community Manager", "Design Researcher"],
+        email: "zlee2@gatech.edu",
+      },
+    ],
+    timezones: ["UTC-8", "UTC+3", "UTC+0", "UTC+9", "UTC-7"],
+    skills: [
+      "UX Writing",
+      "Information Architecture",
+      "Prototyping",
+      "JavaScript",
+      "Node.js",
+      "API Integration",
+      "Agile Methodology",
+      "Scrum",
+      "Stakeholder Management",
+      "SQL",
+      "Data Cleaning",
+      "Business Intelligence",
+      "Public Speaking",
+      "User Research",
+      "Workshop Facilitation",
+    ],
+    interests: [
+      "Productivity",
+      "Mental Health",
+      "Smart Cities",
+      "Healthcare",
+      "Finance",
+      "Open Source",
+      "E-Commerce",
+      "Consumer Behavior",
+      "Civic Tech",
+      "Education",
+    ],
+    roles: [
+      "Backend Developer",
+      "Full-Stack Engineer",
+      "Project Manager",
+      "Team Facilitator",
+      "Data Analyst",
+      "BI Developer",
+      "Community Manager",
+      "Design Researcher",
+    ],
+    isFull: true,
+    maxSize: 5,
+    slotsAvailable: 0,
+    mainContact: "enguyen9@gatech.edu",
+  },
+  {
+    id: 3,
+    teammates: [
+      {
+        id: 11,
+        name: "Isabella Rossi",
+        initials: "IR",
+        timezone: "UTC+1",
+        skills: ["Graphic Design", "Illustrator", "Typography"],
+        interests: ["Art", "Culture"],
+        roles: ["Graphic Designer"],
+        email: "irossi14@gatech.edu",
+      },
+      {
+        id: 12,
+        name: "Raj Patel",
+        initials: "RP",
+        timezone: "UTC+5:30",
+        skills: ["Java", "Spring", "Microservices"],
+        interests: ["FinTech", "Blockchain"],
+        roles: ["Backend Developer"],
+        email: "rpatel8@gatech.edu",
+      },
+      {
+        id: 13,
+        name: "Chen Wei",
+        initials: "CW",
+        timezone: "UTC+8",
+        skills: ["Kubernetes", "Docker", "CI/CD"],
+        interests: ["DevOps", "Cloud"],
+        roles: ["DevOps Engineer"],
+        email: "cwei19@gatech.edu",
+      },
+      {
+        id: 14,
+        name: "Sara López",
+        initials: "SL",
+        timezone: "UTC-3",
+        skills: ["Research", "Data Analysis", "Report Writing"],
+        interests: ["Public Policy", "Social Justice"],
+        roles: ["Research Analyst"],
+        email: "slopez6@gatech.edu",
+      },
+      {
+        id: 15,
+        name: "Max Müller",
+        initials: "MM",
+        timezone: "UTC+2",
+        skills: ["C++", "Game Development", "3D Modeling"],
+        interests: ["Gaming", "VR"],
+        roles: ["Game Developer"],
+        email: "mmuller11@gatech.edu",
+      },
+    ],
+    timezones: ["UTC+1", "UTC+5:30", "UTC+8", "UTC-3", "UTC+2"],
+    skills: [
+      "Graphic Design",
+      "Illustrator",
+      "Typography",
+      "Java",
+      "Spring",
+      "Microservices",
+      "Kubernetes",
+      "Docker",
+      "CI/CD",
+      "Research",
+      "Data Analysis",
+      "Report Writing",
+      "C++",
+      "Game Development",
+      "3D Modeling",
+    ],
+    interests: [
+      "Art",
+      "Culture",
+      "FinTech",
+      "Blockchain",
+      "DevOps",
+      "Cloud",
+      "Public Policy",
+      "Social Justice",
+      "Gaming",
+      "VR",
+    ],
+    roles: [
+      "Graphic Designer",
+      "Backend Developer",
+      "DevOps Engineer",
+      "Research Analyst",
+      "Game Developer",
+    ],
+    isFull: true,
+    maxSize: 5,
+    slotsAvailable: 0,
+    mainContact: "irossi14@gatech.edu",
+  },
+
+  // 3 Open Groups
+  {
+    id: 4,
+    teammates: [
+      {
+        id: 16,
+        name: "Nina Kim",
+        initials: "NK",
+        timezone: "UTC+9",
+        skills: ["Swift", "iOS Development", "UI/UX"],
+        interests: ["Mobile Apps"],
+        roles: ["iOS Developer"],
+        email: "nkim4@gatech.edu",
+      },
+    ],
+    timezones: ["UTC+9"],
+    skills: ["Swift", "iOS Development", "UI/UX"],
+    interests: ["Mobile Apps"],
+    roles: ["iOS Developer"],
+    isFull: false,
+    maxSize: 5,
+    slotsAvailable: 4,
+    mainContact: "nkim4@gatech.edu",
+  },
+  {
+    id: 5,
+    teammates: [
+      {
+        id: 17,
+        name: "Lars Johansson",
+        initials: "LJ",
+        timezone: "UTC+1",
+        skills: ["Go", "Distributed Systems", "Performance Tuning"],
+        interests: ["IoT"],
+        roles: ["Systems Engineer"],
+        email: "ljohansson2@gatech.edu",
+      },
+      {
+        id: 18,
+        name: "Amelie Dubois",
+        initials: "AD",
+        timezone: "UTC+2",
+        skills: ["Photography", "Video Editing", "Storytelling"],
+        interests: ["Documentaries", "Travel"],
+        roles: ["Media Producer"],
+        email: "adubois15@gatech.edu",
+      },
+    ],
+    timezones: ["UTC+1", "UTC+2"],
+    skills: [
+      "Go",
+      "Distributed Systems",
+      "Performance Tuning",
+      "Photography",
+      "Video Editing",
+      "Storytelling",
+    ],
+    interests: ["IoT", "Documentaries", "Travel"],
+    roles: ["Systems Engineer", "Media Producer"],
+    isFull: false,
+    maxSize: 5,
+    slotsAvailable: 3,
+    mainContact: "ljohansson2@gatech.edu",
+  },
+  {
+    id: 6,
+    teammates: [
+      {
+        id: 19,
+        name: "Carlos Silva",
+        initials: "CS",
+        timezone: "UTC-3",
+        skills: ["UX Research", "Persona Development"],
+        interests: ["User Experience"],
+        roles: ["UX Researcher"],
+        email: "csilva18@gatech.edu",
+      },
+      {
+        id: 20,
+        name: "Ayodele Okafor",
+        initials: "AO",
+        timezone: "UTC+1",
+        skills: ["Ethnography", "Field Studies"],
+        interests: ["Cultural Studies"],
+        roles: ["Anthropologist"],
+        email: "aokafor1@gatech.edu",
+      },
+      {
+        id: 21,
+        name: "Yuki Tanaka",
+        initials: "YT",
+        timezone: "UTC+9",
+        skills: ["Python", "Flask", "REST APIs"],
+        interests: ["Startups"],
+        roles: ["Full-Stack Developer"],
+        email: "ytanaka20@gatech.edu",
+      },
+    ],
+    timezones: ["UTC-3", "UTC+1", "UTC+9"],
+    skills: [
+      "UX Research",
+      "Persona Development",
+      "Ethnography",
+      "Field Studies",
+      "Python",
+      "Flask",
+      "REST APIs",
+    ],
+    interests: ["User Experience", "Cultural Studies", "Startups"],
+    roles: ["UX Researcher", "Anthropologist", "Full-Stack Developer"],
+    isFull: false,
+    maxSize: 5,
+    slotsAvailable: 2,
+    mainContact: "csilva18@gatech.edu",
+  },
+];
+
+const skillsOptions = [
+  "Agile Methodology",
+  "API Integration",
+  "Branding",
+  "Copywriting",
+  "Data Cleaning",
+  "Data Visualization",
+  "Excel",
+  "Figma",
+  "Illustration",
+  "Information Architecture",
+  "JavaScript",
+  "Machine Learning",
+  "Marketing Strategy",
+  "Node.js",
+  "Prototyping",
+  "Project Coordination",
+  "Public Speaking",
+  "Python",
+  "React",
+  "SEO",
+  "Scrum",
+  "SQL",
+  "Stakeholder Management",
+  "UI Design",
+  "UX Writing",
+  "User Interviews",
+  "User Research",
+  "Workshop Facilitation",
+];
+
+const interestsOptions = [
+  "Accessibility",
+  "AI",
+  "Climate",
+  "Consumer Behavior",
+  "Education",
+  "E-Commerce",
+  "EdTech",
+  "Finance",
+  "Health",
+  "Healthcare",
+  "Mental Health",
+  "Open Source",
+  "Productivity",
+  "Social Impact",
+  "Smart Cities",
+  "Startups",
+  "Sustainability",
+  "Civic Tech",
+];
+
+const rolesOptions = [
+  "Backend Developer",
+  "BI Developer",
+  "Business Analyst",
+  "Community Manager",
+  "Content Strategist",
+  "Data Analyst",
+  "Data Scientist",
+  "Design Researcher",
+  "Frontend Developer",
+  "Full-Stack Engineer",
+  "Interaction Designer",
+  "Marketing Lead",
+  "Product Designer",
+  "Project Manager",
+  "Technical Writer",
+  "Team Facilitator",
+  "UX Designer",
+  "UX Writer",
+  "Visual Designer",
 ];
 
 // State
 let filteredTeammates = [...teammates];
 let connectedTeammates = [];
 let currentProfile = null;
+let nextTeammateId = teammates.length + 1;
 
 // Navigation
 function navigateToProfile(id) {
   currentProfile = teammates.find((t) => t.id === id);
   showProfile(id);
   document.getElementById("main-view").classList.add("hidden");
+  document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("profile-view").classList.remove("hidden");
+  document.getElementById("groups-view").classList.remove("hidden");
 }
 
 function navigateToMain() {
   document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("main-view").classList.remove("hidden");
-  // Don't reset currentProfile here - let it be set properly in navigateToProfile
+  document.getElementById("groups-view").classList.add("hidden");
+  clearFormErrors();
+}
+
+function navigateToCreateProfile() {
+  document.getElementById("main-view").classList.add("hidden");
+  document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("create-profile-view").classList.remove("hidden");
+  document.getElementById("groups-view").classList.add("hidden");
+  initializeMultiSelects();
+}
+
+function navigateToGroups() {
+  document.getElementById("main-view").classList.add("hidden");
+  document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("groups-view").classList.remove("hidden");
+}
+
+// Multi-select functionality
+function createMultiSelect(containerId, options, selectedValues = []) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+
+  options.forEach((option) => {
+    const optionElement = document.createElement("div");
+    optionElement.className = "multi-select-option";
+    optionElement.textContent = option;
+    optionElement.dataset.value = option;
+
+    if (selectedValues.includes(option)) {
+      optionElement.classList.add("selected");
+    }
+
+    optionElement.addEventListener("click", function () {
+      this.classList.toggle("selected");
+      clearFieldError(containerId.replace("-select", ""));
+    });
+
+    container.appendChild(optionElement);
+  });
+}
+
+function getSelectedOptions(containerId) {
+  const container = document.getElementById(containerId);
+  const selectedOptions = container.querySelectorAll(
+    ".multi-select-option.selected"
+  );
+  return Array.from(selectedOptions).map((option) => option.dataset.value);
+}
+
+function initializeMultiSelects() {
+  createMultiSelect("skills-select", skillsOptions);
+  createMultiSelect("interests-select", interestsOptions);
+  createMultiSelect("roles-select", rolesOptions);
+}
+
+// Form validation
+function validateForm() {
+  let isValid = true;
+  clearFormErrors();
+
+  // Validate name
+  const name = document.getElementById("profile-name").value.trim();
+  if (!name) {
+    showFieldError("name", "Name is required");
+    isValid = false;
+  } else if (name.length < 2) {
+    showFieldError("name", "Name must be at least 2 characters long");
+    isValid = false;
+  }
+
+  // Validate timezone
+  const timezone = document.getElementById("profile-timezone").value;
+  if (!timezone) {
+    showFieldError("timezone", "Please select a timezone");
+    isValid = false;
+  }
+
+  // Validate skills
+  const skills = getSelectedOptions("skills-select");
+  if (skills.length === 0) {
+    showFieldError("skills", "Please select at least one skill");
+    isValid = false;
+  }
+
+  // Validate interests
+  const interests = getSelectedOptions("interests-select");
+  if (interests.length === 0) {
+    showFieldError("interests", "Please select at least one project interest");
+    isValid = false;
+  }
+
+  // Validate roles
+  const roles = getSelectedOptions("roles-select");
+  if (roles.length === 0) {
+    showFieldError("roles", "Please select at least one role");
+    isValid = false;
+  }
+
+  return isValid;
+}
+
+function showFieldError(fieldName, message) {
+  const errorElement = document.getElementById(`${fieldName}-error`);
+  if (errorElement) {
+    errorElement.textContent = message;
+    errorElement.style.display = "block";
+  }
+}
+
+function clearFieldError(fieldName) {
+  const errorElement = document.getElementById(`${fieldName}-error`);
+  if (errorElement) {
+    errorElement.textContent = "";
+    errorElement.style.display = "none";
+  }
+}
+
+function clearFormErrors() {
+  const errorElements = document.querySelectorAll(".form-error");
+  errorElements.forEach((element) => {
+    element.textContent = "";
+    element.style.display = "none";
+  });
+}
+
+// Utility functions
+function generateInitials(name) {
+  return name
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase())
+    .join("")
+    .substring(0, 2);
+}
+
+function createProfile(formData) {
+  const newProfile = {
+    id: nextTeammateId++,
+    name: formData.name,
+    initials: generateInitials(formData.name),
+    timezone: formData.timezone,
+    skills: formData.skills,
+    interests: formData.interests,
+    roles: formData.roles,
+  };
+
+  teammates.push(newProfile);
+  filteredTeammates = [...teammates];
+  updateTeammateCount();
+  return newProfile;
+}
+
+function resetForm() {
+  document.getElementById("create-profile-form").reset();
+
+  // Clear multi-select selections
+  document
+    .querySelectorAll(".multi-select-option.selected")
+    .forEach((option) => {
+      option.classList.remove("selected");
+    });
+
+  clearFormErrors();
+}
+
+function updateTeammateCount() {
+  const countElement = document.getElementById("teammate-count");
+  if (countElement) {
+    countElement.textContent = `Showing ${filteredTeammates.length} teammate${
+      filteredTeammates.length !== 1 ? "s" : ""
+    }`;
+  }
+}
+
+// Form submission
+function handleCreateProfile(event) {
+  event.preventDefault();
+
+  if (!validateForm()) {
+    return;
+  }
+
+  const formData = {
+    name: document.getElementById("profile-name").value.trim(),
+    timezone: document.getElementById("profile-timezone").value,
+    skills: getSelectedOptions("skills-select"),
+    interests: getSelectedOptions("interests-select"),
+    roles: getSelectedOptions("roles-select"),
+  };
+
+  const newProfile = createProfile(formData);
+  resetForm();
+  renderTeammates();
+
+  // Show success message and navigate back
+  alert(
+    `Profile created successfully! Welcome to the team, ${newProfile.name}!`
+  );
+  navigateToMain();
 }
 
 // Rendering
@@ -119,6 +931,7 @@ function renderTeammates() {
   if (filteredTeammates.length === 0) {
     container.innerHTML =
       '<div class="no-results">No teammates found matching your criteria.</div>';
+    updateTeammateCount();
     return;
   }
 
@@ -153,6 +966,8 @@ function renderTeammates() {
     `
     )
     .join("");
+
+  updateTeammateCount();
 }
 
 // Filtering
@@ -209,7 +1024,6 @@ function showProfile(id) {
   if (isConnected) {
     connectButton.innerHTML = `✅ Connected with ${teammate.name}`;
   } else {
-    // Properly maintain the HTML structure
     connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
   }
 
@@ -237,6 +1051,19 @@ function initializeEventListeners() {
   document.getElementById("skills").addEventListener("change", applyFilters);
   document.getElementById("interests").addEventListener("change", applyFilters);
   document.getElementById("roles").addEventListener("change", applyFilters);
+
+  // Form submission
+  document
+    .getElementById("create-profile-form")
+    .addEventListener("submit", handleCreateProfile);
+
+  // Clear errors on input
+  document
+    .getElementById("profile-name")
+    .addEventListener("input", () => clearFieldError("name"));
+  document
+    .getElementById("profile-timezone")
+    .addEventListener("change", () => clearFieldError("timezone"));
 }
 
 // Initialize
@@ -244,3 +1071,68 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeEventListeners();
   renderTeammates();
 });
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/* helper — points at the right element now */
+function navigateToGroups() {
+  document.querySelectorAll(".view").forEach((v) => v.classList.add("hidden"));
+  document.getElementById("groups-view").classList.remove("hidden");
+}
+
+/* card version of “Show All Groups” */
+function showAllGroups() {
+  navigateToGroups(); // show the view first
+
+  const panel = document.getElementById("groups-view");
+  panel.innerHTML = ""; // clear any previous run
+
+  // wrapper that becomes a responsive grid
+  const grid = document.createElement("div");
+  grid.className = "groups-grid";
+
+  groups.forEach((group) => {
+    const card = document.createElement("div");
+    card.className = `group-card ${group.isFull ? "full" : "open"}`;
+    card.id = `group-${group.id}`;
+
+    card.innerHTML = `
+      <div class="card-header">
+        <h3 class="group-title">Group ${group.id}</h3>
+        <span class="status-badge">
+          ${group.isFull ? "Full" : `${group.slotsAvailable}&nbsp;open`}
+        </span>
+      </div>
+
+      <p><strong>Main&nbsp;Contact:</strong> ${group.mainContact}</p>
+      <p><strong>Timezones:</strong> ${group.timezones.join(", ")}</p>
+      <p><strong>Skills:</strong> ${group.skills.join(", ")}</p>
+      <p><strong>Interests:</strong> ${group.interests.join(", ")}</p>
+      <p><strong>Roles:</strong> ${group.roles.join(", ")}</p>
+
+      <p><strong>Teammates:</strong></p>
+      <ul class="teammate-list">
+        ${group.teammates
+          .map(
+            (tm) => `
+              <li>
+                ${tm.name} (${tm.initials}) – ${tm.email}
+                <br><small>Roles: ${tm.roles.join(", ")}</small>
+              </li>`
+          )
+          .join("")}
+      </ul>
+    `;
+    grid.appendChild(card);
+  });
+
+  panel.appendChild(grid);
+  panel.innerHTML += `
+    <div class="form-buttons">
+        <button type="button" class="form-button" onclick="navigateToMain()">Cancel</button>
+        <button type="submit" class="form-button primary">Create Profile</button>
+    </div>
+`;
+}
