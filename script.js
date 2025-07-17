@@ -1132,7 +1132,6 @@ function showAllGroups() {
   panel.innerHTML += `
     <div class="form-buttons">
         <button type="button" class="form-button" onclick="navigateToMain()">Cancel</button>
-        <button type="submit" class="form-button primary">Create Profile</button>
     </div>
 `;
 }
