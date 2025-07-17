@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teammate Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Main List View -->
+        <div id="main-view" class="view">
+            <div class="header">
+                <div class="header-icon">👥</div>
+                <div class="header-text">
+                    <h1>Teammate Finder</h1>
+                    <p>Discover and connect with potential teammates</p>
+                </div>
+            </div>
+
+            <div class="filters">
+                <h2>Find Your Teammates</h2>
+                <div class="filter-row">
+                    <!-- Timezone filter -->
+                    <div class="filter-group">
+                        <label for="timezone">Timezone</label>
+                        <select id="timezone">
+                            <option value="">Any timezone</option>
+                            <option value="UTC-8">UTC-8</option>
+                            <option value="UTC-7">UTC-7</option>
+                            <option value="UTC-6">UTC-6</option>
+                            <option value="UTC-5">UTC-5</option>
+                            <option value="UTC+0">UTC+0</option>
+                            <option value="UTC+1">UTC+1</option>
+                            <option value="UTC+2">UTC+2</option>
+                            <option value="UTC+3">UTC+3</option>
+                            <option value="UTC+4">UTC+4</option>
+                            <option value="UTC+9">UTC+9</option>
+                        </select>
+                    </div>
+
+                    <!-- Skills filter -->
+                    <div class="filter-group">
+                        <label for="skills">Skills</label>
+                        <select id="skills">
+                            <option value="">Any skills</option>
+                            <option value="Agile Methodology">Agile Methodology</option>
+                            <option value="API Integration">API Integration</option>
+                            <option value="Branding">Branding</option>
+                            <option value="Copywriting">Copywriting</option>
+                            <option value="Data Cleaning">Data Cleaning</option>
+                            <option value="Data Visualization">Data Visualization</option>
+                            <option value="Excel">Excel</option>
+                            <option value="Figma">Figma</option>
+                            <option value="Illustration">Illustration</option>
+                            <option value="Information Architecture">Information Architecture</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Machine Learning">Machine Learning</option>
+                            <option value="Marketing Strategy">Marketing Strategy</option>
+                            <option value="Node.js">Node.js</option>
+                            <option value="Prototyping">Prototyping</option>
+                            <option value="Project Coordination">Project Coordination</option>
+                            <option value="Public Speaking">Public Speaking</option>
+                            <option value="Python">Python</option>
+                            <option value="React">React</option>
+                            <option value="SEO">SEO</option>
+                            <option value="Scrum">Scrum</option>
+                            <option value="SQL">SQL</option>
+                            <option value="Stakeholder Management">Stakeholder Management</option>
+                            <option value="UI Design">UI Design</option>
+                            <option value="UX Writing">UX Writing</option>
+                            <option value="User Interviews">User Interviews</option>
+                            <option value="User Research">User Research</option>
+                            <option value="Workshop Facilitation">Workshop Facilitation</option>
+                        </select>
+                    </div>
+
+                    <!-- Project Interests filter -->
+                    <div class="filter-group">
+                        <label for="interests">Project Interests</label>
+                        <select id="interests">
+                            <option value="">Any interests</option>
+                            <option value="Accessibility">Accessibility</option>
+                            <option value="AI">AI</option>
+                            <option value="Climate">Climate</option>
+                            <option value="Consumer Behavior">Consumer Behavior</option>
+                            <option value="Education">Education</option>
+                            <option value="E-Commerce">E‑Commerce</option>
+                            <option value="EdTech">EdTech</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Health">Health</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Mental Health">Mental Health</option>
+                            <option value="Open Source">Open Source</option>
+                            <option value="Productivity">Productivity</option>
+                            <option value="Social Impact">Social Impact</option>
+                            <option value="Smart Cities">Smart Cities</option>
+                            <option value="Startups">Startups</option>
+                            <option value="Sustainability">Sustainability</option>
+                            <option value="Civic Tech">Civic Tech</option>
+                        </select>
+                    </div>
+
+                    <!-- Interested Roles filter -->
+                    <div class="filter-group">
+                        <label for="roles">Interested Roles</label>
+                        <select id="roles">
+                            <option value="">Any roles</option>
+                            <option value="Backend Developer">Backend Developer</option>
+                            <option value="BI Developer">BI Developer</option>
+                            <option value="Business Analyst">Business Analyst</option>
+                            <option value="Community Manager">Community Manager</option>
+                            <option value="Content Strategist">Content Strategist</option>
+                            <option value="Data Analyst">Data Analyst</option>
+                            <option value="Data Scientist">Data Scientist</option>
+                            <option value="Design Researcher">Design Researcher</option>
+                            <option value="Frontend Developer">Frontend Developer</option>
+                            <option value="Full-Stack Engineer">Full‑Stack Engineer</option>
+                            <option value="Interaction Designer">Interaction Designer</option>
+                            <option value="Marketing Lead">Marketing Lead</option>
+                            <option value="Product Designer">Product Designer</option>
+                            <option value="Project Manager">Project Manager</option>
+                            <option value="Technical Writer">Technical Writer</option>
+                            <option value="Team Facilitator">Team Facilitator</option>
+                            <option value="UX Designer">UX Designer</option>
+                            <option value="UX Writer">UX Writer</option>
+                            <option value="Visual Designer">Visual Designer</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="teammates-list">
+                <div class="table-header">
+                    <div>Name</div>
+                    <div>Timezone</div>
+                    <div>Skills</div>
+                    <div>Project Interests</div>
+                    <div>Interested Roles</div>
+                </div>
+                <div id="teammates-container">
+                    <!-- Teammates will be inserted here -->
+                </div>
+            </div>
+            <div class="table-footer">
+                Showing 10 teammates
+            </div>
+        </div>
+
+        <!-- Profile View -->
+        <div id="profile-view" class="view hidden">
+            <div class="profile-header">
+                <a href="#" class="back-button" onclick="navigateToMain()">← Back to teammates</a>
+                <div class="profile-info">
+                    <div class="profile-avatar" id="profile-avatar"></div>
+                    <div class="profile-details">
+                        <h2 id="profile-name"></h2>
+                        <div class="profile-timezone" id="profile-timezone"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <div class="profile-section skills-section">
+                    <h3>Skills</h3>
+                    <div id="profile-skills"></div>
+                </div>
+                <div class="profile-section roles-section">
+                    <h3>Interested Roles</h3>
+                    <div id="profile-roles"></div>
+                </div>
+                <div class="profile-section interests-section">
+                    <h3>Project Interests</h3>
+                    <div id="profile-interests"></div>
+                </div>
+                <button class="connect-button" onclick="sendConnectionRequest()">
+                    🤝 Connect with <span id="connect-name"></span>
+                </button>
+                <div class="success-message" id="success-message">
+                    <strong>Connection request sent!</strong><br>
+                    Your request to connect with <span id="success-name"></span> has been sent.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
