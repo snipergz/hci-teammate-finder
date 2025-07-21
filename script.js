@@ -1093,6 +1093,15 @@ function showAllGroups() {
   const grid = document.createElement("div");
   grid.className = "groups-grid";
 
+  // Add header with Cancel button at the top
+  const header = document.createElement("div");
+  header.className = "groups-header";
+  header.innerHTML = `
+    <a href="#" class="back-button" onclick="navigateToMain()">← Back to main</a>
+    <h1>All Groups</h1>
+  `;
+  panel.appendChild(header);
+
   groups.forEach((group) => {
     const card = document.createElement("div");
     card.className = `group-card ${group.isFull ? "full" : "open"}`;
@@ -1129,9 +1138,4 @@ function showAllGroups() {
   });
 
   panel.appendChild(grid);
-  panel.innerHTML += `
-    <div class="form-buttons">
-        <button type="button" class="form-button" onclick="navigateToMain()">Cancel</button>
-    </div>
-`;
 }

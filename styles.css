@@ -760,3 +760,32 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Groups header styling */
+.groups-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.groups-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.groups-header .back-button {
+  margin-bottom: 0;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.groups-header .back-button:hover {
+  background-color: #f1f5f9;
+}
