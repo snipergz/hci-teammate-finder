@@ -730,12 +730,13 @@ let currentProfile = null;
 let nextTeammateId = teammates.length + 1;
 
 // Navigation
-function navigateToProfile(id) {
+function navigateToProfile(id, source = 'main') {
   currentProfile = teammates.find((t) => t.id === id);
-  showProfile(id);
+  showProfile(id, source);
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("profile-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
 }
@@ -750,6 +751,7 @@ function navigateToMain() {
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("main-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   clearFormErrors();
@@ -762,6 +764,7 @@ function navigateToCreateProfile() {
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   initializeMultiSelects();
@@ -790,6 +793,7 @@ function navigateToGroups() {
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("groups-view").classList.remove("hidden");
 }
 
@@ -802,6 +806,7 @@ function viewUserProfile() {
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.remove("hidden");
 
@@ -1089,6 +1094,12 @@ function handleCreateProfile(event) {
     profileButton.style.display = 'inline-block';
   }
 
+  // Show Connections button since profile now exists
+  const connectionsButton = document.getElementById("view-connections");
+  if (connectionsButton) {
+    connectionsButton.style.display = 'inline-block';
+  }
+
   // Show appropriate success message based on whether it's create or update
   if (isUpdating) {
     alert(`Profile updated successfully!`);
@@ -1110,6 +1121,9 @@ function renderTeammates() {
     return;
   }
 
+  // Load connections to check status
+  loadConnections();
+
   container.innerHTML = filteredTeammates
     .map(
       (teammate) => {
@@ -1117,11 +1131,28 @@ function renderTeammates() {
           teammate.compatibility >= 80 ? 'high' : 
           teammate.compatibility >= 60 ? 'medium' : 'low';
         
+        // Check connection status
+        const isConnected = connections.accepted.some(c => c.id === teammate.id);
+        const requestSent = connections.sent.some(c => c.id === teammate.id);
+        const requestPending = connections.pending.some(c => c.id === teammate.id);
+        
+        let connectionStatusBadge = '';
+        if (isConnected) {
+          connectionStatusBadge = '<div class="connection-badge connected">Connected</div>';
+        } else if (requestSent) {
+          connectionStatusBadge = '<div class="connection-badge sent">Request Sent</div>';
+        } else if (requestPending) {
+          connectionStatusBadge = '<div class="connection-badge pending">Pending Request</div>';
+        }
+        
         return `
-        <div class="teammate-row" onclick="navigateToProfile(${teammate.id})">
+        <div class="teammate-row" data-teammate-id="${teammate.id}" onclick="navigateToProfile(${teammate.id})">
             <div class="teammate-name">
                 <div class="avatar">${teammate.initials}</div>
-                <span>${teammate.name}</span>
+                <div class="name-and-status">
+                    <span>${teammate.name}</span>
+                    ${connectionStatusBadge}
+                </div>
             </div>
             <div class="compatibility-score ${compatibilityClass}">
                 ${teammate.compatibility}%
@@ -1185,9 +1216,24 @@ function applyFilters() {
 }
 
 // Profile
-function showProfile(id) {
+function showProfile(id, source = 'main') {
   const teammate = teammates.find((t) => t.id === id);
   if (!teammate) return;
+
+  // Store current profile ID and source for connections
+  const profileView = document.getElementById('profile-view');
+  profileView.dataset.currentProfileId = id;
+  profileView.dataset.source = source;
+
+  // Update back button based on source
+  const backButton = document.querySelector('.back-button');
+  if (source === 'connections') {
+    backButton.textContent = '← Back to connections';
+    backButton.onclick = () => navigateToConnections();
+  } else {
+    backButton.textContent = '← Back to teammates';
+    backButton.onclick = () => navigateToMain();
+  }
 
   document.getElementById("profile-avatar").textContent = teammate.initials;
   document.getElementById("profile-name").textContent = teammate.name;
@@ -1218,35 +1264,33 @@ function showProfile(id) {
     .map((interest) => `<span class="tag interest">${interest}</span>`)
     .join("");
 
-  // Check if already connected
+  // Load connections and check connection status
+  loadConnections();
   const connectButton = document.querySelector(".connect-button");
-  const isConnected = connectedTeammates.includes(id);
-
-  connectButton.disabled = isConnected;
-
-  if (isConnected) {
-    connectButton.innerHTML = `✅ Connected with ${teammate.name}`;
-  } else {
-    connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
-  }
+  const successMessage = document.getElementById("success-message");
+  
+  const isConnected = connections.accepted.some(c => c.id === id);
+  const requestSent = connections.sent.some(c => c.id === id);
+  const requestPending = connections.pending.some(c => c.id === id);
 
   // Reset success message
-  document.getElementById("success-message").classList.remove("show");
+  successMessage.style.display = 'none';
+
+  if (isConnected) {
+    connectButton.style.display = 'none';
+    successMessage.style.display = 'block';
+    successMessage.innerHTML = `<strong>You're connected!</strong><br>You are already connected with ${teammate.name}.`;
+  } else if (requestSent || requestPending) {
+    connectButton.style.display = 'none';
+    successMessage.style.display = 'block';
+    successMessage.innerHTML = `<strong>Request pending</strong><br>Your connection request with ${teammate.name} is pending.`;
+  } else {
+    connectButton.style.display = 'block';
+    connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
+  }
 }
 
-// Connection
-function sendConnectionRequest() {
-  if (!currentProfile || connectedTeammates.includes(currentProfile.id)) return;
-
-  connectedTeammates.push(currentProfile.id);
-
-  const connectButton = document.querySelector(".connect-button");
-  connectButton.disabled = true;
-  connectButton.innerHTML = `✅ Connected with ${currentProfile.name}`;
-
-  document.getElementById("success-name").textContent = currentProfile.name;
-  document.getElementById("success-message").classList.add("show");
-}
+// Note: sendConnectionRequest function is now defined in the connections section above
 
 // Event listeners
 function initializeEventListeners() {
@@ -1373,6 +1417,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (profileButton) {
       profileButton.style.display = 'none';
     }
+    
+    // Hide Connections button since no profile exists yet
+    const connectionsButton = document.getElementById("view-connections");
+    if (connectionsButton) {
+      connectionsButton.style.display = 'none';
+    }
   } else {
     // Add compatibility scores and show main view
     addCompatibilityToTeammates();
@@ -1388,6 +1438,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileButton = document.getElementById("view-profile");
     if (profileButton) {
       profileButton.style.display = 'inline-block';
+    }
+    
+    // Show Connections button since profile exists
+    const connectionsButton = document.getElementById("view-connections");
+    if (connectionsButton) {
+      connectionsButton.style.display = 'inline-block';
     }
   }
 });
@@ -1458,4 +1514,408 @@ function showAllGroups() {
   });
 
   panel.appendChild(grid);
+}
+
+// Connections functionality
+let connections = {
+  pending: [], // Incoming requests
+  sent: [], // Outgoing requests
+  accepted: [] // Established connections
+};
+
+// Initialize connections data (non-persistent for demo)
+function loadConnections() {
+  // Only initialize if connections is empty (first load)
+  if (connections.pending.length === 0 && connections.sent.length === 0 && connections.accepted.length === 0) {
+    // Initialize with some sample data for demonstration
+    connections = {
+      pending: [
+        {
+          id: 2,
+          name: "Jordan Smith",
+          email: "jsmith12@gatech.edu",
+          timezone: "UTC+1",
+          skills: ["Python", "Machine Learning", "Data Visualization"],
+          interests: ["AI", "Sustainability"],
+          roles: ["Data Scientist", "Technical Writer"],
+          dateSent: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 days ago
+        }
+      ],
+      sent: [
+        {
+          id: 4,
+          name: "Diego Rivera",
+          email: "drivera17@gatech.edu",
+          timezone: "UTC-6",
+          skills: ["UI Design", "Branding", "Illustration"],
+          interests: ["Civic Tech", "Education"],
+          roles: ["Visual Designer", "Product Designer"],
+          dateSent: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() // 1 day ago
+        }
+      ],
+      accepted: [
+        {
+          id: 1,
+          name: "Alicia Chen",
+          email: "achen7@gatech.edu",
+          timezone: "UTC-5",
+          skills: ["React", "Figma", "User Research"],
+          interests: ["EdTech", "Accessibility"],
+          roles: ["Frontend Developer", "UX Designer"],
+          dateConnected: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() // 5 days ago
+        }
+      ]
+    };
+  }
+}
+
+// Save connections (no-op for non-persistent demo storage)
+function saveConnections() {
+  // No persistence needed for demo - data stays in memory only
+}
+
+// Navigate to connections view
+function navigateToConnections() {
+  document.getElementById("main-view").classList.add("hidden");
+  document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("groups-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.remove("hidden");
+  
+  loadConnections();
+  updateConnectionCounts();
+  renderConnections();
+}
+
+// Show specific connection tab
+function showConnectionTab(tabName) {
+  // Hide all tab contents
+  const tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  
+  // Hide all tab buttons
+  const buttons = document.querySelectorAll('.tab-button');
+  buttons.forEach(button => button.classList.remove('active'));
+  
+  // Show selected tab
+  document.getElementById(`${tabName}-tab`).classList.add('active');
+  document.querySelector(`[onclick="showConnectionTab('${tabName}')"]`).classList.add('active');
+  
+  renderConnections();
+}
+
+// Update connection counts in badges
+function updateConnectionCounts() {
+  document.getElementById('pending-count').textContent = connections.pending.length;
+  document.getElementById('connected-count').textContent = connections.accepted.length;
+  document.getElementById('sent-count').textContent = connections.sent.length;
+}
+
+// Update connection badge for specific teammate on main page
+function updateConnectionBadge(teammateId, status) {
+  // Find the teammate card on the main page
+  const teammateCard = document.querySelector(`[data-teammate-id="${teammateId}"]`);
+  if (!teammateCard) return;
+  
+  // Find or create the badge container
+  let badgeElement = teammateCard.querySelector('.connection-badge');
+  
+  if (status === null) {
+    // Remove badge if status is null
+    if (badgeElement) {
+      badgeElement.remove();
+    }
+    return;
+  }
+  
+  if (!badgeElement) {
+    // Create badge element if it doesn't exist
+    badgeElement = document.createElement('div');
+    badgeElement.className = 'connection-badge';
+    
+    // Insert after the name or at the beginning of the card
+    const nameElement = teammateCard.querySelector('h3');
+    if (nameElement) {
+      nameElement.insertAdjacentElement('afterend', badgeElement);
+    } else {
+      teammateCard.insertAdjacentElement('afterbegin', badgeElement);
+    }
+  }
+  
+  // Update badge content and class based on status
+  badgeElement.className = 'connection-badge'; // Reset classes
+  
+  switch (status) {
+    case 'pending_received':
+      badgeElement.textContent = 'Pending Request';
+      badgeElement.classList.add('pending');
+      break;
+    case 'pending_sent':
+      badgeElement.textContent = 'Request Sent';
+      badgeElement.classList.add('sent');
+      break;
+    case 'connected':
+      badgeElement.textContent = 'Connected';
+      badgeElement.classList.add('connected');
+      break;
+    default:
+      badgeElement.remove();
+  }
+}
+
+// Send connection request
+function sendConnectionRequest() {
+  const currentUser = getUserProfile();
+  if (!currentUser) {
+    alert('Please create your profile first');
+    return;
+  }
+  
+  const profileElement = document.getElementById('profile-view');
+  const profileId = parseInt(profileElement.dataset.currentProfileId);
+  const teammate = teammates.find(t => t.id === profileId);
+  
+  if (!teammate) return;
+  
+  // Check if already connected or request exists
+  const alreadyConnected = connections.accepted.some(c => c.id === profileId);
+  const requestSent = connections.sent.some(c => c.id === profileId);
+  const requestPending = connections.pending.some(c => c.id === profileId);
+  
+  if (alreadyConnected) {
+    alert('You are already connected with this teammate');
+    return;
+  }
+  
+  if (requestSent || requestPending) {
+    alert('A connection request already exists with this teammate');
+    return;
+  }
+  
+  // Add to sent requests
+  connections.sent.push({
+    id: profileId,
+    name: teammate.name,
+    email: teammate.email,
+    timezone: teammate.timezone,
+    skills: teammate.skills,
+    interests: teammate.interests,
+    roles: teammate.roles,
+    dateSent: new Date().toISOString()
+  });
+  
+  saveConnections();
+  
+  // Update the connection badge on main page
+  updateConnectionBadge(profileId, 'sent');
+  
+  // Show success message
+  document.getElementById('success-message').style.display = 'block';
+  document.getElementById('success-name').textContent = teammate.name;
+  
+  // Hide the connect button
+  document.querySelector('.connect-button').style.display = 'none';
+}
+
+// Accept connection request
+function acceptConnection(requestId) {
+  const requestIndex = connections.pending.findIndex(r => r.id === requestId);
+  if (requestIndex === -1) return;
+  
+  const request = connections.pending[requestIndex];
+  
+  // Move to accepted connections
+  connections.accepted.push({
+    ...request,
+    dateConnected: new Date().toISOString()
+  });
+  
+  // Remove from pending
+  connections.pending.splice(requestIndex, 1);
+  
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  
+  // Update the connection badge on main page
+  updateConnectionBadge(requestId, 'connected');
+}
+
+// Decline connection request
+function declineConnection(requestId) {
+  const requestIndex = connections.pending.findIndex(r => r.id === requestId);
+  if (requestIndex === -1) return;
+  
+  connections.pending.splice(requestIndex, 1);
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  
+  // Update the connection badge on main page (remove badge)
+  updateConnectionBadge(requestId, null);
+}
+
+// Cancel sent connection request
+function cancelSentRequest(requestId) {
+  const requestIndex = connections.sent.findIndex(r => r.id === requestId);
+  if (requestIndex === -1) return;
+  
+  connections.sent.splice(requestIndex, 1);
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  
+  // Update the connection badge on main page (remove badge)
+  updateConnectionBadge(requestId, null);
+}
+
+// Remove established connection
+function removeConnection(connectionId) {
+  if (!confirm('Are you sure you want to remove this connection?')) return;
+  
+  const connectionIndex = connections.accepted.findIndex(c => c.id === connectionId);
+  if (connectionIndex === -1) return;
+  
+  connections.accepted.splice(connectionIndex, 1);
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  
+  // Update the connection badge on main page (remove badge)
+  updateConnectionBadge(connectionId, null);
+}
+
+// Format date for display
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffInHours = (now - date) / (1000 * 60 * 60);
+  
+  if (diffInHours < 24) {
+    return 'Today';
+  } else if (diffInHours < 48) {
+    return 'Yesterday';
+  } else {
+    const days = Math.floor(diffInHours / 24);
+    return `${days} days ago`;
+  }
+}
+
+// Render connection card
+function renderConnectionCard(connection, type) {
+  const div = document.createElement('div');
+  div.className = 'connection-card';
+  
+  const initials = connection.name.split(' ').map(n => n[0]).join('');
+  const topSkills = connection.skills.slice(0, 3);
+  
+  let actions = '';
+  if (type === 'pending') {
+    actions = `
+      <div class="connection-actions">
+        <button class="form-button primary accept-btn" onclick="acceptConnection(${connection.id})">
+          ✓ Accept
+        </button>
+        <button class="form-button decline-btn" onclick="declineConnection(${connection.id})">
+          ✗ Decline
+        </button>
+      </div>
+    `;
+  } else if (type === 'sent') {
+    actions = `
+      <div class="connection-actions">
+        <button class="form-button cancel-btn" onclick="cancelSentRequest(${connection.id})">
+          Cancel Request
+        </button>
+      </div>
+    `;
+  } else if (type === 'accepted') {
+    actions = `
+      <div class="connection-actions">
+        <button class="form-button secondary" onclick="navigateToProfile(${connection.id}, 'connections')">
+          View Profile
+        </button>
+        <button class="form-button message-btn" onclick="openEmailClient('${connection.email}')">
+          📧 Message
+        </button>
+        <button class="form-button cancel-btn" onclick="removeConnection(${connection.id})">
+          Remove
+        </button>
+      </div>
+    `;
+  }
+  
+  const dateField = type === 'accepted' ? 'dateConnected' : 'dateSent';
+  const dateLabel = type === 'accepted' ? 'Connected' : 'Sent';
+  
+  div.innerHTML = `
+    <div class="connection-info">
+      <div class="connection-avatar">${initials}</div>
+      <div class="connection-details">
+        <h4>${connection.name}</h4>
+        <p>${connection.timezone} • ${connection.roles.slice(0, 2).join(', ')}</p>
+        <div class="connection-tags">
+          ${topSkills.map(skill => `<span class="connection-tag">${skill}</span>`).join('')}
+        </div>
+        <div class="connection-date">${dateLabel}: ${formatDate(connection[dateField])}</div>
+      </div>
+    </div>
+    ${actions}
+  `;
+  
+  return div;
+}
+
+// Open email client
+function openEmailClient(email) {
+  window.location.href = `mailto:${email}`;
+}
+
+// Render all connections
+function renderConnections() {
+  // Render pending requests
+  const pendingContainer = document.getElementById('pending-requests-container');
+  const noPending = document.getElementById('no-pending-requests');
+  
+  pendingContainer.innerHTML = '';
+  
+  if (connections.pending.length === 0) {
+    noPending.style.display = 'block';
+  } else {
+    noPending.style.display = 'none';
+    connections.pending.forEach(request => {
+      pendingContainer.appendChild(renderConnectionCard(request, 'pending'));
+    });
+  }
+  
+  // Render connected teammates
+  const connectedContainer = document.getElementById('connected-teammates-container');
+  const noConnections = document.getElementById('no-connections');
+  
+  connectedContainer.innerHTML = '';
+  
+  if (connections.accepted.length === 0) {
+    noConnections.style.display = 'block';
+  } else {
+    noConnections.style.display = 'none';
+    connections.accepted.forEach(connection => {
+      connectedContainer.appendChild(renderConnectionCard(connection, 'accepted'));
+    });
+  }
+  
+  // Render sent requests
+  const sentContainer = document.getElementById('sent-requests-container');
+  const noSent = document.getElementById('no-sent-requests');
+  
+  sentContainer.innerHTML = '';
+  
+  if (connections.sent.length === 0) {
+    noSent.style.display = 'block';
+  } else {
+    noSent.style.display = 'none';
+    connections.sent.forEach(request => {
+      sentContainer.appendChild(renderConnectionCard(request, 'sent'));
+    });
+  }
 }

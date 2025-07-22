@@ -25,6 +25,10 @@
                     <button id="show-groups" class="form-button secondary" onclick="showAllGroups()">
                         📋 Show All Groups
                     </button>
+                    <!-- Connections button -->
+                    <button id="view-connections" class="form-button secondary" onclick="navigateToConnections()" style="display: none;">
+                        🤝 Connections
+                    </button>
                     <!-- Profile button -->
                     <button id="view-profile" class="form-button secondary" onclick="viewUserProfile()" style="display: none;">
                         👤 Profile
@@ -299,7 +303,7 @@
         <!-- Profile View -->
         <div id="profile-view" class="view hidden">
             <div class="profile-header">
-                <a href="#" class="back-button" onclick="navigateToMain()">← Back to teammates</a>
+                <a href="#" class="back-button">← Back to teammates</a>
                 <div class="profile-info">
                     <div class="profile-avatar" id="profile-avatar"></div>
                     <div class="profile-details">
@@ -337,6 +341,93 @@
         <!-- All Groups View -->
         <div id="groups-view" class="view hidden">
             <!-- JS can inject the grouped data here -->
+        </div>
+
+        <!-- Connections View -->
+        <div id="connections-view" class="view hidden">
+            <div class="header">
+                <div>
+                    <div class="header-icon">🤝</div>
+                    <div class="header-text">
+                        <h1>Your Connections</h1>
+                        <p>Manage your connection requests and connected teammates</p>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button type="button" class="form-button" onclick="navigateToMain()">Back</button>
+                </div>
+            </div>
+
+            <div class="connections-content">
+                <!-- Connection Requests Tab -->
+                <div class="connections-tabs">
+                    <button class="tab-button active" onclick="showConnectionTab('requests')">
+                        <span class="tab-icon">📬</span>
+                        Pending Requests
+                        <span class="badge" id="pending-count">0</span>
+                    </button>
+                    <button class="tab-button" onclick="showConnectionTab('accepted')">
+                        <span class="tab-icon">✅</span>
+                        Connected
+                        <span class="badge" id="connected-count">0</span>
+                    </button>
+                    <button class="tab-button" onclick="showConnectionTab('sent')">
+                        <span class="tab-icon">📤</span>
+                        Sent Requests
+                        <span class="badge" id="sent-count">0</span>
+                    </button>
+                </div>
+
+                <!-- Pending Requests Section -->
+                <div id="requests-tab" class="tab-content active">
+                    <div class="connections-section">
+                        <h3>Pending Connection Requests</h3>
+                        <p class="section-description">Review and respond to connection requests from other teammates</p>
+                        <div id="pending-requests-container" class="connections-container">
+                            <!-- Pending requests will be inserted here -->
+                        </div>
+                        <div class="empty-state" id="no-pending-requests" style="display: none;">
+                            <div class="empty-icon">📬</div>
+                            <h4>No pending requests</h4>
+                            <p>You don't have any connection requests at the moment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connected Section -->
+                <div id="accepted-tab" class="tab-content">
+                    <div class="connections-section">
+                        <h3>Your Connected Teammates</h3>
+                        <p class="section-description">Teammates you're currently connected with</p>
+                        <div id="connected-teammates-container" class="connections-container">
+                            <!-- Connected teammates will be inserted here -->
+                        </div>
+                        <div class="empty-state" id="no-connections" style="display: none;">
+                            <div class="empty-icon">🤝</div>
+                            <h4>No connections yet</h4>
+                            <p>Start connecting with teammates to build your network!</p>
+                            <button class="form-button primary" onclick="navigateToMain()">Find Teammates</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sent Requests Section -->
+                <div id="sent-tab" class="tab-content">
+                    <div class="connections-section">
+                        <h3>Sent Connection Requests</h3>
+                        <p class="section-description">Track your outgoing connection requests</p>
+                        <div id="sent-requests-container" class="connections-container">
+                            <!-- Sent requests will be inserted here -->
+                        </div>
+                        <div class="empty-state" id="no-sent-requests" style="display: none;">
+                            <div class="empty-icon">📤</div>
+                            <h4>No sent requests</h4>
+                            <p>You haven't sent any connection requests yet.</p>
+                            <button class="form-button primary" onclick="navigateToMain()">Find Teammates</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
