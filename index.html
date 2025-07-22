@@ -20,10 +20,14 @@
                         <p>Discover and connect with potential teammates</p>
                     </div>
                 </div>
-                <div class="action-buttons" style="display: flex; align-items: center;">
+                <div class="action-buttons" style="display: flex; align-items: center; gap: 10px;">
                     <!-- new "Show All Groups" button -->
                     <button id="show-groups" class="form-button secondary" onclick="showAllGroups()">
                         📋 Show All Groups
+                    </button>
+                    <!-- Profile button -->
+                    <button id="view-profile" class="form-button secondary" onclick="viewUserProfile()" style="display: none;">
+                        👤 Profile
                     </button>
                     <a style="text-decoration: none;" href="#" class="form-button primary"
                         onclick="navigateToCreateProfile()">
@@ -147,6 +151,7 @@
             <div class="teammates-list">
                 <div class="table-header">
                     <div>Name</div>
+                    <div>Match %</div>
                     <div>Timezone</div>
                     <div>Skills</div>
                     <div>Project Interests</div>
@@ -167,7 +172,7 @@
                 <div class="header-icon">👤</div>
                 <div class="header-text">
                     <h1>Create Your Profile</h1>
-                    <p>Join the teammate finder community</p>
+                    <p>Set up your profile to find compatible teammates based on your skills, interests, and preferences</p>
                 </div>
             </div>
 
@@ -229,10 +234,56 @@
                 </div>
 
                 <div class="form-buttons">
-                    <button type="button" class="form-button" onclick="navigateToMain()">Cancel</button>
+                    <button type="button" class="form-button" id="cancel-profile-btn" onclick="navigateToMain()">Cancel</button>
                     <button type="submit" class="form-button primary">Create Profile</button>
                 </div>
             </form>
+        </div>
+
+        <!-- User Profile View -->
+        <div id="user-profile-view" class="view hidden">
+            <div class="header">
+                <div>
+                    <div class="header-icon">👤</div>
+                    <div class="header-text">
+                        <h1>Your Profile</h1>
+                        <p>View and edit your profile information</p>
+                    </div>
+                </div>
+                <div class="action-buttons" style="display: flex; align-items: center; gap: 10px;">
+                    <button type="button" class="form-button" onclick="navigateToMain()">Back</button>
+                    <button type="button" class="form-button primary" onclick="editUserProfile()">Edit Profile</button>
+                </div>
+            </div>
+
+            <div class="profile-display">
+                <div class="form-section">
+                    <h3>Basic Information</h3>
+                    <div class="profile-field">
+                        <label>Full Name</label>
+                        <div class="profile-value" id="user-profile-name"></div>
+                    </div>
+                    <div class="profile-field">
+                        <label>Timezone</label>
+                        <div class="profile-value" id="user-profile-timezone"></div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Skills</h3>
+                    <div class="profile-tags" id="user-profile-skills"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Project Interests</h3>
+                    <div class="profile-tags" id="user-profile-interests"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Roles You're Interested In</h3>
+                    <div class="profile-tags" id="user-profile-roles"></div>
+                </div>
+            </div>
         </div>
 
         <!-- Profile View -->

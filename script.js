@@ -714,13 +714,21 @@ function navigateToProfile(id) {
   showProfile(id);
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
   document.getElementById("profile-view").classList.remove("hidden");
-  document.getElementById("groups-view").classList.remove("hidden");
+  document.getElementById("groups-view").classList.add("hidden");
 }
 
 function navigateToMain() {
+  // If user doesn't have a profile and tries to go to main, redirect back to profile creation
+  if (!hasUserProfile()) {
+    alert("Please create your profile first to access the teammate finder features.");
+    return;
+  }
+  
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
   document.getElementById("main-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   clearFormErrors();
@@ -729,16 +737,120 @@ function navigateToMain() {
 function navigateToCreateProfile() {
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   initializeMultiSelects();
+  
+  // Reset the header text for creating mode
+  const headerTitle = document.querySelector('#create-profile-view .header-text h1');
+  if (headerTitle) {
+    headerTitle.textContent = "Create Your Profile";
+  }
+  
+  // Reset the form button text in case it was changed to "Update Profile"
+  const submitButton = document.querySelector('#create-profile-form button[type="submit"]');
+  if (submitButton) {
+    submitButton.textContent = "Create Profile";
+  }
+  
+  // Hide cancel button during initial profile setup
+  const cancelBtn = document.getElementById("cancel-profile-btn");
+  if (cancelBtn) {
+    cancelBtn.style.display = hasUserProfile() ? "inline-block" : "none";
+  }
 }
 
 function navigateToGroups() {
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
   document.getElementById("groups-view").classList.remove("hidden");
+}
+
+// View user's own profile
+function viewUserProfile() {
+  const userProfile = getUserProfile();
+  if (!userProfile) return;
+
+  // Hide all other views
+  document.getElementById("main-view").classList.add("hidden");
+  document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("groups-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.remove("hidden");
+
+  // Populate the profile display
+  document.getElementById("user-profile-name").textContent = userProfile.name;
+  document.getElementById("user-profile-timezone").textContent = userProfile.timezone;
+  
+  // Display skills
+  document.getElementById("user-profile-skills").innerHTML = userProfile.skills
+    .map(skill => `<span class="tag">${skill}</span>`)
+    .join("");
+    
+  // Display interests
+  document.getElementById("user-profile-interests").innerHTML = userProfile.interests
+    .map(interest => `<span class="tag">${interest}</span>`)
+    .join("");
+    
+  // Display roles
+  document.getElementById("user-profile-roles").innerHTML = userProfile.roles
+    .map(role => `<span class="tag">${role}</span>`)
+    .join("");
+}
+
+// Edit user profile (redirect to create profile with existing data)
+function editUserProfile() {
+  const userProfile = getUserProfile();
+  if (!userProfile) return;
+
+  // Navigate to create profile view
+  navigateToCreateProfile();
+  
+  // Update header text for editing mode
+  const headerTitle = document.querySelector('#create-profile-view .header-text h1');
+  if (headerTitle) {
+    headerTitle.textContent = "Update Your Profile";
+  }
+  
+  // Use setTimeout to ensure DOM is fully updated after navigation
+  setTimeout(() => {
+    // Pre-populate the form with existing data
+    document.getElementById("profile-name").value = userProfile.name;
+    document.getElementById("profile-timezone").value = userProfile.timezone;
+    
+    // Pre-select skills
+    const skillsContainer = document.getElementById("skills-select");
+    skillsContainer.querySelectorAll(".multi-select-option").forEach(option => {
+      if (userProfile.skills.includes(option.dataset.value)) {
+        option.classList.add("selected");
+      }
+    });
+    
+    // Pre-select interests
+    const interestsContainer = document.getElementById("interests-select");
+    interestsContainer.querySelectorAll(".multi-select-option").forEach(option => {
+      if (userProfile.interests.includes(option.dataset.value)) {
+        option.classList.add("selected");
+      }
+    });
+    
+    // Pre-select roles
+    const rolesContainer = document.getElementById("roles-select");
+    rolesContainer.querySelectorAll(".multi-select-option").forEach(option => {
+      if (userProfile.roles.includes(option.dataset.value)) {
+        option.classList.add("selected");
+      }
+    });
+  }, 10); // Small delay to ensure DOM is updated
+
+  // Change the form button text to indicate editing
+  const submitButton = document.querySelector('#create-profile-form button[type="submit"]');
+  if (submitButton) {
+    submitButton.textContent = "Update Profile";
+  }
 }
 
 // Multi-select functionality
@@ -867,10 +979,11 @@ function createProfile(formData) {
     skills: formData.skills,
     interests: formData.interests,
     roles: formData.roles,
+    email: `${formData.name.toLowerCase().replace(/\s+/g, '')}@gatech.edu`, // Generate email
   };
 
   teammates.push(newProfile);
-  filteredTeammates = [...teammates];
+  updateFilteredTeammates(); // Use the new function instead of directly copying teammates
   updateTeammateCount();
   return newProfile;
 }
@@ -891,7 +1004,7 @@ function resetForm() {
 function updateTeammateCount() {
   const countElement = document.getElementById("teammate-count");
   if (countElement) {
-    countElement.textContent = `Showing ${filteredTeammates.length} teammate${
+    countElement.textContent = `Showing ${filteredTeammates.length} possible teammate${
       filteredTeammates.length !== 1 ? "s" : ""
     }`;
   }
@@ -905,6 +1018,9 @@ function handleCreateProfile(event) {
     return;
   }
 
+  // Check if this is an update (user already has a profile) or new creation
+  const isUpdating = hasUserProfile();
+
   const formData = {
     name: document.getElementById("profile-name").value.trim(),
     timezone: document.getElementById("profile-timezone").value,
@@ -914,13 +1030,35 @@ function handleCreateProfile(event) {
   };
 
   const newProfile = createProfile(formData);
+  
+  // Save profile to localStorage
+  saveUserProfile(newProfile);
+  
   resetForm();
+  
+  // Calculate compatibility and render teammates
+  addCompatibilityToTeammates();
   renderTeammates();
 
-  // Show success message and navigate back
-  alert(
-    `Profile created successfully! Welcome to the team, ${newProfile.name}!`
-  );
+  // Hide the "Create Your Profile" button since profile now exists
+  const createProfileButton = document.querySelector('a[onclick="navigateToCreateProfile()"]');
+  if (createProfileButton) {
+    createProfileButton.style.display = 'none';
+  }
+
+  // Show Profile button since profile now exists
+  const profileButton = document.getElementById("view-profile");
+  if (profileButton) {
+    profileButton.style.display = 'inline-block';
+  }
+
+  // Show appropriate success message based on whether it's create or update
+  if (isUpdating) {
+    alert(`Profile updated successfully!`);
+  } else {
+    alert(`Profile created successfully! Welcome to the team, ${newProfile.name}!`);
+  }
+  
   navigateToMain();
 }
 
@@ -937,11 +1075,19 @@ function renderTeammates() {
 
   container.innerHTML = filteredTeammates
     .map(
-      (teammate) => `
+      (teammate) => {
+        const compatibilityClass = 
+          teammate.compatibility >= 80 ? 'high' : 
+          teammate.compatibility >= 60 ? 'medium' : 'low';
+        
+        return `
         <div class="teammate-row" onclick="navigateToProfile(${teammate.id})">
             <div class="teammate-name">
                 <div class="avatar">${teammate.initials}</div>
                 <span>${teammate.name}</span>
+            </div>
+            <div class="compatibility-score ${compatibilityClass}">
+                ${teammate.compatibility}%
             </div>
             <div>${teammate.timezone}</div>
             <div>
@@ -962,8 +1108,8 @@ function renderTeammates() {
                   .map((role) => `<span class="tag role">${role}</span>`)
                   .join("")}
             </div>
-        </div>
-    `
+        </div>`;
+      }
     )
     .join("");
 
@@ -976,8 +1122,14 @@ function applyFilters() {
   const skillsFilter = document.getElementById("skills").value;
   const interestsFilter = document.getElementById("interests").value;
   const rolesFilter = document.getElementById("roles").value;
+  const userProfile = getUserProfile();
 
   filteredTeammates = teammates.filter((teammate) => {
+    // Exclude user's own profile
+    if (userProfile && teammate.id === userProfile.id) {
+      return false;
+    }
+    
     const matchesTimezone =
       !timezoneFilter || teammate.timezone === timezoneFilter;
     const matchesSkills =
@@ -988,6 +1140,9 @@ function applyFilters() {
 
     return matchesTimezone && matchesSkills && matchesInterests && matchesRoles;
   });
+
+  // Sort filtered teammates by compatibility (highest first)
+  filteredTeammates.sort((a, b) => b.compatibility - a.compatibility);
 
   renderTeammates();
 }
@@ -1066,10 +1221,127 @@ function initializeEventListeners() {
     .addEventListener("change", () => clearFieldError("timezone"));
 }
 
+// Profile state management
+let userProfile = null;
+
+function hasUserProfile() {
+  return userProfile !== null;
+}
+
+function getUserProfile() {
+  return userProfile;
+}
+
+function saveUserProfile(profile) {
+  userProfile = profile;
+}
+
+// Calculate compatibility percentage between user and teammate
+function calculateCompatibility(userProfile, teammate) {
+  if (!userProfile) return Math.floor(Math.random() * 40) + 30; // Random 30-70% if no profile
+  
+  let matchPoints = 0;
+  let totalPoints = 0;
+  
+  // Timezone compatibility (20% weight)
+  totalPoints += 20;
+  if (userProfile.timezone === teammate.timezone) {
+    matchPoints += 20;
+  } else {
+    // Partial points for nearby timezones
+    const userOffset = parseInt(userProfile.timezone.replace('UTC', ''));
+    const teammateOffset = parseInt(teammate.timezone.replace('UTC', ''));
+    const timeDiff = Math.abs(userOffset - teammateOffset);
+    if (timeDiff <= 3) matchPoints += 10;
+    else if (timeDiff <= 6) matchPoints += 5;
+  }
+  
+  // Skills overlap (30% weight)
+  totalPoints += 30;
+  const skillOverlap = userProfile.skills.filter(skill => teammate.skills.includes(skill)).length;
+  const skillMatch = Math.min(skillOverlap / Math.max(userProfile.skills.length, teammate.skills.length), 1);
+  matchPoints += skillMatch * 30;
+  
+  // Interests overlap (25% weight)
+  totalPoints += 25;
+  const interestOverlap = userProfile.interests.filter(interest => teammate.interests.includes(interest)).length;
+  const interestMatch = Math.min(interestOverlap / Math.max(userProfile.interests.length, teammate.interests.length), 1);
+  matchPoints += interestMatch * 25;
+  
+  // Role compatibility (25% weight)
+  totalPoints += 25;
+  const roleOverlap = userProfile.roles.filter(role => teammate.roles.includes(role)).length;
+  const roleMatch = Math.min(roleOverlap / Math.max(userProfile.roles.length, teammate.roles.length), 1);
+  matchPoints += roleMatch * 25;
+  
+  return Math.round((matchPoints / totalPoints) * 100);
+}
+
+// Add compatibility to teammates and sort by it
+function addCompatibilityToTeammates() {
+  const userProfile = getUserProfile();
+  
+  teammates.forEach(teammate => {
+    teammate.compatibility = calculateCompatibility(userProfile, teammate);
+  });
+  
+  // Sort by compatibility (highest first)
+  teammates.sort((a, b) => b.compatibility - a.compatibility);
+  
+  // Update filtered teammates to exclude user's own profile
+  updateFilteredTeammates();
+}
+
+// Update filtered teammates excluding user's own profile
+function updateFilteredTeammates() {
+  const userProfile = getUserProfile();
+  if (userProfile) {
+    filteredTeammates = teammates.filter(teammate => teammate.id !== userProfile.id);
+  } else {
+    filteredTeammates = [...teammates];
+  }
+}
+
+// Helper function to reset profile (for testing purposes)
+function resetProfile() {
+  userProfile = null;
+  location.reload();
+}
+
+// Make resetProfile available globally for testing
+window.resetProfile = resetProfile;
+
 // Initialize
 document.addEventListener("DOMContentLoaded", function () {
   initializeEventListeners();
-  renderTeammates();
+  
+  // Check if user has a profile
+  if (!hasUserProfile()) {
+    // Show profile creation view first
+    navigateToCreateProfile();
+    
+    // Hide Profile button since no profile exists yet
+    const profileButton = document.getElementById("view-profile");
+    if (profileButton) {
+      profileButton.style.display = 'none';
+    }
+  } else {
+    // Add compatibility scores and show main view
+    addCompatibilityToTeammates();
+    renderTeammates();
+    
+    // Hide the "Create Your Profile" button since profile exists
+    const createProfileButton = document.querySelector('a[onclick="navigateToCreateProfile()"]');
+    if (createProfileButton) {
+      createProfileButton.style.display = 'none';
+    }
+    
+    // Show Profile button since profile exists
+    const profileButton = document.getElementById("view-profile");
+    if (profileButton) {
+      profileButton.style.display = 'inline-block';
+    }
+  }
 });
 
 function capitalize(str) {
