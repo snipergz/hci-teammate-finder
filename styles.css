@@ -113,7 +113,7 @@ body {
   background: #f1f3f4;
   padding: 15px 20px;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr 2fr 2fr;
+  grid-template-columns: 2fr 0.8fr 1fr 2fr 2fr 2fr;
   gap: 20px;
   font-weight: 600;
   color: #555;
@@ -123,7 +123,7 @@ body {
 .teammate-row {
   padding: 20px;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr 2fr 2fr;
+  grid-template-columns: 2fr 0.8fr 1fr 2fr 2fr 2fr;
   gap: 20px;
   border-bottom: 1px solid #e1e5e9;
   cursor: pointer;
@@ -142,6 +142,25 @@ body {
 .teammate-name {
   display: flex;
   align-items: center;
+}
+
+.compatibility-score {
+  font-weight: 600;
+  font-size: 16px;
+  color: #16a34a;
+  text-align: center;
+}
+
+.compatibility-score.high {
+  color: #16a34a; /* Green for 80%+ */
+}
+
+.compatibility-score.medium {
+  color: #ea580c; /* Orange for 60-79% */
+}
+
+.compatibility-score.low {
+  color: #dc2626; /* Red for <60% */
 }
 
 .avatar {
@@ -313,6 +332,49 @@ body {
   color: #666;
 }
 
+/* User Profile View Styles */
+.profile-display {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-field {
+  margin-bottom: 15px;
+}
+
+.profile-field label {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.profile-value {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  color: #555;
+  font-size: 14px;
+}
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.profile-tags .tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .filter-row {
     grid-template-columns: 1fr;
@@ -335,6 +397,12 @@ body {
 
   .teammate-name {
     margin-bottom: 10px;
+  }
+
+  .compatibility-score {
+    float: right;
+    margin-top: -5px;
+    font-size: 14px;
   }
 
   .profile-info {
@@ -759,4 +827,33 @@ body {
   .groups-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Groups header styling */
+.groups-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.groups-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.groups-header .back-button {
+  margin-bottom: 0;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.groups-header .back-button:hover {
+  background-color: #f1f5f9;
 }
