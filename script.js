@@ -1264,16 +1264,7 @@ function loadConnections() {
         }
       ],
       accepted: [
-        {
-          id: 7, // Mohammed Raza - individual user not in any team yet
-          name: "Mohammed Raza",
-          email: "mraza10@gatech.edu",
-          timezone: "UTC+3",
-          skills: ["JavaScript", "Node.js", "API Integration"],
-          interests: ["Smart Cities", "Healthcare"],
-          roles: ["Backend Developer", "Full-Stack Engineer"],
-          dateConnected: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() // 5 days ago
-        }
+        // No pre-existing connections - user starts fresh
       ]
     };
   }
