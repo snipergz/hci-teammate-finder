@@ -1343,3 +1343,34 @@ body {
     flex: 1;
   }
 }
+
+/* Group display enhancements */
+.user-in-group-badge {
+  background: #22c55e;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 8px 0;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.teammate-list .current-user {
+  background-color: #f0f9ff;
+  border-left: 3px solid #0ea5e9;
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 0 4px 4px 0;
+  font-weight: 500;
+}
+
+.you-indicator {
+  color: #0ea5e9;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

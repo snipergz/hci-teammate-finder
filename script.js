@@ -1185,6 +1185,9 @@ function showAllGroups() {
     card.className = `group-card ${group.isFull ? "full" : "open"}`;
     card.id = `group-${group.id}`;
 
+    // Check if user is in this group
+    const userProfile = getUserProfile();
+
     card.innerHTML = `
       <div class="card-header">
         <h3 class="group-title">Group ${group.id}</h3>
@@ -1192,21 +1195,23 @@ function showAllGroups() {
           ${group.isFull ? "Full" : `${group.slotsAvailable}&nbsp;open`}
         </span>
       </div>
+      ${userProfile && group.teammates.some(tm => tm.id === userProfile.id) ? '<div class="user-in-group-badge">You are in this group</div>' : ''}
 
       <p><strong>Main&nbsp;Contact:</strong> ${group.mainContact}</p>
       <p><strong>Timezones:</strong> ${group.timezones.join(", ")}</p>
-      <p><strong>Skills:</strong> ${group.skills.join(", ")}</p>
+      <p><strong>Skills:</strong> ${group.skills.slice(0, 8).join(", ")}${group.skills.length > 8 ? '...' : ''}</p>
       <p><strong>Interests:</strong> ${group.interests.join(", ")}</p>
       <p><strong>Roles:</strong> ${group.roles.join(", ")}</p>
 
-      <p><strong>Teammates:</strong></p>
+      <p><strong>Teammates (${group.teammates.length}/${group.maxSize}):</strong></p>
       <ul class="teammate-list">
         ${group.teammates
           .map(
             (tm) => `
-              <li>
+              <li class="${userProfile && tm.id === userProfile.id ? 'current-user' : ''}">
                 ${tm.name} (${tm.initials}) – ${tm.email}
                 <br><small>Roles: ${tm.roles.join(", ")}</small>
+                ${userProfile && tm.id === userProfile.id ? ' <span class="you-indicator">(You)</span>' : ''}
               </li>`
           )
           .join("")}
@@ -1423,6 +1428,42 @@ function sendConnectionRequest() {
   document.querySelector('.connect-button').style.display = 'none';
 }
 
+// Auto-handle other connections when joining a team
+function autoHandleConnectionsAfterTeamJoin() {
+  // Get all other pending requests to reject
+  const otherPendingRequests = [...connections.pending];
+  
+  // Get all sent requests to cancel
+  const sentRequests = [...connections.sent];
+  
+  // Clear all pending requests (auto-reject)
+  otherPendingRequests.forEach(request => {
+    updateConnectionBadge(request.id, null);
+  });
+  connections.pending = [];
+  
+  // Clear all sent requests (auto-cancel)
+  sentRequests.forEach(request => {
+    updateConnectionBadge(request.id, null);
+  });
+  connections.sent = [];
+  
+  // Update counts
+  updateConnectionCounts();
+  
+  // Re-render teammates list to update connection badges
+  renderTeammates();
+}
+
+// Update groups display dynamically
+function refreshGroupsDisplay() {
+  // Check if groups view is currently visible
+  const groupsView = document.getElementById("groups-view");
+  if (groupsView && !groupsView.classList.contains("hidden")) {
+    showAllGroups(); // Refresh the groups display
+  }
+}
+
 // Accept connection request
 function acceptConnection(requestId) {
   const requestIndex = connections.pending.findIndex(r => r.id === requestId);
@@ -1430,7 +1471,63 @@ function acceptConnection(requestId) {
   
   const request = connections.pending[requestIndex];
   
-  // Move to accepted connections
+  // Check if this is a team invitation
+  if (request.teamInvitation) {
+    // Add user to the team
+    const userProfile = getUserProfile();
+    if (userProfile) {
+      const team = groups.find(g => g.id === request.teamId);
+      if (team && !team.isFull) {
+        // Add user to team
+        team.teammates.push({
+          id: userProfile.id,
+          name: userProfile.name,
+          initials: userProfile.initials,
+          timezone: userProfile.timezone,
+          skills: userProfile.skills,
+          interests: userProfile.interests,
+          roles: userProfile.roles,
+          email: userProfile.email,
+        });
+        
+        // Update team metadata
+        team.timezones = [...new Set([...team.timezones, userProfile.timezone])];
+        team.skills = [...new Set([...team.skills, ...userProfile.skills])];
+        team.interests = [...new Set([...team.interests, ...userProfile.interests])];
+        team.roles = [...new Set([...team.roles, ...userProfile.roles])];
+        
+        // Update team status
+        team.slotsAvailable = team.maxSize - team.teammates.length;
+        team.isFull = team.slotsAvailable === 0;
+        
+        // Move accepted team invitation to connections
+        connections.accepted.push({
+          ...request,
+          dateConnected: new Date().toISOString()
+        });
+        
+        // Remove from pending
+        connections.pending.splice(requestIndex, 1);
+        
+        // Auto-handle all other connections (reject pending, cancel sent)
+        autoHandleConnectionsAfterTeamJoin();
+        
+        // Show success message for team joining
+        alert(`Congratulations! You've successfully joined Team ${team.id}. All other pending requests have been automatically handled.`);
+        
+        // Update displays
+        saveConnections();
+        updateConnectionCounts();
+        renderConnections();
+        updateConnectionBadge(requestId, 'connected');
+        refreshGroupsDisplay();
+        
+        return; // Exit early for team invitations
+      }
+    }
+  }
+  
+  // Regular connection acceptance (non-team)
   connections.accepted.push({
     ...request,
     dateConnected: new Date().toISOString()
