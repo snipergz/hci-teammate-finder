@@ -732,6 +732,9 @@ function navigateToMain() {
   document.getElementById("main-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   clearFormErrors();
+  
+  // Scroll to the top of the page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function navigateToCreateProfile() {
