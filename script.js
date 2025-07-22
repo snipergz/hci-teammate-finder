@@ -491,12 +491,23 @@ function navigateToCreateProfile() {
 }
 
 function navigateToGroups() {
+  // Check if coming from connections view
+  const connectionsView = document.getElementById("connections-view");
+  const fromConnections = connectionsView && !connectionsView.classList.contains("hidden");
+  
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
   document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("groups-view").classList.remove("hidden");
+  
+  // Store context for back navigation
+  if (fromConnections) {
+    document.getElementById("groups-view").dataset.source = 'connections';
+  } else {
+    document.getElementById("groups-view").dataset.source = 'main';
+  }
 }
 
 // View user's own profile
@@ -1161,8 +1172,14 @@ function navigateToGroups() {
 }
 
 /* card version of “Show All Groups” */
-function showAllGroups() {
+function showAllGroups(source) {
   navigateToGroups(); // show the view first
+
+  // If no source provided, check the stored context
+  if (!source) {
+    const groupsView = document.getElementById("groups-view");
+    source = groupsView.dataset.source || 'main';
+  }
 
   const panel = document.getElementById("groups-view");
   panel.innerHTML = ""; // clear any previous run
@@ -1171,11 +1188,15 @@ function showAllGroups() {
   const grid = document.createElement("div");
   grid.className = "groups-grid";
 
-  // Add header with Cancel button at the top
+  // Add header with back button based on source
   const header = document.createElement("div");
   header.className = "groups-header";
+  const backButton = source === 'connections' ? 
+    '<a href="#" class="back-button" onclick="navigateToConnections()">← Back to connections</a>' :
+    '<a href="#" class="back-button" onclick="navigateToMain()">← Back to main</a>';
+  
   header.innerHTML = `
-    <a href="#" class="back-button" onclick="navigateToMain()">← Back to main</a>
+    ${backButton}
     <h1>All Groups</h1>
   `;
   panel.appendChild(header);
@@ -1282,7 +1303,10 @@ function navigateToConnections() {
   document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
   document.getElementById("groups-view").classList.add("hidden");
-  document.getElementById("connections-view").classList.remove("hidden");
+  
+  const connectionsView = document.getElementById("connections-view");
+  connectionsView.classList.remove("hidden");
+  connectionsView.dataset.wasActive = 'true'; // Mark that connections was active
   
   loadConnections();
   updateConnectionCounts();
@@ -1451,7 +1475,10 @@ function refreshGroupsDisplay() {
   // Check if groups view is currently visible
   const groupsView = document.getElementById("groups-view");
   if (groupsView && !groupsView.classList.contains("hidden")) {
-    showAllGroups(); // Refresh the groups display
+    // Check if we came from connections (if connections view was the previous view)
+    const connectionsView = document.getElementById("connections-view");
+    const wasFromConnections = connectionsView && connectionsView.dataset.wasActive === 'true';
+    showAllGroups(wasFromConnections ? 'connections' : 'main'); // Refresh the groups display
   }
 }
 
@@ -1626,7 +1653,7 @@ function renderConnectionCard(connection, type) {
         <button class="form-button decline-btn" onclick="declineConnection(${connection.id})">
           ✗ Decline
         </button>
-        ${connection.teamInvitation ? `<button class="form-button secondary" onclick="showAllGroups()">View Team</button>` : ''}
+        ${connection.teamInvitation ? `<button class="form-button secondary" onclick="showAllGroups('connections')">View Team</button>` : ''}
       </div>
     `;
   } else if (type === 'sent') {
