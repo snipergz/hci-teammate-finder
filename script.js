@@ -1259,22 +1259,22 @@ function calculateCompatibility(userProfile, teammate) {
     else if (timeDiff <= 6) matchPoints += 5;
   }
   
-  // Skills overlap (30% weight)
+  // Skills complement (30% weight) - rewards skills the user doesn't have
   totalPoints += 30;
-  const skillOverlap = userProfile.skills.filter(skill => teammate.skills.includes(skill)).length;
-  const skillMatch = Math.min(skillOverlap / Math.max(userProfile.skills.length, teammate.skills.length), 1);
+  const skillComplement = teammate.skills.filter(skill => !userProfile.skills.includes(skill)).length;
+  const skillMatch = Math.min(skillComplement / Math.max(teammate.skills.length, 1), 1);
   matchPoints += skillMatch * 30;
   
-  // Interests overlap (25% weight)
+  // Interests overlap (25% weight) - still rewards shared interests for project alignment
   totalPoints += 25;
   const interestOverlap = userProfile.interests.filter(interest => teammate.interests.includes(interest)).length;
   const interestMatch = Math.min(interestOverlap / Math.max(userProfile.interests.length, teammate.interests.length), 1);
   matchPoints += interestMatch * 25;
   
-  // Role compatibility (25% weight)
+  // Role complement (25% weight) - rewards roles the user doesn't have
   totalPoints += 25;
-  const roleOverlap = userProfile.roles.filter(role => teammate.roles.includes(role)).length;
-  const roleMatch = Math.min(roleOverlap / Math.max(userProfile.roles.length, teammate.roles.length), 1);
+  const roleComplement = teammate.roles.filter(role => !userProfile.roles.includes(role)).length;
+  const roleMatch = Math.min(roleComplement / Math.max(teammate.roles.length, 1), 1);
   matchPoints += roleMatch * 25;
   
   return Math.round((matchPoints / totalPoints) * 100);
