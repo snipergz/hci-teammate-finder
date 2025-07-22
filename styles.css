@@ -290,6 +290,10 @@ body {
     no-repeat;
 }
 
+.about-section h3::before {
+  display: none;
+}
+
 .connect-button {
   background: #5865f2;
   color: white;
@@ -357,6 +361,16 @@ body {
   border-radius: 8px;
   color: #555;
   font-size: 14px;
+}
+
+.profile-about {
+  line-height: 1.6;
+  white-space: pre-wrap;
+  font-size: 14px;
+}
+
+.about-section {
+  margin-bottom: 2rem;
 }
 
 .profile-tags {
@@ -466,7 +480,8 @@ body {
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 2px solid #e2e8f0;
@@ -474,14 +489,28 @@ body {
   font-size: 1rem;
   transition: all 0.2s ease;
   background: #fafafa;
+  font-family: inherit;
 }
 
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
   outline: none;
   border-color: #3b82f6;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+  font-style: italic;
 }
 
 /* Multi-select styling */

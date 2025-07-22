@@ -9,6 +9,7 @@ const teammates = [
     interests: ["EdTech", "Accessibility"],
     roles: ["Frontend Developer", "UX Designer"],
     email: "achen7@gatech.edu",
+    about: "I'm passionate about creating inclusive digital experiences that make technology accessible to everyone. With 3 years of experience in both development and design, I love bridging the gap between user needs and technical implementation.",
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const teammates = [
     interests: ["AI", "Sustainability"],
     roles: ["Data Scientist", "Technical Writer"],
     email: "jsmith12@gatech.edu",
+    about: "Data storyteller with a background in environmental science. I'm excited about using AI and machine learning to tackle climate challenges. Always happy to explain complex concepts in simple terms!",
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const teammates = [
     interests: ["Health", "Startups"],
     roles: ["Content Strategist", "Marketing Lead"],
     email: "falmansoori3@gatech.edu",
+    about: "Strategic content creator with a passion for health tech and startup ecosystems. I help emerging companies find their voice and connect with their audience through compelling storytelling and data-driven marketing strategies.",
   },
   {
     id: 4,
@@ -39,6 +42,7 @@ const teammates = [
     interests: ["Civic Tech", "Education"],
     roles: ["Visual Designer", "Product Designer"],
     email: "drivera17@gatech.edu",
+    about: "Visual storyteller who believes design can change the world. I specialize in creating engaging interfaces for social impact projects. When I'm not designing, you'll find me sketching urban landscapes or volunteering at local schools.",
   },
   {
     id: 5,
@@ -49,6 +53,7 @@ const teammates = [
     interests: ["Climate", "Social Impact"],
     roles: ["Project Manager", "Business Analyst"],
     email: "sdubois5@gatech.edu",
+    about: "Organized project leader with a strong commitment to climate action and social impact initiatives. I excel at bringing teams together, managing complex timelines, and ensuring every voice is heard in the decision-making process.",
   },
   {
     id: 6,
@@ -59,6 +64,7 @@ const teammates = [
     interests: ["Productivity", "Mental Health"],
     roles: ["Backend Developer", "Full-Stack Engineer"],
     email: "enguyen9@gatech.edu",
+    about: "Full-stack developer with a unique background in UX writing and information architecture. I'm passionate about building productivity tools that support mental health and creating seamless user experiences from both technical and content perspectives.",
   },
   {
     id: 7,
@@ -69,6 +75,7 @@ const teammates = [
     interests: ["Smart Cities", "Healthcare"],
     roles: ["Backend Developer", "Full-Stack Engineer"],
     email: "mraza10@gatech.edu",
+    about: "Backend specialist focused on building robust APIs and integrations for smart city and healthcare applications. I believe technology should make urban living more sustainable and healthcare more accessible to everyone.",
   },
   {
     id: 8,
@@ -79,6 +86,7 @@ const teammates = [
     interests: ["Finance", "Open Source"],
     roles: ["Project Manager", "Team Facilitator"],
     email: "kmensah4@gatech.edu",
+    about: "Agile project manager and team facilitator with expertise in fintech and open source development. I'm passionate about creating collaborative environments where diverse teams can innovate and deliver exceptional results together.",
   },
   {
     id: 9,
@@ -89,6 +97,7 @@ const teammates = [
     interests: ["E-Commerce", "Consumer Behavior"],
     roles: ["Data Analyst", "BI Developer"],
     email: "lhoshino16@gatech.edu",
+    about: "Data analyst specializing in e-commerce analytics and consumer behavior insights. I love uncovering hidden patterns in data that help businesses better understand their customers and make more informed decisions.",
   },
   {
     id: 10,
@@ -99,6 +108,7 @@ const teammates = [
     interests: ["Civic Tech", "Education"],
     roles: ["Community Manager", "Design Researcher"],
     email: "zlee2@gatech.edu",
+    about: "Community builder and design researcher focused on civic technology and educational initiatives. I excel at facilitating workshops, conducting user research, and bringing people together to solve complex social challenges.",
   },
   {
     id: 11,
@@ -109,6 +119,7 @@ const teammates = [
     interests: ["Art", "Culture"],
     roles: ["Graphic Designer"],
     email: "irossi14@gatech.edu",
+    about: "Creative graphic designer with a deep appreciation for art and cultural expression. I specialize in typography and illustration, bringing visual stories to life that celebrate diversity and connect communities through beautiful design.",
   },
   {
     id: 12,
@@ -119,6 +130,7 @@ const teammates = [
     interests: ["FinTech", "Blockchain"],
     roles: ["Backend Developer"],
     email: "rpatel8@gatech.edu",
+    about: "Backend developer specializing in Java and microservices architecture for fintech applications. I'm fascinated by blockchain technology and its potential to revolutionize financial systems, making them more transparent and accessible.",
   },
   {
     id: 13,
@@ -129,6 +141,7 @@ const teammates = [
     interests: ["DevOps", "Cloud"],
     roles: ["DevOps Engineer"],
     email: "cwei19@gatech.edu",
+    about: "DevOps engineer passionate about cloud infrastructure and automation. I specialize in containerization and CI/CD pipelines, helping teams deploy faster and more reliably while maintaining security and scalability.",
   },
   {
     id: 14,
@@ -139,6 +152,7 @@ const teammates = [
     interests: ["Public Policy", "Social Justice"],
     roles: ["Research Analyst"],
     email: "slopez6@gatech.edu",
+    about: "Research analyst dedicated to public policy and social justice initiatives. I conduct thorough research and data analysis to inform policy decisions that create positive social change and promote equity in our communities.",
   },
   {
     id: 15,
@@ -149,6 +163,7 @@ const teammates = [
     interests: ["Gaming", "VR"],
     roles: ["Game Developer"],
     email: "mmuller11@gatech.edu",
+    about: "Game developer specializing in C++ and 3D modeling with a passion for immersive VR experiences. I love creating virtual worlds that tell compelling stories and push the boundaries of what's possible in interactive entertainment.",
   },
   {
     id: 16,
@@ -159,6 +174,7 @@ const teammates = [
     interests: ["Mobile Apps"],
     roles: ["iOS Developer"],
     email: "nkim4@gatech.edu",
+    about: "iOS developer focused on creating beautiful and intuitive mobile applications. I combine technical expertise in Swift with strong UI/UX sensibilities to build apps that users love and find genuinely helpful in their daily lives.",
   },
   {
     id: 17,
@@ -169,6 +185,7 @@ const teammates = [
     interests: ["IoT"],
     roles: ["Systems Engineer"],
     email: "ljohansson2@gatech.edu",
+    about: "Systems engineer specializing in distributed systems and IoT infrastructure. I'm passionate about building high-performance, scalable systems that can handle massive amounts of data from connected devices and sensors.",
   },
   {
     id: 18,
@@ -179,6 +196,7 @@ const teammates = [
     interests: ["Documentaries", "Travel"],
     roles: ["Media Producer"],
     email: "adubois15@gatech.edu",
+    about: "Media producer and storyteller specializing in documentary photography and video. I love capturing authentic human stories from around the world and creating compelling narratives that inspire empathy and understanding.",
   },
   {
     id: 19,
@@ -189,6 +207,7 @@ const teammates = [
     interests: ["User Experience"],
     roles: ["UX Researcher"],
     email: "csilva18@gatech.edu",
+    about: "UX researcher specializing in persona development and user behavior analysis. I'm passionate about understanding what makes people tick and translating those insights into design decisions that create meaningful user experiences.",
   },
   {
     id: 20,
@@ -199,6 +218,7 @@ const teammates = [
     interests: ["Cultural Studies"],
     roles: ["Anthropologist"],
     email: "aokafor1@gatech.edu",
+    about: "Cultural anthropologist specializing in ethnographic research and field studies. I'm fascinated by how different cultures solve problems and how we can learn from diverse perspectives to create more inclusive and effective solutions.",
   },
   {
     id: 21,
@@ -209,6 +229,7 @@ const teammates = [
     interests: ["Startups"],
     roles: ["Full-Stack Developer"],
     email: "ytanaka20@gatech.edu",
+    about: "Full-stack developer with a passion for startup culture and rapid prototyping. I specialize in Python and API development, helping early-stage companies quickly build and iterate on their product ideas to find market fit.",
   },
 ];
 
@@ -788,6 +809,16 @@ function viewUserProfile() {
   document.getElementById("user-profile-name").textContent = userProfile.name;
   document.getElementById("user-profile-timezone").textContent = userProfile.timezone;
   
+  // Display about me section (only if it exists and is not empty)
+  const aboutSection = document.getElementById("user-about-section");
+  const aboutElement = document.getElementById("user-profile-about");
+  if (userProfile.about && userProfile.about.trim()) {
+    aboutElement.textContent = userProfile.about;
+    aboutSection.style.display = "block";
+  } else {
+    aboutSection.style.display = "none";
+  }
+  
   // Display skills
   document.getElementById("user-profile-skills").innerHTML = userProfile.skills
     .map(skill => `<span class="tag">${skill}</span>`)
@@ -823,6 +854,7 @@ function editUserProfile() {
     // Pre-populate the form with existing data
     document.getElementById("profile-name").value = userProfile.name;
     document.getElementById("profile-timezone").value = userProfile.timezone;
+    document.getElementById("profile-about-textarea").value = userProfile.about || '';
     
     // Pre-select skills
     const skillsContainer = document.getElementById("skills-select");
@@ -982,6 +1014,7 @@ function createProfile(formData) {
     skills: formData.skills,
     interests: formData.interests,
     roles: formData.roles,
+    about: formData.about || '', // Optional field
     email: `${formData.name.toLowerCase().replace(/\s+/g, '')}@gatech.edu`, // Generate email
   };
 
@@ -1030,6 +1063,7 @@ function handleCreateProfile(event) {
     skills: getSelectedOptions("skills-select"),
     interests: getSelectedOptions("interests-select"),
     roles: getSelectedOptions("roles-select"),
+    about: document.getElementById("profile-about-textarea").value.trim(),
   };
 
   const newProfile = createProfile(formData);
@@ -1160,6 +1194,17 @@ function showProfile(id) {
   document.getElementById(
     "profile-timezone"
   ).innerHTML = `📍 ${teammate.timezone}`;
+
+  // Display about me section (only if it exists and is not empty)
+  const aboutSection = document.getElementById("profile-about-section");
+  const aboutElement = document.getElementById("profile-about");
+  
+  if (teammate.about && teammate.about.trim()) {
+    aboutElement.textContent = teammate.about;
+    aboutSection.style.display = "block";
+  } else {
+    aboutSection.style.display = "none";
+  }
 
   document.getElementById("profile-skills").innerHTML = teammate.skills
     .map((skill) => `<span class="tag">${skill}</span>`)
