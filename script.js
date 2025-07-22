@@ -233,8 +233,9 @@ const teammates = [
   },
 ];
 
+// Team formation system - teams of 3 with strategic connections
 const groups = [
-  // 3 Full Groups
+  // Group 1 - Complete team (3/3)
   {
     id: 1,
     teammates: [
@@ -268,6 +269,44 @@ const groups = [
         roles: ["Content Strategist", "Marketing Lead"],
         email: "falmansoori3@gatech.edu",
       },
+    ],
+    timezones: ["UTC-5", "UTC+1", "UTC+4"],
+    skills: [
+      "React",
+      "Figma",
+      "User Research",
+      "Python",
+      "Machine Learning",
+      "Data Visualization",
+      "Copywriting",
+      "Marketing Strategy",
+      "SEO",
+    ],
+    interests: [
+      "EdTech",
+      "Accessibility",
+      "AI",
+      "Sustainability",
+      "Health",
+      "Startups",
+    ],
+    roles: [
+      "Frontend Developer",
+      "UX Designer",
+      "Data Scientist",
+      "Technical Writer",
+      "Content Strategist",
+      "Marketing Lead",
+    ],
+    isFull: true,
+    maxSize: 3,
+    slotsAvailable: 0,
+    mainContact: "achen7@gatech.edu",
+  },
+  // Group 2 - Partially formed team (2/3) - has sent invitation to user
+  {
+    id: 2,
+    teammates: [
       {
         id: 4,
         name: "Diego Rivera",
@@ -289,17 +328,8 @@ const groups = [
         email: "sdubois5@gatech.edu",
       },
     ],
-    timezones: ["UTC-5", "UTC+1", "UTC+4", "UTC-6", "UTC+2"],
+    timezones: ["UTC-6", "UTC+2"],
     skills: [
-      "React",
-      "Figma",
-      "User Research",
-      "Python",
-      "Machine Learning",
-      "Data Visualization",
-      "Copywriting",
-      "Marketing Strategy",
-      "SEO",
       "UI Design",
       "Branding",
       "Illustration",
@@ -307,345 +337,17 @@ const groups = [
       "User Interviews",
       "Project Coordination",
     ],
-    interests: [
-      "EdTech",
-      "Accessibility",
-      "AI",
-      "Sustainability",
-      "Health",
-      "Startups",
-      "Civic Tech",
-      "Education",
-      "Climate",
-      "Social Impact",
-    ],
+    interests: ["Civic Tech", "Education", "Climate", "Social Impact"],
     roles: [
-      "Frontend Developer",
-      "UX Designer",
-      "Data Scientist",
-      "Technical Writer",
-      "Content Strategist",
-      "Marketing Lead",
       "Visual Designer",
       "Product Designer",
-      "Project Manager",
+      "Project Manager", 
       "Business Analyst",
     ],
-    isFull: true,
-    maxSize: 5,
-    slotsAvailable: 0,
-    mainContact: "achen7@gatech.edu",
-  },
-  {
-    id: 2,
-    teammates: [
-      {
-        id: 6,
-        name: "Emily Nguyen",
-        initials: "EN",
-        timezone: "UTC-8",
-        skills: ["UX Writing", "Information Architecture", "Prototyping"],
-        interests: ["Productivity", "Mental Health"],
-        roles: ["Backend Developer", "Full-Stack Engineer"],
-        email: "enguyen9@gatech.edu",
-      },
-      {
-        id: 7,
-        name: "Mohammed Raza",
-        initials: "MR",
-        timezone: "UTC+3",
-        skills: ["JavaScript", "Node.js", "API Integration"],
-        interests: ["Smart Cities", "Healthcare"],
-        roles: ["Backend Developer", "Full-Stack Engineer"],
-        email: "mraza10@gatech.edu",
-      },
-      {
-        id: 8,
-        name: "Kofi Mensah",
-        initials: "KM",
-        timezone: "UTC+0",
-        skills: ["Agile Methodology", "Scrum", "Stakeholder Management"],
-        interests: ["Finance", "Open Source"],
-        roles: ["Project Manager", "Team Facilitator"],
-        email: "kmensah4@gatech.edu",
-      },
-      {
-        id: 9,
-        name: "Lina Hoshino",
-        initials: "LH",
-        timezone: "UTC+9",
-        skills: ["SQL", "Data Cleaning", "Business Intelligence"],
-        interests: ["E-Commerce", "Consumer Behavior"],
-        roles: ["Data Analyst", "BI Developer"],
-        email: "lhoshino16@gatech.edu",
-      },
-      {
-        id: 10,
-        name: "Zachary Lee",
-        initials: "ZL",
-        timezone: "UTC-7",
-        skills: ["Public Speaking", "User Research", "Workshop Facilitation"],
-        interests: ["Civic Tech", "Education"],
-        roles: ["Community Manager", "Design Researcher"],
-        email: "zlee2@gatech.edu",
-      },
-    ],
-    timezones: ["UTC-8", "UTC+3", "UTC+0", "UTC+9", "UTC-7"],
-    skills: [
-      "UX Writing",
-      "Information Architecture",
-      "Prototyping",
-      "JavaScript",
-      "Node.js",
-      "API Integration",
-      "Agile Methodology",
-      "Scrum",
-      "Stakeholder Management",
-      "SQL",
-      "Data Cleaning",
-      "Business Intelligence",
-      "Public Speaking",
-      "User Research",
-      "Workshop Facilitation",
-    ],
-    interests: [
-      "Productivity",
-      "Mental Health",
-      "Smart Cities",
-      "Healthcare",
-      "Finance",
-      "Open Source",
-      "E-Commerce",
-      "Consumer Behavior",
-      "Civic Tech",
-      "Education",
-    ],
-    roles: [
-      "Backend Developer",
-      "Full-Stack Engineer",
-      "Project Manager",
-      "Team Facilitator",
-      "Data Analyst",
-      "BI Developer",
-      "Community Manager",
-      "Design Researcher",
-    ],
-    isFull: true,
-    maxSize: 5,
-    slotsAvailable: 0,
-    mainContact: "enguyen9@gatech.edu",
-  },
-  {
-    id: 3,
-    teammates: [
-      {
-        id: 11,
-        name: "Isabella Rossi",
-        initials: "IR",
-        timezone: "UTC+1",
-        skills: ["Graphic Design", "Illustrator", "Typography"],
-        interests: ["Art", "Culture"],
-        roles: ["Graphic Designer"],
-        email: "irossi14@gatech.edu",
-      },
-      {
-        id: 12,
-        name: "Raj Patel",
-        initials: "RP",
-        timezone: "UTC+5:30",
-        skills: ["Java", "Spring", "Microservices"],
-        interests: ["FinTech", "Blockchain"],
-        roles: ["Backend Developer"],
-        email: "rpatel8@gatech.edu",
-      },
-      {
-        id: 13,
-        name: "Chen Wei",
-        initials: "CW",
-        timezone: "UTC+8",
-        skills: ["Kubernetes", "Docker", "CI/CD"],
-        interests: ["DevOps", "Cloud"],
-        roles: ["DevOps Engineer"],
-        email: "cwei19@gatech.edu",
-      },
-      {
-        id: 14,
-        name: "Sara López",
-        initials: "SL",
-        timezone: "UTC-3",
-        skills: ["Research", "Data Analysis", "Report Writing"],
-        interests: ["Public Policy", "Social Justice"],
-        roles: ["Research Analyst"],
-        email: "slopez6@gatech.edu",
-      },
-      {
-        id: 15,
-        name: "Max Müller",
-        initials: "MM",
-        timezone: "UTC+2",
-        skills: ["C++", "Game Development", "3D Modeling"],
-        interests: ["Gaming", "VR"],
-        roles: ["Game Developer"],
-        email: "mmuller11@gatech.edu",
-      },
-    ],
-    timezones: ["UTC+1", "UTC+5:30", "UTC+8", "UTC-3", "UTC+2"],
-    skills: [
-      "Graphic Design",
-      "Illustrator",
-      "Typography",
-      "Java",
-      "Spring",
-      "Microservices",
-      "Kubernetes",
-      "Docker",
-      "CI/CD",
-      "Research",
-      "Data Analysis",
-      "Report Writing",
-      "C++",
-      "Game Development",
-      "3D Modeling",
-    ],
-    interests: [
-      "Art",
-      "Culture",
-      "FinTech",
-      "Blockchain",
-      "DevOps",
-      "Cloud",
-      "Public Policy",
-      "Social Justice",
-      "Gaming",
-      "VR",
-    ],
-    roles: [
-      "Graphic Designer",
-      "Backend Developer",
-      "DevOps Engineer",
-      "Research Analyst",
-      "Game Developer",
-    ],
-    isFull: true,
-    maxSize: 5,
-    slotsAvailable: 0,
-    mainContact: "irossi14@gatech.edu",
-  },
-
-  // 3 Open Groups
-  {
-    id: 4,
-    teammates: [
-      {
-        id: 16,
-        name: "Nina Kim",
-        initials: "NK",
-        timezone: "UTC+9",
-        skills: ["Swift", "iOS Development", "UI/UX"],
-        interests: ["Mobile Apps"],
-        roles: ["iOS Developer"],
-        email: "nkim4@gatech.edu",
-      },
-    ],
-    timezones: ["UTC+9"],
-    skills: ["Swift", "iOS Development", "UI/UX"],
-    interests: ["Mobile Apps"],
-    roles: ["iOS Developer"],
     isFull: false,
-    maxSize: 5,
-    slotsAvailable: 4,
-    mainContact: "nkim4@gatech.edu",
-  },
-  {
-    id: 5,
-    teammates: [
-      {
-        id: 17,
-        name: "Lars Johansson",
-        initials: "LJ",
-        timezone: "UTC+1",
-        skills: ["Go", "Distributed Systems", "Performance Tuning"],
-        interests: ["IoT"],
-        roles: ["Systems Engineer"],
-        email: "ljohansson2@gatech.edu",
-      },
-      {
-        id: 18,
-        name: "Amelie Dubois",
-        initials: "AD",
-        timezone: "UTC+2",
-        skills: ["Photography", "Video Editing", "Storytelling"],
-        interests: ["Documentaries", "Travel"],
-        roles: ["Media Producer"],
-        email: "adubois15@gatech.edu",
-      },
-    ],
-    timezones: ["UTC+1", "UTC+2"],
-    skills: [
-      "Go",
-      "Distributed Systems",
-      "Performance Tuning",
-      "Photography",
-      "Video Editing",
-      "Storytelling",
-    ],
-    interests: ["IoT", "Documentaries", "Travel"],
-    roles: ["Systems Engineer", "Media Producer"],
-    isFull: false,
-    maxSize: 5,
-    slotsAvailable: 3,
-    mainContact: "ljohansson2@gatech.edu",
-  },
-  {
-    id: 6,
-    teammates: [
-      {
-        id: 19,
-        name: "Carlos Silva",
-        initials: "CS",
-        timezone: "UTC-3",
-        skills: ["UX Research", "Persona Development"],
-        interests: ["User Experience"],
-        roles: ["UX Researcher"],
-        email: "csilva18@gatech.edu",
-      },
-      {
-        id: 20,
-        name: "Ayodele Okafor",
-        initials: "AO",
-        timezone: "UTC+1",
-        skills: ["Ethnography", "Field Studies"],
-        interests: ["Cultural Studies"],
-        roles: ["Anthropologist"],
-        email: "aokafor1@gatech.edu",
-      },
-      {
-        id: 21,
-        name: "Yuki Tanaka",
-        initials: "YT",
-        timezone: "UTC+9",
-        skills: ["Python", "Flask", "REST APIs"],
-        interests: ["Startups"],
-        roles: ["Full-Stack Developer"],
-        email: "ytanaka20@gatech.edu",
-      },
-    ],
-    timezones: ["UTC-3", "UTC+1", "UTC+9"],
-    skills: [
-      "UX Research",
-      "Persona Development",
-      "Ethnography",
-      "Field Studies",
-      "Python",
-      "Flask",
-      "REST APIs",
-    ],
-    interests: ["User Experience", "Cultural Studies", "Startups"],
-    roles: ["UX Researcher", "Anthropologist", "Full-Stack Developer"],
-    isFull: false,
-    maxSize: 5,
-    slotsAvailable: 2,
-    mainContact: "csilva18@gatech.edu",
+    maxSize: 3,
+    slotsAvailable: 1,
+    mainContact: "drivera17@gatech.edu",
   },
 ];
 
@@ -1527,41 +1229,44 @@ let connections = {
 function loadConnections() {
   // Only initialize if connections is empty (first load)
   if (connections.pending.length === 0 && connections.sent.length === 0 && connections.accepted.length === 0) {
-    // Initialize with some sample data for demonstration
+    // Initialize with team formation context - user has pending invitation from Group 2
     connections = {
       pending: [
         {
-          id: 2,
-          name: "Jordan Smith",
-          email: "jsmith12@gatech.edu",
-          timezone: "UTC+1",
-          skills: ["Python", "Machine Learning", "Data Visualization"],
-          interests: ["AI", "Sustainability"],
-          roles: ["Data Scientist", "Technical Writer"],
-          dateSent: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 days ago
-        }
-      ],
-      sent: [
-        {
-          id: 4,
+          id: 4, // Diego Rivera from Group 2 (partially formed team)
           name: "Diego Rivera",
           email: "drivera17@gatech.edu",
           timezone: "UTC-6",
           skills: ["UI Design", "Branding", "Illustration"],
           interests: ["Civic Tech", "Education"],
           roles: ["Visual Designer", "Product Designer"],
-          dateSent: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() // 1 day ago
+          dateSent: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+          teamInvitation: true,
+          teamId: 2,
+          teamMessage: "Join our team! We have complementary skills and are looking for someone to complete our group of 3."
+        }
+      ],
+      sent: [
+        {
+          id: 6, // Emily Nguyen - individual user not in any team yet
+          name: "Emily Nguyen",
+          email: "enguyen9@gatech.edu",
+          timezone: "UTC-8",
+          skills: ["UX Writing", "Information Architecture", "Prototyping"],
+          interests: ["Productivity", "Mental Health"],
+          roles: ["Backend Developer", "Full-Stack Engineer"],
+          dateSent: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 days ago
         }
       ],
       accepted: [
         {
-          id: 1,
-          name: "Alicia Chen",
-          email: "achen7@gatech.edu",
-          timezone: "UTC-5",
-          skills: ["React", "Figma", "User Research"],
-          interests: ["EdTech", "Accessibility"],
-          roles: ["Frontend Developer", "UX Designer"],
+          id: 7, // Mohammed Raza - individual user not in any team yet
+          name: "Mohammed Raza",
+          email: "mraza10@gatech.edu",
+          timezone: "UTC+3",
+          skills: ["JavaScript", "Node.js", "API Integration"],
+          interests: ["Smart Cities", "Healthcare"],
+          roles: ["Backend Developer", "Full-Stack Engineer"],
           dateConnected: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() // 5 days ago
         }
       ]
@@ -1807,19 +1512,33 @@ function renderConnectionCard(connection, type) {
   const div = document.createElement('div');
   div.className = 'connection-card';
   
+  // Add special styling for team invitations
+  if (connection.teamInvitation) {
+    div.classList.add('team-invitation');
+  }
+  
   const initials = connection.name.split(' ').map(n => n[0]).join('');
   const topSkills = connection.skills.slice(0, 3);
   
+  // Team invitation message
+  const teamMessage = connection.teamInvitation && connection.teamMessage ? 
+    `<div class="team-invitation-message">
+      <strong>🎯 Team Invitation</strong><br>
+      ${connection.teamMessage}
+    </div>` : '';
+  
   let actions = '';
   if (type === 'pending') {
+    const acceptText = connection.teamInvitation ? '✓ Join Team' : '✓ Accept';
     actions = `
       <div class="connection-actions">
         <button class="form-button primary accept-btn" onclick="acceptConnection(${connection.id})">
-          ✓ Accept
+          ${acceptText}
         </button>
         <button class="form-button decline-btn" onclick="declineConnection(${connection.id})">
           ✗ Decline
         </button>
+        ${connection.teamInvitation ? `<button class="form-button secondary" onclick="showAllGroups()">View Team</button>` : ''}
       </div>
     `;
   } else if (type === 'sent') {
@@ -1861,6 +1580,7 @@ function renderConnectionCard(connection, type) {
         <div class="connection-date">${dateLabel}: ${formatDate(connection[dateField])}</div>
       </div>
     </div>
+    ${teamMessage}
     ${actions}
   `;
   

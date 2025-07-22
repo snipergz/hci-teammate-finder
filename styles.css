@@ -868,6 +868,57 @@ body {
   color: #2e7d32;
 }
 
+/* Team invitation styling */
+.group-card.has-invitation {
+  border: 2px solid #4285f4;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+}
+
+.invitation-badge {
+  background: linear-gradient(135deg, #4285f4, #34a853);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Status badge variations */
+.status-badge.complete {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.status-badge.open {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+/* Team invitation message in connections */
+.team-invitation-message {
+  background: #e3f2fd;
+  border: 1px solid #bbdefb;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.connection-card.team-invitation {
+  border: 2px solid #4285f4;
+  background: linear-gradient(135deg, #ffffff, #f8f9ff);
+}
+
 /* teammates list inside card */
 .teammate-list {
   list-style: none;
@@ -884,6 +935,115 @@ body {
 
 .teammate-list li:first-child {
   border-top: none;
+}
+
+/* Enhanced teammate items */
+.teammate-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0 !important;
+  border-top: 1px solid #f1f3f4 !important;
+}
+
+.teammate-item:first-child {
+  border-top: none !important;
+}
+
+.teammate-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #4285f4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.teammate-info {
+  flex: 1;
+}
+
+.teammate-item.open-slot .teammate-avatar {
+  background: #e0e0e0;
+  color: #666;
+  border: 2px dashed #999;
+}
+
+/* Individual users section */
+.individuals-section {
+  margin-top: 40px;
+}
+
+.section-subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.individuals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.individual-card {
+  background: white;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.individual-card:hover {
+  border-color: #4285f4;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+  transform: translateY(-2px);
+}
+
+.individual-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #4285f4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 auto 12px;
+}
+
+.individual-info h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.individual-info p {
+  margin: 0 0 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.individual-tags {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Groups subtitle */
+.groups-subtitle {
+  color: #666;
+  margin: 8px 0 0;
+  font-size: 14px;
 }
 
 /* stack to one column on small screens */
