@@ -1057,7 +1057,22 @@ function showProfile(id, source = 'main') {
   } else if (requestSent || requestPending) {
     connectButton.style.display = 'none';
     successMessage.style.display = 'block';
-    successMessage.innerHTML = `<strong>Request pending</strong><br>Your connection request with ${teammate.name} is pending.`;
+    
+    // Check if this is a pending request FROM the teammate (they sent to user)
+    if (requestPending) {
+      successMessage.innerHTML = `
+        <strong>Request pending</strong><br>
+        ${teammate.name} has sent you a connection request.
+        <div class="success-actions">
+          <button class="form-button secondary" onclick="navigateToConnections()">
+            🤝 View Connections
+          </button>
+        </div>
+      `;
+    } else {
+      // This is a request TO the teammate (user sent to them)
+      successMessage.innerHTML = `<strong>Request pending</strong><br>Your connection request with ${teammate.name} is pending.`;
+    }
   } else {
     connectButton.style.display = 'block';
     connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
