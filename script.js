@@ -441,6 +441,9 @@ function navigateToProfile(id, source = 'main') {
   document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("profile-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
+  
+  // Scroll to the top of the page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function navigateToMain() {
@@ -862,7 +865,7 @@ function renderTeammates() {
         if (isInCompleteGroup) {
           connectionStatusBadge = '<div class="connection-badge matched">Team Complete</div>';
           rowClass += ' team-complete';
-          clickHandler = ''; // Remove click handler for complete teams
+          // Keep click handler - users can still view profiles of complete team members
         } else if (isConnected) {
           if (teammateGroup) {
             // Check if connected to all group members
@@ -1057,7 +1060,22 @@ function showProfile(id, source = 'main') {
   } else if (requestSent || requestPending) {
     connectButton.style.display = 'none';
     successMessage.style.display = 'block';
-    successMessage.innerHTML = `<strong>Request pending</strong><br>Your connection request with ${teammate.name} is pending.`;
+    
+    // Check if this is a pending request FROM the teammate (they sent to user)
+    if (requestPending) {
+      successMessage.innerHTML = `
+        <strong>Request pending</strong><br>
+        ${teammate.name} has sent you a connection request.
+        <div class="success-actions">
+          <button class="form-button secondary" onclick="navigateToConnections()">
+            🤝 View Connections
+          </button>
+        </div>
+      `;
+    } else {
+      // This is a request TO the teammate (user sent to them)
+      successMessage.innerHTML = `<strong>Request pending</strong><br>Your connection request with ${teammate.name} is pending.`;
+    }
   } else {
     connectButton.style.display = 'block';
     connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
@@ -1809,6 +1827,11 @@ function declineConnection(requestId) {
 
 // Cancel sent connection request
 function cancelSentRequest(requestId) {
+  const request = connections.sent.find(r => r.id === requestId);
+  if (!request) return;
+  
+  if (!confirm(`Are you sure you want to cancel your connection request to ${request.name}?`)) return;
+  
   const requestIndex = connections.sent.findIndex(r => r.id === requestId);
   if (requestIndex === -1) return;
   
@@ -1935,18 +1958,18 @@ function renderGroupConnectionCard(group) {
         ${membersList}
       </div>
       <div class="group-summary">
-        <p><strong>Shared Skills:</strong> ${group.skills.slice(0, 5).join(', ')}${group.skills.length > 5 ? '...' : ''}</p>
-        <p><strong>Focus Areas:</strong> ${group.interests.join(', ')}</p>
+        <p><strong>Shared Skills:</strong> ${group.skills.slice(0, 6).join(', ')}${group.skills.length > 6 ? '...' : ''}</p>
+        <p><strong>Focus Areas:</strong> ${group.interests.slice(0, 4).join(', ')}${group.interests.length > 4 ? '...' : ''}</p>
       </div>
     </div>
     <div class="connection-actions group-actions">
-      <button class="form-button primary" onclick="openEmailClient('${groupEmails}')">
+      <button class="form-button primary" onclick="openEmailClient('${groupEmails}')" aria-label="Send email to your team members">
         📧 Email Team
       </button>
-      <button class="form-button secondary" onclick="showAllGroups('connections')">
+      <button class="form-button secondary" onclick="showAllGroups('connections')" aria-label="View detailed information about your team">
         View Team Details
       </button>
-      <button class="form-button cancel-btn" onclick="removeGroupConnections(${group.id})">
+      <button class="form-button cancel-btn" onclick="removeGroupConnections(${group.id})" aria-label="Leave your current team - this action cannot be undone">
         Leave Team
       </button>
     </div>
@@ -1999,7 +2022,7 @@ function renderConnectionCard(connection, type) {
   } else if (type === 'sent') {
     actions = `
       <div class="connection-actions">
-        <button class="form-button cancel-btn" onclick="cancelSentRequest(${connection.id})">
+        <button class="form-button cancel-btn" onclick="cancelSentRequest(${connection.id})" aria-label="Cancel your connection request to ${connection.name}">
           Cancel Request
         </button>
       </div>

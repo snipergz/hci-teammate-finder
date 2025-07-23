@@ -137,12 +137,12 @@ body {
 
 .teammate-row.team-complete {
   opacity: 0.6;
-  cursor: default;
+  cursor: pointer;
   background-color: #f9fafb;
 }
 
 .teammate-row.team-complete:hover {
-  background-color: #f9fafb;
+  background-color: #f8f9fa;
 }
 
 .teammate-row:last-child {
@@ -442,6 +442,27 @@ body {
 }
 
 @media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .action-buttons {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .action-buttons button,
+  .action-buttons a {
+    flex: 1;
+    min-width: 120px;
+    max-width: 150px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
   .filter-row {
     grid-template-columns: 1fr;
   }
@@ -758,6 +779,22 @@ body {
 .form-button:disabled:hover {
   transform: none;
   box-shadow: none;
+}
+
+/* Focus styles for accessibility */
+.form-button:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.form-button.primary:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.form-button.secondary:focus {
+  outline: 3px solid #d1d5db;
+  outline-offset: 2px;
 }
 
 /* Update the existing #groups-view style */
@@ -1214,6 +1251,9 @@ body {
   flex-direction: column;
   align-items: stretch;
   gap: 16px;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .group-connection-header h3 {
@@ -1273,14 +1313,27 @@ body {
   border-radius: 8px;
   padding: 12px;
   font-size: 14px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .group-summary p {
   margin: 0 0 8px 0;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .group-summary p:last-child {
   margin-bottom: 0;
+}
+
+.group-summary strong {
+  display: inline-block;
+  margin-right: 4px;
+  white-space: nowrap;
 }
 
 .group-actions {
@@ -1370,13 +1423,73 @@ body {
 }
 
 .connection-actions .cancel-btn {
-  background: #64748b;
-  border-color: #64748b;
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+  font-weight: 600;
+  position: relative;
 }
 
 .connection-actions .cancel-btn:hover {
-  background: #475569;
-  border-color: #475569;
+  background: #b91c1c;
+  border-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.25);
+}
+
+.connection-actions .cancel-btn:focus {
+  outline: 3px solid #fca5a5;
+  outline-offset: 2px;
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.connection-actions .cancel-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+}
+
+/* Enhanced accessibility for destructive actions */
+.connection-actions .cancel-btn::before {
+  content: "⚠️ ";
+  margin-right: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connection-actions .cancel-btn:hover {
+    transform: none;
+  }
+  
+  .connection-actions .cancel-btn:active {
+    transform: none;
+  }
+}
+
+/* High contrast mode support for destructive buttons */
+@media (prefers-contrast: high) {
+  .connection-actions .cancel-btn {
+    background: #991b1b;
+    border-color: #991b1b;
+    border-width: 3px;
+  }
+  
+  .connection-actions .cancel-btn:hover,
+  .connection-actions .cancel-btn:focus {
+    background: #7f1d1d;
+    border-color: #7f1d1d;
+  }
+}
+
+/* Improved visual hierarchy for destructive actions */
+.connection-actions .cancel-btn {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  min-height: 44px; /* Touch target size for mobile accessibility */
+}
+
+/* Keyboard navigation improvements */
+.connection-actions .cancel-btn:focus-visible {
+  outline: 3px solid #fecaca;
+  outline-offset: 3px;
 }
 
 .connection-actions .message-btn {
@@ -1427,6 +1540,12 @@ body {
   .tab-button {
     justify-content: flex-start;
     padding: 12px 16px;
+    font-size: 13px;
+  }
+  
+  .tab-button .badge {
+    font-size: 11px;
+    padding: 2px 6px;
   }
   
   .connection-card {
@@ -1437,11 +1556,272 @@ body {
   
   .connection-actions {
     width: 100%;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
   }
   
   .connection-actions .form-button {
     flex: 1;
+    min-width: 100px;
+    max-width: 150px;
+    font-size: 12px;
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+  
+  /* Mobile responsive improvements for group connection cards */
+  .connection-card.group-connection-card {
+    padding: 16px;
+    gap: 12px;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  
+  .group-connection-header h3 {
+    font-size: 16px;
+    line-height: 1.3;
+    word-wrap: break-word;
+  }
+  
+  .group-connection-header p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .group-members {
+    margin: 8px 0;
+    gap: 6px;
+  }
+  
+  .group-member {
+    padding: 6px;
+    gap: 8px;
+    flex-wrap: wrap;
+    min-height: 44px; /* Ensure touch-friendly size */
+    align-items: flex-start;
+  }
+  
+  .member-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .member-name {
+    font-size: 14px;
+    min-width: 0;
+    flex: 1;
+    line-height: 1.3;
+    word-wrap: break-word;
+  }
+  
+  .member-role {
+    font-size: 11px;
+    width: 100%;
+    margin-top: 2px;
+    margin-left: 36px; /* Align with name after avatar */
+    color: #64748b;
+    line-height: 1.3;
+  }
+  
+  .group-summary {
+    padding: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .group-summary p {
+    margin: 0 0 6px 0;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+  }
+  
+  .group-summary strong {
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-right: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  
+  .group-actions {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .group-actions .form-button {
+    width: 100%;
+    max-width: none;
+    min-height: 44px;
+    font-size: 14px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+  }
+  
+  /* Specific mobile styling for connection info */
+  .connection-info {
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .connection-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  
+  .connection-details {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .connection-details h4 {
+    font-size: 15px;
+    margin-bottom: 3px;
+    word-wrap: break-word;
+  }
+  
+  .connection-details p {
+    font-size: 13px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  
+  .connection-tags {
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  
+  .connection-tag {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+  
+  .connection-date {
+    font-size: 12px;
+    margin-top: 4px;
+    color: #64748b;
+  }
+  
+  /* Mobile responsiveness for team invitation and connection messages */
+  .team-invitation-message {
+    max-width: none;
+    margin: 12px 0;
+    padding: 10px 12px;
+    font-size: 13px;
+    min-height: auto;
+    line-height: 1.4;
+  }
+  
+  .connection-message {
+    margin: 10px 0;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .connection-message strong {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+}
+
+/* Additional mobile improvements for very small screens */
+@media (max-width: 480px) {
+  .connection-card.group-connection-card {
+    padding: 12px;
+    gap: 10px;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  
+  .group-connection-header h3 {
+    font-size: 15px;
+  }
+  
+  .group-members {
+    gap: 4px;
+  }
+  
+  .group-member {
+    padding: 4px;
+    gap: 6px;
+  }
+  
+  .member-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+  
+  .member-name {
+    font-size: 13px;
+  }
+  
+  .member-role {
+    font-size: 10px;
+    margin-left: 30px;
+  }
+  
+  .group-summary {
+    padding: 8px;
+    font-size: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.4;
+  }
+  
+  .group-summary p {
+    margin: 0 0 5px 0;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+  }
+  
+  .group-summary strong {
+    display: inline-block;
+    margin-right: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .group-actions .form-button {
+    font-size: 13px;
+    padding: 10px 14px;
+    min-height: 40px;
+  }
+  
+  /* Enhanced mobile styles for team messages */
+  .team-invitation-message {
+    padding: 8px 10px;
+    font-size: 12px;
+    margin: 8px 0;
+  }
+  
+  .connection-message {
+    padding: 8px 10px;
+    font-size: 12px;
+    margin: 8px 0;
   }
 }
 
