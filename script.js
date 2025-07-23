@@ -1064,6 +1064,47 @@ function showProfile(id, source = 'main') {
     connectButton.style.display = 'block';
     connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
   }
+  
+  // Initialize message input character counter
+  initializeMessageInput();
+}
+
+// Initialize message input functionality
+function initializeMessageInput() {
+  const messageInput = document.getElementById('connection-message');
+  const charCount = document.getElementById('message-char-count');
+  
+  if (!messageInput || !charCount) return;
+  
+  // Clear any existing message
+  messageInput.value = '';
+  
+  // Update character count
+  function updateCharCount() {
+    const length = messageInput.value.length;
+    charCount.textContent = length;
+    
+    // Add warning class if approaching limit
+    const charCountElement = charCount.parentElement;
+    if (length > 450) {
+      charCountElement.classList.add('warning');
+    } else {
+      charCountElement.classList.remove('warning');
+    }
+  }
+  
+  // Remove existing listeners to avoid duplicates
+  messageInput.removeEventListener('input', updateCharCount);
+  messageInput.removeEventListener('paste', updateCharCount);
+  
+  // Add event listeners
+  messageInput.addEventListener('input', updateCharCount);
+  messageInput.addEventListener('paste', () => {
+    setTimeout(updateCharCount, 10); // Delay to ensure paste content is processed
+  });
+  
+  // Initialize count
+  updateCharCount();
 }
 
 // Note: sendConnectionRequest function is now defined in the connections section above
@@ -1528,6 +1569,10 @@ function sendConnectionRequest() {
     return;
   }
   
+  // Get the message from the input field
+  const messageInput = document.getElementById('connection-message');
+  const message = messageInput ? messageInput.value.trim() : '';
+  
   // Add to sent requests
   connections.sent.push({
     id: profileId,
@@ -1537,6 +1582,7 @@ function sendConnectionRequest() {
     skills: teammate.skills,
     interests: teammate.interests,
     roles: teammate.roles,
+    message: message, // Include the custom message
     dateSent: new Date().toISOString()
   });
   
@@ -1549,8 +1595,29 @@ function sendConnectionRequest() {
   renderTeammates();
   
   // Show success message
-  document.getElementById('success-message').style.display = 'block';
-  document.getElementById('success-name').textContent = teammate.name;
+  const successMessage = document.getElementById('success-message');
+  const successName = document.getElementById('success-name');
+  
+  successMessage.style.display = 'block';
+  successName.textContent = teammate.name;
+  
+  // Update message based on whether a custom message was included
+  if (message) {
+    successMessage.innerHTML = `<strong>Connection request sent!</strong><br>Your request to connect with ${teammate.name} has been sent with your personal message.`;
+  } else {
+    successMessage.innerHTML = `<strong>Connection request sent!</strong><br>Your request to connect with ${teammate.name} has been sent.`;
+  }
+  
+  // Clear the message input for next use
+  if (messageInput) {
+    messageInput.value = '';
+    // Update character count
+    const charCount = document.getElementById('message-char-count');
+    if (charCount) {
+      charCount.textContent = '0';
+      charCount.parentElement.classList.remove('warning');
+    }
+  }
   
   // Hide the connect button
   document.querySelector('.connect-button').style.display = 'none';
@@ -1890,6 +1957,13 @@ function renderConnectionCard(connection, type) {
       ${connection.teamMessage}
     </div>` : '';
   
+  // Custom connection message (for regular connection requests)
+  const customMessage = !connection.teamInvitation && connection.message && connection.message.trim() ? 
+    `<div class="connection-message">
+      <strong>💬 Message:</strong><br>
+      "${connection.message}"
+    </div>` : '';
+  
   let actions = '';
   if (type === 'pending') {
     const acceptText = connection.teamInvitation ? '✓ Join Team' : '✓ Accept';
@@ -1944,6 +2018,7 @@ function renderConnectionCard(connection, type) {
       </div>
     </div>
     ${teamMessage}
+    ${customMessage}
     ${actions}
   `;
   

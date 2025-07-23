@@ -1488,3 +1488,73 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+/* Connection request message input */
+.connection-request-section {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.connection-request-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.connection-message-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.connection-message-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.connection-message-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.char-count {
+  text-align: right;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+.char-count.warning {
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+/* Connection message display */
+.connection-message {
+  background: #f0f9ff;
+  border-left: 4px solid #3b82f6;
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.connection-message strong {
+  color: #1e40af;
+  display: block;
+  margin-bottom: 6px;
+}

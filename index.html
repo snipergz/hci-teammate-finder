@@ -329,6 +329,15 @@
                     <h3>Project Interests</h3>
                     <div id="profile-interests"></div>
                 </div>
+                <div class="connection-request-section">
+                    <label for="connection-message">Message (optional):</label>
+                    <textarea id="connection-message" class="connection-message-input" 
+                              placeholder="Hi! I'd love to work together on a project. I think our skills complement each other well..."
+                              maxlength="500" rows="3"></textarea>
+                    <div class="char-count">
+                        <span id="message-char-count">0</span>/500 characters
+                    </div>
+                </div>
                 <button class="connect-button" onclick="sendConnectionRequest()">
                     🤝 Connect with <span id="connect-name"></span>
                 </button>
