@@ -844,18 +844,26 @@ function renderTeammates() {
           teammate.compatibility >= 80 ? 'high' : 
           teammate.compatibility >= 60 ? 'medium' : 'low';
         
+        // Check if teammate is in a complete group
+        const teammateGroup = groups.find(group => 
+          group.teammates.some(tm => tm.id === teammate.id)
+        );
+        const isInCompleteGroup = teammateGroup && teammateGroup.isFull;
+        
         // Check connection status
         const isConnected = connections.accepted.some(c => c.id === teammate.id);
         const requestSent = connections.sent.some(c => c.id === teammate.id);
         const requestPending = connections.pending.some(c => c.id === teammate.id);
         
-        // Check if teammate is in a group and if user is connected to all group members
-        const teammateGroup = groups.find(group => 
-          group.teammates.some(tm => tm.id === teammate.id)
-        );
-        
         let connectionStatusBadge = '';
-        if (isConnected) {
+        let rowClass = 'teammate-row';
+        let clickHandler = `onclick="navigateToProfile(${teammate.id})"`;
+        
+        if (isInCompleteGroup) {
+          connectionStatusBadge = '<div class="connection-badge matched">Team Complete</div>';
+          rowClass += ' team-complete';
+          clickHandler = ''; // Remove click handler for complete teams
+        } else if (isConnected) {
           if (teammateGroup) {
             // Check if connected to all group members
             const otherGroupMembers = teammateGroup.teammates.filter(tm => tm.id !== teammate.id);
@@ -878,7 +886,7 @@ function renderTeammates() {
         }
         
         return `
-        <div class="teammate-row" data-teammate-id="${teammate.id}" onclick="navigateToProfile(${teammate.id})">
+        <div class="${rowClass}" data-teammate-id="${teammate.id}" ${clickHandler}>
             <div class="teammate-name">
                 <div class="avatar">${teammate.initials}</div>
                 <div class="name-and-status">
@@ -941,8 +949,27 @@ function applyFilters() {
     return matchesTimezone && matchesSkills && matchesInterests && matchesRoles;
   });
 
-  // Sort filtered teammates by compatibility (highest first)
-  filteredTeammates.sort((a, b) => b.compatibility - a.compatibility);
+  // Sort filtered teammates by availability and compatibility
+  filteredTeammates.sort((a, b) => {
+    // Helper function to check if teammate is in a complete group
+    const isInCompleteGroup = (teammate) => {
+      const teammateGroup = groups.find(group => 
+        group.teammates.some(tm => tm.id === teammate.id)
+      );
+      return teammateGroup && teammateGroup.isFull;
+    };
+    
+    const aInCompleteGroup = isInCompleteGroup(a);
+    const bInCompleteGroup = isInCompleteGroup(b);
+    
+    // If one is in a complete group and the other isn't, prioritize the available one
+    if (aInCompleteGroup !== bInCompleteGroup) {
+      return aInCompleteGroup ? 1 : -1; // Move complete group members to bottom
+    }
+    
+    // If both have same availability status, sort by compatibility (highest first)
+    return b.compatibility - a.compatibility;
+  });
 
   renderTeammates();
 }
@@ -1004,11 +1031,21 @@ function showProfile(id, source = 'main') {
   const isConnected = connections.accepted.some(c => c.id === id);
   const requestSent = connections.sent.some(c => c.id === id);
   const requestPending = connections.pending.some(c => c.id === id);
+  
+  // Check if teammate is in a complete group
+  const teammateGroup = groups.find(group => 
+    group.teammates.some(tm => tm.id === id)
+  );
+  const isInCompleteGroup = teammateGroup && teammateGroup.isFull;
 
   // Reset success message
   successMessage.style.display = 'none';
 
-  if (isConnected) {
+  if (isInCompleteGroup) {
+    connectButton.style.display = 'none';
+    successMessage.style.display = 'block';
+    successMessage.innerHTML = `<strong>Team Complete</strong><br>${teammate.name} is already part of a complete team and is not available for new connections.`;
+  } else if (isConnected) {
     connectButton.style.display = 'none';
     successMessage.style.display = 'block';
     successMessage.innerHTML = `<strong>You're connected!</strong><br>You are already connected with ${teammate.name}.`;
@@ -1109,8 +1146,27 @@ function addCompatibilityToTeammates() {
     teammate.compatibility = calculateCompatibility(userProfile, teammate);
   });
   
-  // Sort by compatibility (highest first)
-  teammates.sort((a, b) => b.compatibility - a.compatibility);
+  // Sort by availability and compatibility
+  teammates.sort((a, b) => {
+    // Helper function to check if teammate is in a complete group
+    const isInCompleteGroup = (teammate) => {
+      const teammateGroup = groups.find(group => 
+        group.teammates.some(tm => tm.id === teammate.id)
+      );
+      return teammateGroup && teammateGroup.isFull;
+    };
+    
+    const aInCompleteGroup = isInCompleteGroup(a);
+    const bInCompleteGroup = isInCompleteGroup(b);
+    
+    // If one is in a complete group and the other isn't, prioritize the available one
+    if (aInCompleteGroup !== bInCompleteGroup) {
+      return aInCompleteGroup ? 1 : -1; // Move complete group members to bottom
+    }
+    
+    // If both have same availability status, sort by compatibility (highest first)
+    return b.compatibility - a.compatibility;
+  });
   
   // Update filtered teammates to exclude user's own profile
   updateFilteredTeammates();
