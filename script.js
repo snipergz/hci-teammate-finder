@@ -862,7 +862,7 @@ function renderTeammates() {
         if (isInCompleteGroup) {
           connectionStatusBadge = '<div class="connection-badge matched">Team Complete</div>';
           rowClass += ' team-complete';
-          clickHandler = ''; // Remove click handler for complete teams
+          // Keep click handler - users can still view profiles of complete team members
         } else if (isConnected) {
           if (teammateGroup) {
             // Check if connected to all group members

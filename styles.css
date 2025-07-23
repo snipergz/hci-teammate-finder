@@ -137,12 +137,12 @@ body {
 
 .teammate-row.team-complete {
   opacity: 0.6;
-  cursor: default;
+  cursor: pointer;
   background-color: #f9fafb;
 }
 
 .teammate-row.team-complete:hover {
-  background-color: #f9fafb;
+  background-color: #f8f9fa;
 }
 
 .teammate-row:last-child {
