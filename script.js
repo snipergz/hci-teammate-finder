@@ -1129,9 +1129,677 @@ function showAllGroups() {
   });
 
   panel.appendChild(grid);
-  panel.innerHTML += `
-    <div class="form-buttons">
-        <button type="button" class="form-button" onclick="navigateToMain()">Cancel</button>
+}
+
+// Connections functionality
+let connections = {
+  pending: [], // Incoming requests
+  sent: [], // Outgoing requests
+  accepted: [] // Established connections
+};
+
+// Track if connections have been initialized
+let connectionsInitialized = false;
+
+// Initialize connections data (non-persistent for demo)
+function loadConnections() {
+  // Only initialize once on first load
+  if (!connectionsInitialized) {
+    connectionsInitialized = true;
+    // Initialize with team formation context - user has pending invitation from Group 2
+    connections = {
+      pending: [
+        {
+          id: 4, // Diego Rivera from Group 2 (partially formed team)
+          name: "Diego Rivera",
+          email: "drivera17@gatech.edu",
+          timezone: "UTC-6",
+          skills: ["UI Design", "Branding", "Illustration"],
+          interests: ["Civic Tech", "Education"],
+          roles: ["Visual Designer", "Product Designer"],
+          dateSent: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+          teamInvitation: true,
+          teamId: 2,
+          teamMessage: "Join our team! We have complementary skills and are looking for someone to complete our group of 3."
+        }
+      ],
+      sent: [
+        // No pre-existing requests
+      ],
+      accepted: [
+        // No pre-existing connections - user starts fresh
+      ]
+    };
+  }
+}
+
+// Save connections (no-op for non-persistent demo storage)
+function saveConnections() {
+  // No persistence needed for demo - data stays in memory only
+}
+
+// Navigate to connections view
+function navigateToConnections() {
+  document.getElementById("main-view").classList.add("hidden");
+  document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("groups-view").classList.add("hidden");
+  
+  const connectionsView = document.getElementById("connections-view");
+  connectionsView.classList.remove("hidden");
+  connectionsView.dataset.wasActive = 'true'; // Mark that connections was active
+  
+  loadConnections();
+  updateConnectionCounts();
+  renderConnections();
+}
+
+// Show specific connection tab
+function showConnectionTab(tabName) {
+  // Hide all tab contents
+  const tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  
+  // Hide all tab buttons
+  const buttons = document.querySelectorAll('.tab-button');
+  buttons.forEach(button => button.classList.remove('active'));
+  
+  // Show selected tab
+  document.getElementById(`${tabName}-tab`).classList.add('active');
+  document.querySelector(`[onclick="showConnectionTab('${tabName}')"]`).classList.add('active');
+  
+  renderConnections();
+}
+
+// Update connection counts in badges
+function updateConnectionCounts() {
+  document.getElementById('pending-count').textContent = connections.pending.length;
+  document.getElementById('connected-count').textContent = connections.accepted.length;
+  document.getElementById('sent-count').textContent = connections.sent.length;
+}
+
+// Update connection badge for specific teammate on main page
+function updateConnectionBadge(teammateId, status) {
+  // Find the teammate card on the main page
+  const teammateCard = document.querySelector(`[data-teammate-id="${teammateId}"]`);
+  if (!teammateCard) return;
+  
+  // Find or create the badge container
+  let badgeElement = teammateCard.querySelector('.connection-badge');
+  
+  if (status === null) {
+    // Remove badge if status is null
+    if (badgeElement) {
+      badgeElement.remove();
+    }
+    return;
+  }
+  
+  if (!badgeElement) {
+    // Create badge element if it doesn't exist
+    badgeElement = document.createElement('div');
+    badgeElement.className = 'connection-badge';
+    
+    // Insert after the name or at the beginning of the card
+    const nameElement = teammateCard.querySelector('h3');
+    if (nameElement) {
+      nameElement.insertAdjacentElement('afterend', badgeElement);
+    } else {
+      teammateCard.insertAdjacentElement('afterbegin', badgeElement);
+    }
+  }
+  
+  // Update badge content and class based on status
+  badgeElement.className = 'connection-badge'; // Reset classes
+  
+  switch (status) {
+    case 'pending_received':
+      badgeElement.textContent = 'Pending Request';
+      badgeElement.classList.add('pending');
+      break;
+    case 'pending_sent':
+      badgeElement.textContent = 'Request Sent';
+      badgeElement.classList.add('sent');
+      break;
+    case 'connected':
+      // Check if this is a group connection
+      const teammateGroup = groups.find(group => 
+        group.teammates.some(tm => tm.id === teammateId)
+      );
+      
+      if (teammateGroup) {
+        // Check if connected to all group members
+        const otherGroupMembers = teammateGroup.teammates.filter(tm => tm.id !== teammateId);
+        const connectedToAllGroupMembers = otherGroupMembers.every(member => 
+          connections.accepted.some(c => c.id === member.id)
+        );
+        
+        if (connectedToAllGroupMembers && otherGroupMembers.length > 0) {
+          badgeElement.textContent = 'Connected to Group';
+          badgeElement.classList.add('connected', 'group-connected');
+        } else {
+          badgeElement.textContent = 'Connected';
+          badgeElement.classList.add('connected');
+        }
+      } else {
+        badgeElement.textContent = 'Connected';
+        badgeElement.classList.add('connected');
+      }
+      break;
+    default:
+      badgeElement.remove();
+  }
+}
+
+// Check if user is already part of a group
+function isUserInGroup() {
+  const userProfile = getUserProfile();
+  if (!userProfile) return false;
+  
+  return groups.some(group => 
+    group.teammates.some(tm => tm.id === userProfile.id)
+  );
+}
+
+// Send connection request
+function sendConnectionRequest() {
+  const currentUser = getUserProfile();
+  if (!currentUser) {
+    alert('Please create your profile first');
+    return;
+  }
+  
+  // Check if user is already part of a group
+  if (isUserInGroup()) {
+    alert('You are already part of a team and cannot send new connection requests. If you want to connect with new teammates, you would need to leave your current team first.');
+    return;
+  }
+  
+  const profileElement = document.getElementById('profile-view');
+  const profileId = parseInt(profileElement.dataset.currentProfileId);
+  const teammate = teammates.find(t => t.id === profileId);
+  
+  if (!teammate) return;
+  
+  // Check if already connected or request exists
+  const alreadyConnected = connections.accepted.some(c => c.id === profileId);
+  const requestSent = connections.sent.some(c => c.id === profileId);
+  const requestPending = connections.pending.some(c => c.id === profileId);
+  
+  if (alreadyConnected) {
+    alert('You are already connected with this teammate');
+    return;
+  }
+  
+  if (requestSent || requestPending) {
+    alert('A connection request already exists with this teammate');
+    return;
+  }
+  
+  // Get the message from the input field
+  const messageInput = document.getElementById('connection-message');
+  const message = messageInput ? messageInput.value.trim() : '';
+  
+  // Add to sent requests
+  connections.sent.push({
+    id: profileId,
+    name: teammate.name,
+    email: teammate.email,
+    timezone: teammate.timezone,
+    skills: teammate.skills,
+    interests: teammate.interests,
+    roles: teammate.roles,
+    message: message, // Include the custom message
+    dateSent: new Date().toISOString()
+  });
+  
+  saveConnections();
+  
+  // Update the connection badge on main page
+  updateConnectionBadge(profileId, 'pending_sent');
+  
+  // Re-render teammates to show updated badge
+  renderTeammates();
+  
+  // Show success message
+  const successMessage = document.getElementById('success-message');
+  const successName = document.getElementById('success-name');
+  
+  successMessage.style.display = 'block';
+  successName.textContent = teammate.name;
+  
+  // Update message based on whether a custom message was included
+  if (message) {
+    successMessage.innerHTML = `
+      <strong>Connection request sent!</strong><br>
+      Your request to connect with ${teammate.name} has been sent with your personal message.
+      <div class="success-actions">
+        <button class="form-button secondary" onclick="navigateToConnections()">
+          🤝 View Connections
+        </button>
+      </div>
+    `;
+  } else {
+    successMessage.innerHTML = `
+      <strong>Connection request sent!</strong><br>
+      Your request to connect with ${teammate.name} has been sent.
+      <div class="success-actions">
+        <button class="form-button secondary" onclick="navigateToConnections()">
+          🤝 View Connections
+        </button>
+      </div>
+    `;
+  }
+  
+  // Clear the message input for next use
+  if (messageInput) {
+    messageInput.value = '';
+    // Update character count
+    const charCount = document.getElementById('message-char-count');
+    if (charCount) {
+      charCount.textContent = '0';
+      charCount.parentElement.classList.remove('warning');
+    }
+  }
+  
+  // Hide the connect button
+  document.querySelector('.connect-button').style.display = 'none';
+}
+
+// Auto-handle other connections when joining a team
+function autoHandleConnectionsAfterTeamJoin() {
+  // Get all other pending requests to reject
+  const otherPendingRequests = [...connections.pending];
+  
+  // Get all sent requests to cancel
+  const sentRequests = [...connections.sent];
+  
+  // Clear all pending requests (auto-reject)
+  otherPendingRequests.forEach(request => {
+    updateConnectionBadge(request.id, null);
+  });
+  connections.pending = [];
+  
+  // Clear all sent requests (auto-cancel)
+  sentRequests.forEach(request => {
+    updateConnectionBadge(request.id, null);
+  });
+  connections.sent = [];
+  
+  // Update counts
+  updateConnectionCounts();
+  
+  // Re-render teammates list to update connection badges
+  renderTeammates();
+}
+
+// Update groups display dynamically
+function refreshGroupsDisplay() {
+  // Check if groups view is currently visible
+  const groupsView = document.getElementById("groups-view");
+  if (groupsView && !groupsView.classList.contains("hidden")) {
+    // Check if we came from connections (if connections view was the previous view)
+    const connectionsView = document.getElementById("connections-view");
+    const wasFromConnections = connectionsView && connectionsView.dataset.wasActive === 'true';
+    showAllGroups(wasFromConnections ? 'connections' : 'main'); // Refresh the groups display
+  }
+}
+
+// Accept connection request
+function acceptConnection(requestId) {
+  const requestIndex = connections.pending.findIndex(r => r.id === requestId);
+  if (requestIndex === -1) return;
+  
+  const request = connections.pending[requestIndex];
+  
+  // Check if this is a team invitation
+  if (request.teamInvitation) {
+    // Add user to the team
+    const userProfile = getUserProfile();
+    if (userProfile) {
+      const team = groups.find(g => g.id === request.teamId);
+      if (team && !team.isFull) {
+        // Add user to team
+        team.teammates.push({
+          id: userProfile.id,
+          name: userProfile.name,
+          initials: userProfile.initials,
+          timezone: userProfile.timezone,
+          skills: userProfile.skills,
+          interests: userProfile.interests,
+          roles: userProfile.roles,
+          email: userProfile.email,
+        });
+        
+        // Update team metadata
+        team.timezones = [...new Set([...team.timezones, userProfile.timezone])];
+        team.skills = [...new Set([...team.skills, ...userProfile.skills])];
+        team.interests = [...new Set([...team.interests, ...userProfile.interests])];
+        team.roles = [...new Set([...team.roles, ...userProfile.roles])];
+        
+        // Update team status
+        team.slotsAvailable = team.maxSize - team.teammates.length;
+        team.isFull = team.slotsAvailable === 0;
+        
+        // Move accepted team invitation to connections
+        connections.accepted.push({
+          ...request,
+          dateConnected: new Date().toISOString()
+        });
+        
+        // Auto-connect to all other team members
+        team.teammates.forEach(member => {
+          if (member.id !== userProfile.id && member.id !== request.id) {
+            // Check if not already connected
+            const alreadyConnected = connections.accepted.some(c => c.id === member.id);
+            if (!alreadyConnected) {
+              connections.accepted.push({
+                id: member.id,
+                name: member.name,
+                email: member.email,
+                timezone: member.timezone,
+                skills: member.skills,
+                interests: member.interests,
+                roles: member.roles,
+                dateConnected: new Date().toISOString()
+              });
+            }
+          }
+        });
+        
+        // Remove from pending
+        connections.pending.splice(requestIndex, 1);
+        
+        // Auto-handle all other connections (reject pending, cancel sent)
+        autoHandleConnectionsAfterTeamJoin();
+        
+        // Show success message for team joining
+        alert(`Congratulations! You've successfully joined Team ${team.id}. All other pending requests have been automatically handled.`);
+        
+        // Update displays
+        saveConnections();
+        updateConnectionCounts();
+        renderConnections();
+        
+        // Update connection badges for all team members
+        team.teammates.forEach(member => {
+          if (member.id !== userProfile.id) {
+            updateConnectionBadge(member.id, 'connected');
+          }
+        });
+        
+        refreshGroupsDisplay();
+        
+        return; // Exit early for team invitations
+      }
+    }
+  }
+  
+  // Regular connection acceptance (non-team)
+  connections.accepted.push({
+    ...request,
+    dateConnected: new Date().toISOString()
+  });
+  
+  // Remove from pending
+  connections.pending.splice(requestIndex, 1);
+  
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  
+  // Update the connection badge on main page
+  updateConnectionBadge(requestId, 'connected');
+  
+  // Re-render teammates to show updated badges
+  renderTeammates();
+}
+
+// Decline connection request
+function declineConnection(requestId) {
+  const requestIndex = connections.pending.findIndex(r => r.id === requestId);
+  if (requestIndex === -1) return;
+  
+  connections.pending.splice(requestIndex, 1);
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  
+  // Update the connection badge on main page (remove badge)
+  updateConnectionBadge(requestId, null);
+  
+  // Re-render teammates to show updated badges
+  renderTeammates();
+}
+
+// Cancel sent connection request
+function cancelSentRequest(requestId) {
+  const requestIndex = connections.sent.findIndex(r => r.id === requestId);
+  if (requestIndex === -1) return;
+  
+  connections.sent.splice(requestIndex, 1);
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  
+  // Update the connection badge on main page (remove badge)
+  updateConnectionBadge(requestId, null);
+  
+  // Re-render teammates to show updated badges
+  renderTeammates();
+}
+
+// Remove all connections from a group (leave team)
+function removeGroupConnections(groupId) {
+  if (!confirm('Are you sure you want to leave this team? This will remove all connections with your teammates and remove you from the group.')) return;
+  
+  const userProfile = getUserProfile();
+  if (!userProfile) return;
+  
+  const group = groups.find(g => g.id === groupId);
+  if (!group) return;
+  
+  // Get all team member IDs except the user
+  const teamMemberIds = group.teammates
+    .filter(tm => tm.id !== userProfile.id)
+    .map(tm => tm.id);
+  
+  // Remove all connections with team members
+  teamMemberIds.forEach(memberId => {
+    const connectionIndex = connections.accepted.findIndex(c => c.id === memberId);
+    if (connectionIndex !== -1) {
+      connections.accepted.splice(connectionIndex, 1);
+    }
+  });
+  
+  // Remove user from the group
+  const userIndex = group.teammates.findIndex(tm => tm.id === userProfile.id);
+  if (userIndex !== -1) {
+    group.teammates.splice(userIndex, 1);
+  }
+  
+  // Update group metadata
+  group.timezones = group.teammates.map(tm => tm.timezone);
+  group.skills = [...new Set(group.teammates.flatMap(tm => tm.skills))];
+  group.interests = [...new Set(group.teammates.flatMap(tm => tm.interests))];
+  group.roles = [...new Set(group.teammates.flatMap(tm => tm.roles))];
+  group.slotsAvailable = group.maxSize - group.teammates.length;
+  group.isFull = group.slotsAvailable === 0;
+  
+  // Update displays
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  renderTeammates(); // Update main page to reflect new availability
+  refreshGroupsDisplay();
+  
+  alert('You have successfully left the team. You can now form new connections.');
+}
+
+// Remove established connection
+function removeConnection(connectionId) {
+  if (!confirm('Are you sure you want to remove this connection?')) return;
+  
+  const connectionIndex = connections.accepted.findIndex(c => c.id === connectionId);
+  if (connectionIndex === -1) return;
+  
+  connections.accepted.splice(connectionIndex, 1);
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  
+  // Update the connection badge on main page (remove badge)
+  updateConnectionBadge(connectionId, null);
+  
+  // Re-render teammates to show updated badges
+  renderTeammates();
+}
+
+// Format date for display
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffInHours = (now - date) / (1000 * 60 * 60);
+  
+  if (diffInHours < 24) {
+    return 'Today';
+  } else if (diffInHours < 48) {
+    return 'Yesterday';
+  } else {
+    const days = Math.floor(diffInHours / 24);
+    return `${days} days ago`;
+  }
+}
+
+// Render group connection card for complete teams
+function renderGroupConnectionCard(group) {
+  const div = document.createElement('div');
+  div.className = 'connection-card group-connection-card';
+  
+  const userProfile = getUserProfile();
+  const otherMembers = group.teammates.filter(tm => tm.id !== userProfile.id);
+  
+  // Get all member emails for group messaging
+  const groupEmails = group.teammates.map(tm => tm.email).join(',');
+  
+  const membersList = otherMembers.map(member => 
+    `<div class="group-member">
+      <span class="member-avatar">${member.initials}</span>
+      <span class="member-name">${member.name}</span>
+      <span class="member-role">${member.roles[0]}</span>
+    </div>`
+  ).join('');
+  
+  div.innerHTML = `
+    <div class="connection-info">
+      <div class="group-connection-header">
+        <h3>🎯 Team ${group.id} - Complete</h3>
+        <p>${group.teammates.length} members • Connected ${formatDate(connections.accepted[0]?.dateConnected || new Date().toISOString())}</p>
+      </div>
+      <div class="group-members">
+        ${membersList}
+      </div>
+      <div class="group-summary">
+        <p><strong>Shared Skills:</strong> ${group.skills.slice(0, 5).join(', ')}${group.skills.length > 5 ? '...' : ''}</p>
+        <p><strong>Focus Areas:</strong> ${group.interests.join(', ')}</p>
+      </div>
+    </div>
+    <div class="connection-actions group-actions">
+      <button class="form-button primary" onclick="openEmailClient('${groupEmails}')">
+        📧 Email Team
+      </button>
+      <button class="form-button secondary" onclick="showAllGroups('connections')">
+        View Team Details
+      </button>
+      <button class="form-button cancel-btn" onclick="removeGroupConnections(${group.id})">
+        Leave Team
+      </button>
+    </div>
+  `;
+  
+  return div;
+}
+
+// Render connection card
+function renderConnectionCard(connection, type) {
+  const div = document.createElement('div');
+  div.className = 'connection-card';
+  
+  // Add special styling for team invitations
+  if (connection.teamInvitation) {
+    div.classList.add('team-invitation');
+  }
+  
+  const initials = connection.name.split(' ').map(n => n[0]).join('');
+  const topSkills = connection.skills.slice(0, 3);
+  
+  // Team invitation message
+  const teamMessage = connection.teamInvitation && connection.teamMessage ? 
+    `<div class="team-invitation-message">
+      <strong>🎯 Team Invitation</strong><br>
+      ${connection.teamMessage}
+    </div>` : '';
+  
+  // Custom connection message (for regular connection requests)
+  const customMessage = !connection.teamInvitation && connection.message && connection.message.trim() ? 
+    `<div class="connection-message">
+      <strong>💬 Message:</strong><br>
+      "${connection.message}"
+    </div>` : '';
+  
+  let actions = '';
+  if (type === 'pending') {
+    const acceptText = connection.teamInvitation ? '✓ Join Team' : '✓ Accept';
+    actions = `
+      <div class="connection-actions">
+        <button class="form-button primary accept-btn" onclick="acceptConnection(${connection.id})">
+          ${acceptText}
+        </button>
+        <button class="form-button decline-btn" onclick="declineConnection(${connection.id})">
+          ✗ Decline
+        </button>
+        ${connection.teamInvitation ? `<button class="form-button secondary" onclick="showAllGroups('connections')">View Team</button>` : ''}
+      </div>
+    `;
+  } else if (type === 'sent') {
+    actions = `
+      <div class="connection-actions">
+        <button class="form-button cancel-btn" onclick="cancelSentRequest(${connection.id})">
+          Cancel Request
+        </button>
+      </div>
+    `;
+  } else if (type === 'accepted') {
+    actions = `
+      <div class="connection-actions">
+        <button class="form-button secondary" onclick="navigateToProfile(${connection.id}, 'connections')">
+          View Profile
+        </button>
+        <button class="form-button message-btn" onclick="openEmailClient('${connection.email}')">
+          📧 Message
+        </button>
+        <button class="form-button cancel-btn" onclick="removeConnection(${connection.id})">
+          Remove
+        </button>
+      </div>
+    `;
+  }
+  
+  const dateField = type === 'accepted' ? 'dateConnected' : 'dateSent';
+  const dateLabel = type === 'accepted' ? 'Connected' : 'Sent';
+  
+  div.innerHTML = `
+    <div class="connection-info">
+      <div class="connection-avatar">${initials}</div>
+      <div class="connection-details">
+        <h4>${connection.name}</h4>
+        <p>${connection.timezone} • ${connection.roles.slice(0, 2).join(', ')}</p>
+        <div class="connection-tags">
+          ${topSkills.map(skill => `<span class="connection-tag">${skill}</span>`).join('')}
+        </div>
+        <div class="connection-date">${dateLabel}: ${formatDate(connection[dateField])}</div>
+      </div>
     </div>
 `;
 }
