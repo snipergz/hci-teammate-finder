@@ -1292,16 +1292,7 @@ function loadConnections() {
         }
       ],
       sent: [
-        {
-          id: 6, // Emily Nguyen - individual user not in any team yet
-          name: "Emily Nguyen",
-          email: "enguyen9@gatech.edu",
-          timezone: "UTC-8",
-          skills: ["UX Writing", "Information Architecture", "Prototyping"],
-          interests: ["Productivity", "Mental Health"],
-          roles: ["Backend Developer", "Full-Stack Engineer"],
-          dateSent: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 days ago
-        }
+        // No pre-existing requests
       ],
       accepted: [
         // No pre-existing connections - user starts fresh
@@ -1473,7 +1464,10 @@ function sendConnectionRequest() {
   saveConnections();
   
   // Update the connection badge on main page
-  updateConnectionBadge(profileId, 'sent');
+  updateConnectionBadge(profileId, 'pending_sent');
+  
+  // Re-render teammates to show updated badge
+  renderTeammates();
   
   // Show success message
   document.getElementById('success-message').style.display = 'block';
@@ -1627,6 +1621,9 @@ function acceptConnection(requestId) {
   
   // Update the connection badge on main page
   updateConnectionBadge(requestId, 'connected');
+  
+  // Re-render teammates to show updated badges
+  renderTeammates();
 }
 
 // Decline connection request
@@ -1641,6 +1638,9 @@ function declineConnection(requestId) {
   
   // Update the connection badge on main page (remove badge)
   updateConnectionBadge(requestId, null);
+  
+  // Re-render teammates to show updated badges
+  renderTeammates();
 }
 
 // Cancel sent connection request
@@ -1655,6 +1655,9 @@ function cancelSentRequest(requestId) {
   
   // Update the connection badge on main page (remove badge)
   updateConnectionBadge(requestId, null);
+  
+  // Re-render teammates to show updated badges
+  renderTeammates();
 }
 
 // Remove established connection
@@ -1671,6 +1674,9 @@ function removeConnection(connectionId) {
   
   // Update the connection badge on main page (remove badge)
   updateConnectionBadge(connectionId, null);
+  
+  // Re-render teammates to show updated badges
+  renderTeammates();
 }
 
 // Format date for display
