@@ -425,6 +425,63 @@ const rolesOptions = [
   "Visual Designer",
 ];
 
+// Timezone mapping for human-friendly display
+const timezoneMap = {
+  "UTC-8": "Pacific Time (Los Angeles, Vancouver)",
+  "UTC-7": "Mountain Time (Denver, Phoenix)",
+  "UTC-6": "Central Time (Chicago, Mexico City)",
+  "UTC-5": "Eastern Time (New York, Toronto)",
+  "UTC+0": "Greenwich Time (London, Dublin)",
+  "UTC+1": "Central European Time (Paris, Berlin)",
+  "UTC+2": "Eastern European Time (Cairo, Helsinki)",
+  "UTC+3": "Moscow Time (Moscow, Istanbul)",
+  "UTC+4": "Gulf Time (Dubai, Baku)",
+  "UTC+5:30": "India Standard Time (Mumbai, Delhi)",
+  "UTC+8": "China Standard Time (Beijing, Singapore)",
+  "UTC+9": "Japan Standard Time (Tokyo, Seoul)"
+};
+
+// Function to get human-friendly timezone display
+function getTimezoneDisplay(utcOffset) {
+  return timezoneMap[utcOffset] || utcOffset;
+}
+
+// Function to get short timezone display for compact views
+function getTimezoneShort(utcOffset) {
+  const mapping = {
+    "UTC-8": "PST/PDT",
+    "UTC-7": "MST/MDT", 
+    "UTC-6": "CST/CDT",
+    "UTC-5": "EST/EDT",
+    "UTC+0": "GMT/UTC",
+    "UTC+1": "CET",
+    "UTC+2": "EET",
+    "UTC+3": "MSK",
+    "UTC+4": "GST",
+    "UTC+5:30": "IST",
+    "UTC+8": "CST",
+    "UTC+9": "JST"
+  };
+  return mapping[utcOffset] || utcOffset;
+}
+
+// Helper function to parse timezone offset including decimal hours
+function parseTimezoneOffset(timezone) {
+  if (!timezone || !timezone.startsWith('UTC')) return 0;
+  const offsetStr = timezone.replace('UTC', '');
+  if (offsetStr === '') return 0;
+  
+  // Handle decimal hours like +5:30
+  if (offsetStr.includes(':')) {
+    const [hours, minutes] = offsetStr.split(':');
+    const hoursNum = parseInt(hours);
+    const minutesNum = parseInt(minutes);
+    return hoursNum + (minutesNum / 60) * (hoursNum < 0 ? -1 : 1);
+  }
+  
+  return parseFloat(offsetStr);
+}
+
 // State
 let filteredTeammates = [...teammates];
 let connectedTeammates = [];
@@ -528,7 +585,7 @@ function viewUserProfile() {
 
   // Populate the profile display
   document.getElementById("user-profile-name").textContent = userProfile.name;
-  document.getElementById("user-profile-timezone").textContent = userProfile.timezone;
+  document.getElementById("user-profile-timezone").textContent = getTimezoneDisplay(userProfile.timezone);
   
   // Display about me section (only if it exists and is not empty)
   const aboutSection = document.getElementById("user-about-section");
@@ -900,7 +957,7 @@ function renderTeammates() {
             <div class="compatibility-score ${compatibilityClass}">
                 ${teammate.compatibility}%
             </div>
-            <div>${teammate.timezone}</div>
+            <div>${getTimezoneShort(teammate.timezone)}</div>
             <div>
                 ${teammate.skills
                   .map((skill) => `<span class="tag">${skill}</span>`)
@@ -999,7 +1056,7 @@ function showProfile(id, source = 'main') {
   document.getElementById("profile-name").textContent = teammate.name;
   document.getElementById(
     "profile-timezone"
-  ).innerHTML = `📍 ${teammate.timezone}`;
+  ).innerHTML = `📍 ${getTimezoneDisplay(teammate.timezone)}`;
 
   // Display about me section (only if it exists and is not empty)
   const aboutSection = document.getElementById("profile-about-section");
@@ -1174,8 +1231,8 @@ function calculateCompatibility(userProfile, teammate) {
     matchPoints += 20;
   } else {
     // Partial points for nearby timezones
-    const userOffset = parseInt(userProfile.timezone.replace('UTC', ''));
-    const teammateOffset = parseInt(teammate.timezone.replace('UTC', ''));
+    const userOffset = parseTimezoneOffset(userProfile.timezone);
+    const teammateOffset = parseTimezoneOffset(teammate.timezone);
     const timeDiff = Math.abs(userOffset - teammateOffset);
     if (timeDiff <= 3) matchPoints += 10;
     else if (timeDiff <= 6) matchPoints += 5;
@@ -1380,7 +1437,7 @@ function showAllGroups(source) {
       ${userProfile && group.teammates.some(tm => tm.id === userProfile.id) ? '<div class="user-in-group-badge">You are in this group</div>' : ''}
 
       <p><strong>Main&nbsp;Contact:</strong> ${group.mainContact}</p>
-      <p><strong>Timezones:</strong> ${group.timezones.join(", ")}</p>
+      <p><strong>Timezones:</strong> ${group.timezones.map(tz => getTimezoneShort(tz)).join(", ")}</p>
       <p><strong>Skills:</strong> ${group.skills.slice(0, 8).join(", ")}${group.skills.length > 8 ? '...' : ''}</p>
       <p><strong>Interests:</strong> ${group.interests.join(", ")}</p>
       <p><strong>Roles:</strong> ${group.roles.join(", ")}</p>
@@ -2073,7 +2130,7 @@ function renderConnectionCard(connection, type) {
       <div class="connection-avatar">${initials}</div>
       <div class="connection-details">
         <h4>${connection.name}</h4>
-        <p>${connection.timezone} • ${connection.roles.slice(0, 2).join(', ')}</p>
+        <p>${getTimezoneShort(connection.timezone)} • ${connection.roles.slice(0, 2).join(', ')}</p>
         <div class="connection-tags">
           ${topSkills.map(skill => `<span class="connection-tag">${skill}</span>`).join('')}
         </div>
