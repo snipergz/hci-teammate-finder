@@ -957,9 +957,9 @@ function applyFilters() {
     // Helper function to check if teammate is in a complete group
     const isInCompleteGroup = (teammate) => {
       const teammateGroup = groups.find(group => 
-        group.teammates.some(tm => tm.id === teammate.id)
+        group.teammates.some(tm => tm.name === teammate.name || tm.id === teammate.id)
       );
-      return teammateGroup && teammateGroup.isFull;
+      return !!(teammateGroup && teammateGroup.isFull);
     };
     
     const aInCompleteGroup = isInCompleteGroup(a);
@@ -1215,9 +1215,9 @@ function addCompatibilityToTeammates() {
     // Helper function to check if teammate is in a complete group
     const isInCompleteGroup = (teammate) => {
       const teammateGroup = groups.find(group => 
-        group.teammates.some(tm => tm.id === teammate.id)
+        group.teammates.some(tm => tm.name === teammate.name || tm.id === teammate.id)
       );
-      return teammateGroup && teammateGroup.isFull;
+      return !!(teammateGroup && teammateGroup.isFull);
     };
     
     const aInCompleteGroup = isInCompleteGroup(a);
@@ -1244,6 +1244,28 @@ function updateFilteredTeammates() {
   } else {
     filteredTeammates = [...teammates];
   }
+  
+  // Apply the same sorting logic to ensure consistent order
+  filteredTeammates.sort((a, b) => {
+    // Helper function to check if teammate is in a complete group
+    const isInCompleteGroup = (teammate) => {
+      const teammateGroup = groups.find(group => 
+        group.teammates.some(tm => tm.name === teammate.name || tm.id === teammate.id)
+      );
+      return !!(teammateGroup && teammateGroup.isFull);
+    };
+    
+    const aInCompleteGroup = isInCompleteGroup(a);
+    const bInCompleteGroup = isInCompleteGroup(b);
+    
+    // If one is in a complete group and the other isn't, prioritize the available one
+    if (aInCompleteGroup !== bInCompleteGroup) {
+      return aInCompleteGroup ? 1 : -1; // Move complete group members to bottom
+    }
+    
+    // If both have same availability status, sort by compatibility (highest first)
+    return b.compatibility - a.compatibility;
+  });
 }
 
 // Helper function to reset profile (for testing purposes)
