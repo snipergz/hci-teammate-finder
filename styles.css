@@ -442,6 +442,27 @@ body {
 }
 
 @media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .action-buttons {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .action-buttons button,
+  .action-buttons a {
+    flex: 1;
+    min-width: 120px;
+    max-width: 150px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
   .filter-row {
     grid-template-columns: 1fr;
   }
