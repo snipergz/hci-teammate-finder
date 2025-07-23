@@ -169,6 +169,12 @@ body {
   color: #166534;
 }
 
+.connection-badge.group-connected {
+  background: #f0f9ff;
+  color: #0369a1;
+  border: 1px solid #0369a1;
+}
+
 .connection-badge.sent {
   background: #dbeafe;
   color: #1d4ed8;

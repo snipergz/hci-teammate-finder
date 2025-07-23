@@ -849,9 +849,28 @@ function renderTeammates() {
         const requestSent = connections.sent.some(c => c.id === teammate.id);
         const requestPending = connections.pending.some(c => c.id === teammate.id);
         
+        // Check if teammate is in a group and if user is connected to all group members
+        const teammateGroup = groups.find(group => 
+          group.teammates.some(tm => tm.id === teammate.id)
+        );
+        
         let connectionStatusBadge = '';
         if (isConnected) {
-          connectionStatusBadge = '<div class="connection-badge connected">Connected</div>';
+          if (teammateGroup) {
+            // Check if connected to all group members
+            const otherGroupMembers = teammateGroup.teammates.filter(tm => tm.id !== teammate.id);
+            const connectedToAllGroupMembers = otherGroupMembers.every(member => 
+              connections.accepted.some(c => c.id === member.id)
+            );
+            
+            if (connectedToAllGroupMembers && otherGroupMembers.length > 0) {
+              connectionStatusBadge = '<div class="connection-badge connected group-connected">Connected to Group</div>';
+            } else {
+              connectionStatusBadge = '<div class="connection-badge connected">Connected</div>';
+            }
+          } else {
+            connectionStatusBadge = '<div class="connection-badge connected">Connected</div>';
+          }
         } else if (requestSent) {
           connectionStatusBadge = '<div class="connection-badge sent">Request Sent</div>';
         } else if (requestPending) {
@@ -1381,8 +1400,29 @@ function updateConnectionBadge(teammateId, status) {
       badgeElement.classList.add('sent');
       break;
     case 'connected':
-      badgeElement.textContent = 'Connected';
-      badgeElement.classList.add('connected');
+      // Check if this is a group connection
+      const teammateGroup = groups.find(group => 
+        group.teammates.some(tm => tm.id === teammateId)
+      );
+      
+      if (teammateGroup) {
+        // Check if connected to all group members
+        const otherGroupMembers = teammateGroup.teammates.filter(tm => tm.id !== teammateId);
+        const connectedToAllGroupMembers = otherGroupMembers.every(member => 
+          connections.accepted.some(c => c.id === member.id)
+        );
+        
+        if (connectedToAllGroupMembers && otherGroupMembers.length > 0) {
+          badgeElement.textContent = 'Connected to Group';
+          badgeElement.classList.add('connected', 'group-connected');
+        } else {
+          badgeElement.textContent = 'Connected';
+          badgeElement.classList.add('connected');
+        }
+      } else {
+        badgeElement.textContent = 'Connected';
+        badgeElement.classList.add('connected');
+      }
       break;
     default:
       badgeElement.remove();
@@ -1524,6 +1564,26 @@ function acceptConnection(requestId) {
           dateConnected: new Date().toISOString()
         });
         
+        // Auto-connect to all other team members
+        team.teammates.forEach(member => {
+          if (member.id !== userProfile.id && member.id !== request.id) {
+            // Check if not already connected
+            const alreadyConnected = connections.accepted.some(c => c.id === member.id);
+            if (!alreadyConnected) {
+              connections.accepted.push({
+                id: member.id,
+                name: member.name,
+                email: member.email,
+                timezone: member.timezone,
+                skills: member.skills,
+                interests: member.interests,
+                roles: member.roles,
+                dateConnected: new Date().toISOString()
+              });
+            }
+          }
+        });
+        
         // Remove from pending
         connections.pending.splice(requestIndex, 1);
         
@@ -1537,7 +1597,14 @@ function acceptConnection(requestId) {
         saveConnections();
         updateConnectionCounts();
         renderConnections();
-        updateConnectionBadge(requestId, 'connected');
+        
+        // Update connection badges for all team members
+        team.teammates.forEach(member => {
+          if (member.id !== userProfile.id) {
+            updateConnectionBadge(member.id, 'connected');
+          }
+        });
+        
         refreshGroupsDisplay();
         
         return; // Exit early for team invitations
