@@ -441,6 +441,9 @@ function navigateToProfile(id, source = 'main') {
   document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("profile-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
+  
+  // Scroll to the top of the page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function navigateToMain() {
