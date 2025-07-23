@@ -1958,8 +1958,8 @@ function renderGroupConnectionCard(group) {
         ${membersList}
       </div>
       <div class="group-summary">
-        <p><strong>Shared Skills:</strong> ${group.skills.slice(0, 5).join(', ')}${group.skills.length > 5 ? '...' : ''}</p>
-        <p><strong>Focus Areas:</strong> ${group.interests.join(', ')}</p>
+        <p><strong>Shared Skills:</strong> ${group.skills.slice(0, 6).join(', ')}${group.skills.length > 6 ? '...' : ''}</p>
+        <p><strong>Focus Areas:</strong> ${group.interests.slice(0, 4).join(', ')}${group.interests.length > 4 ? '...' : ''}</p>
       </div>
     </div>
     <div class="connection-actions group-actions">
