@@ -1739,6 +1739,53 @@ function cancelSentRequest(requestId) {
   renderTeammates();
 }
 
+// Remove all connections from a group (leave team)
+function removeGroupConnections(groupId) {
+  if (!confirm('Are you sure you want to leave this team? This will remove all connections with your teammates and remove you from the group.')) return;
+  
+  const userProfile = getUserProfile();
+  if (!userProfile) return;
+  
+  const group = groups.find(g => g.id === groupId);
+  if (!group) return;
+  
+  // Get all team member IDs except the user
+  const teamMemberIds = group.teammates
+    .filter(tm => tm.id !== userProfile.id)
+    .map(tm => tm.id);
+  
+  // Remove all connections with team members
+  teamMemberIds.forEach(memberId => {
+    const connectionIndex = connections.accepted.findIndex(c => c.id === memberId);
+    if (connectionIndex !== -1) {
+      connections.accepted.splice(connectionIndex, 1);
+    }
+  });
+  
+  // Remove user from the group
+  const userIndex = group.teammates.findIndex(tm => tm.id === userProfile.id);
+  if (userIndex !== -1) {
+    group.teammates.splice(userIndex, 1);
+  }
+  
+  // Update group metadata
+  group.timezones = group.teammates.map(tm => tm.timezone);
+  group.skills = [...new Set(group.teammates.flatMap(tm => tm.skills))];
+  group.interests = [...new Set(group.teammates.flatMap(tm => tm.interests))];
+  group.roles = [...new Set(group.teammates.flatMap(tm => tm.roles))];
+  group.slotsAvailable = group.maxSize - group.teammates.length;
+  group.isFull = group.slotsAvailable === 0;
+  
+  // Update displays
+  saveConnections();
+  updateConnectionCounts();
+  renderConnections();
+  renderTeammates(); // Update main page to reflect new availability
+  refreshGroupsDisplay();
+  
+  alert('You have successfully left the team. You can now form new connections.');
+}
+
 // Remove established connection
 function removeConnection(connectionId) {
   if (!confirm('Are you sure you want to remove this connection?')) return;
@@ -1772,6 +1819,55 @@ function formatDate(dateString) {
     const days = Math.floor(diffInHours / 24);
     return `${days} days ago`;
   }
+}
+
+// Render group connection card for complete teams
+function renderGroupConnectionCard(group) {
+  const div = document.createElement('div');
+  div.className = 'connection-card group-connection-card';
+  
+  const userProfile = getUserProfile();
+  const otherMembers = group.teammates.filter(tm => tm.id !== userProfile.id);
+  
+  // Get all member emails for group messaging
+  const groupEmails = group.teammates.map(tm => tm.email).join(',');
+  
+  const membersList = otherMembers.map(member => 
+    `<div class="group-member">
+      <span class="member-avatar">${member.initials}</span>
+      <span class="member-name">${member.name}</span>
+      <span class="member-role">${member.roles[0]}</span>
+    </div>`
+  ).join('');
+  
+  div.innerHTML = `
+    <div class="connection-info">
+      <div class="group-connection-header">
+        <h3>🎯 Team ${group.id} - Complete</h3>
+        <p>${group.teammates.length} members • Connected ${formatDate(connections.accepted[0]?.dateConnected || new Date().toISOString())}</p>
+      </div>
+      <div class="group-members">
+        ${membersList}
+      </div>
+      <div class="group-summary">
+        <p><strong>Shared Skills:</strong> ${group.skills.slice(0, 5).join(', ')}${group.skills.length > 5 ? '...' : ''}</p>
+        <p><strong>Focus Areas:</strong> ${group.interests.join(', ')}</p>
+      </div>
+    </div>
+    <div class="connection-actions group-actions">
+      <button class="form-button primary" onclick="openEmailClient('${groupEmails}')">
+        📧 Message Team
+      </button>
+      <button class="form-button secondary" onclick="showAllGroups('connections')">
+        View Team Details
+      </button>
+      <button class="form-button cancel-btn" onclick="removeGroupConnections(${group.id})">
+        Leave Team
+      </button>
+    </div>
+  `;
+  
+  return div;
 }
 
 // Render connection card
@@ -1886,9 +1982,23 @@ function renderConnections() {
     noConnections.style.display = 'block';
   } else {
     noConnections.style.display = 'none';
-    connections.accepted.forEach(connection => {
-      connectedContainer.appendChild(renderConnectionCard(connection, 'accepted'));
-    });
+    
+    // Check if user is connected to a complete group
+    const userProfile = getUserProfile();
+    const userGroup = userProfile ? groups.find(group => 
+      group.teammates.some(tm => tm.id === userProfile.id)
+    ) : null;
+    
+    if (userGroup && userGroup.isFull) {
+      // Render as a group with group-level actions
+      const groupCard = renderGroupConnectionCard(userGroup);
+      connectedContainer.appendChild(groupCard);
+    } else {
+      // Render individual connections
+      connections.accepted.forEach(connection => {
+        connectedContainer.appendChild(renderConnectionCard(connection, 'accepted'));
+      });
+    }
   }
   
   // Render sent requests
