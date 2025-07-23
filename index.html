@@ -20,10 +20,18 @@
                         <p>Discover and connect with potential teammates</p>
                     </div>
                 </div>
-                <div class="action-buttons" style="display: flex; align-items: center;">
-                    <!-- new "Show All Groups" button -->
+                <div class="action-buttons" style="display: flex; align-items: center; gap: 10px;">
+                    <!-- Groups button -->
                     <button id="show-groups" class="form-button secondary" onclick="showAllGroups()">
-                        📋 Show All Groups
+                        📋 Groups
+                    </button>
+                    <!-- Connections button -->
+                    <button id="view-connections" class="form-button secondary" onclick="navigateToConnections()" style="display: none;">
+                        🤝 Connections
+                    </button>
+                    <!-- Profile button -->
+                    <button id="view-profile" class="form-button secondary" onclick="viewUserProfile()" style="display: none;">
+                        👤 Profile
                     </button>
                     <a style="text-decoration: none;" href="#" class="form-button primary"
                         onclick="navigateToCreateProfile()">
@@ -147,6 +155,7 @@
             <div class="teammates-list">
                 <div class="table-header">
                     <div>Name</div>
+                    <div>Match %</div>
                     <div>Timezone</div>
                     <div>Skills</div>
                     <div>Project Interests</div>
@@ -167,7 +176,7 @@
                 <div class="header-icon">👤</div>
                 <div class="header-text">
                     <h1>Create Your Profile</h1>
-                    <p>Join the teammate finder community</p>
+                    <p>Set up your profile to find compatible teammates based on your skills, interests, and preferences</p>
                 </div>
             </div>
 
@@ -195,6 +204,12 @@
                             <option value="UTC+9">UTC+9</option>
                         </select>
                         <div class="form-error" id="timezone-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-about-textarea">About (Optional)</label>
+                        <textarea id="profile-about-textarea" name="about" rows="4" 
+                                placeholder="Tell us a bit about yourself, your background, interests, or what you're looking for in a team..."></textarea>
+                        <div class="form-hint">Share anything that would help teammates get to know you better!</div>
                     </div>
                 </div>
 
@@ -229,16 +244,65 @@
                 </div>
 
                 <div class="form-buttons">
-                    <button type="button" class="form-button" onclick="navigateToMain()">Cancel</button>
+                    <button type="button" class="form-button" id="cancel-profile-btn" onclick="navigateToMain()">Cancel</button>
                     <button type="submit" class="form-button primary">Create Profile</button>
                 </div>
             </form>
         </div>
 
+        <!-- User Profile View -->
+        <div id="user-profile-view" class="view hidden">
+            <div class="header">
+                <div>
+                    <div class="header-icon">👤</div>
+                    <div class="header-text">
+                        <h1>Your Profile</h1>
+                        <p>View and edit your profile information</p>
+                    </div>
+                </div>
+                <div class="action-buttons" style="display: flex; align-items: center; gap: 10px;">
+                    <button type="button" class="form-button" onclick="navigateToMain()">Back</button>
+                    <button type="button" class="form-button primary" onclick="editUserProfile()">Edit Profile</button>
+                </div>
+            </div>
+
+            <div class="profile-display">
+                <div class="form-section">
+                    <h3>Basic Information</h3>
+                    <div class="profile-field">
+                        <label>Full Name</label>
+                        <div class="profile-value" id="user-profile-name"></div>
+                    </div>
+                    <div class="profile-field">
+                        <label>Timezone</label>
+                        <div class="profile-value" id="user-profile-timezone"></div>
+                    </div>
+                    <div class="profile-field" id="user-about-section" style="display: none;">
+                        <label>About</label>
+                        <div class="profile-value profile-about" id="user-profile-about"></div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Skills</h3>
+                    <div class="profile-tags" id="user-profile-skills"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Project Interests</h3>
+                    <div class="profile-tags" id="user-profile-interests"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Roles You're Interested In</h3>
+                    <div class="profile-tags" id="user-profile-roles"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- Profile View -->
         <div id="profile-view" class="view hidden">
             <div class="profile-header">
-                <a href="#" class="back-button" onclick="navigateToMain()">← Back to teammates</a>
                 <div class="profile-info">
                     <div class="profile-avatar" id="profile-avatar"></div>
                     <div class="profile-details">
@@ -246,8 +310,13 @@
                         <div class="profile-timezone" id="profile-timezone"></div>
                     </div>
                 </div>
+                <button class="form-button" onclick="navigateToMain()">Back</button>
             </div>
             <div class="profile-content">
+                <div class="profile-section about-section" id="profile-about-section" style="display: none;">
+                    <h3>About</h3>
+                    <div class="profile-about" id="profile-about"></div>
+                </div>
                 <div class="profile-section skills-section">
                     <h3>Skills</h3>
                     <div id="profile-skills"></div>
@@ -259,6 +328,15 @@
                 <div class="profile-section interests-section">
                     <h3>Project Interests</h3>
                     <div id="profile-interests"></div>
+                </div>
+                <div class="connection-request-section">
+                    <label for="connection-message">Message (optional):</label>
+                    <textarea id="connection-message" class="connection-message-input" 
+                              placeholder="Hi! I'd love to work together on a project. I think our skills complement each other well..."
+                              maxlength="500" rows="3"></textarea>
+                    <div class="char-count">
+                        <span id="message-char-count">0</span>/500 characters
+                    </div>
                 </div>
                 <button class="connect-button" onclick="sendConnectionRequest()">
                     🤝 Connect with <span id="connect-name"></span>
@@ -272,6 +350,93 @@
         <!-- All Groups View -->
         <div id="groups-view" class="view hidden">
             <!-- JS can inject the grouped data here -->
+        </div>
+
+        <!-- Connections View -->
+        <div id="connections-view" class="view hidden">
+            <div class="header">
+                <div>
+                    <div class="header-icon">🤝</div>
+                    <div class="header-text">
+                        <h1>Your Connections</h1>
+                        <p>Manage your connection requests and connected teammates</p>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="form-button" onclick="navigateToMain()">Back</button>
+                </div>
+            </div>
+
+            <div class="connections-content">
+                <!-- Connection Requests Tab -->
+                <div class="connections-tabs">
+                    <button class="tab-button active" onclick="showConnectionTab('requests')">
+                        <span class="tab-icon">📬</span>
+                        Pending Requests
+                        <span class="badge" id="pending-count">0</span>
+                    </button>
+                    <button class="tab-button" onclick="showConnectionTab('accepted')">
+                        <span class="tab-icon">✅</span>
+                        Connected
+                        <span class="badge" id="connected-count">0</span>
+                    </button>
+                    <button class="tab-button" onclick="showConnectionTab('sent')">
+                        <span class="tab-icon">📤</span>
+                        Sent Requests
+                        <span class="badge" id="sent-count">0</span>
+                    </button>
+                </div>
+
+                <!-- Pending Requests Section -->
+                <div id="requests-tab" class="tab-content active">
+                    <div class="connections-section">
+                        <h3>Pending Connection Requests</h3>
+                        <p class="section-description">Review and respond to connection requests from other teammates</p>
+                        <div id="pending-requests-container" class="connections-container">
+                            <!-- Pending requests will be inserted here -->
+                        </div>
+                        <div class="empty-state" id="no-pending-requests" style="display: none;">
+                            <div class="empty-icon">📬</div>
+                            <h4>No pending requests</h4>
+                            <p>You don't have any connection requests at the moment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connected Section -->
+                <div id="accepted-tab" class="tab-content">
+                    <div class="connections-section">
+                        <h3>Your Connected Teammates</h3>
+                        <p class="section-description">Teammates you're currently connected with</p>
+                        <div id="connected-teammates-container" class="connections-container">
+                            <!-- Connected teammates will be inserted here -->
+                        </div>
+                        <div class="empty-state" id="no-connections" style="display: none;">
+                            <div class="empty-icon">🤝</div>
+                            <h4>No connections yet</h4>
+                            <p>Start connecting with teammates to build your network!</p>
+                            <button class="form-button primary" onclick="navigateToMain()">Find Teammates</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sent Requests Section -->
+                <div id="sent-tab" class="tab-content">
+                    <div class="connections-section">
+                        <h3>Sent Connection Requests</h3>
+                        <p class="section-description">Track your outgoing connection requests</p>
+                        <div id="sent-requests-container" class="connections-container">
+                            <!-- Sent requests will be inserted here -->
+                        </div>
+                        <div class="empty-state" id="no-sent-requests" style="display: none;">
+                            <div class="empty-icon">📤</div>
+                            <h4>No sent requests</h4>
+                            <p>You haven't sent any connection requests yet.</p>
+                            <button class="form-button primary" onclick="navigateToMain()">Find Teammates</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -9,6 +9,7 @@ const teammates = [
     interests: ["EdTech", "Accessibility"],
     roles: ["Frontend Developer", "UX Designer"],
     email: "achen7@gatech.edu",
+    about: "I'm passionate about creating inclusive digital experiences that make technology accessible to everyone. With 3 years of experience in both development and design, I love bridging the gap between user needs and technical implementation.",
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const teammates = [
     interests: ["AI", "Sustainability"],
     roles: ["Data Scientist", "Technical Writer"],
     email: "jsmith12@gatech.edu",
+    about: "Data storyteller with a background in environmental science. I'm excited about using AI and machine learning to tackle climate challenges. Always happy to explain complex concepts in simple terms!",
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const teammates = [
     interests: ["Health", "Startups"],
     roles: ["Content Strategist", "Marketing Lead"],
     email: "falmansoori3@gatech.edu",
+    about: "Strategic content creator with a passion for health tech and startup ecosystems. I help emerging companies find their voice and connect with their audience through compelling storytelling and data-driven marketing strategies.",
   },
   {
     id: 4,
@@ -39,6 +42,7 @@ const teammates = [
     interests: ["Civic Tech", "Education"],
     roles: ["Visual Designer", "Product Designer"],
     email: "drivera17@gatech.edu",
+    about: "Visual storyteller who believes design can change the world. I specialize in creating engaging interfaces for social impact projects. When I'm not designing, you'll find me sketching urban landscapes or volunteering at local schools.",
   },
   {
     id: 5,
@@ -49,6 +53,7 @@ const teammates = [
     interests: ["Climate", "Social Impact"],
     roles: ["Project Manager", "Business Analyst"],
     email: "sdubois5@gatech.edu",
+    about: "Organized project leader with a strong commitment to climate action and social impact initiatives. I excel at bringing teams together, managing complex timelines, and ensuring every voice is heard in the decision-making process.",
   },
   {
     id: 6,
@@ -59,6 +64,7 @@ const teammates = [
     interests: ["Productivity", "Mental Health"],
     roles: ["Backend Developer", "Full-Stack Engineer"],
     email: "enguyen9@gatech.edu",
+    about: "Full-stack developer with a unique background in UX writing and information architecture. I'm passionate about building productivity tools that support mental health and creating seamless user experiences from both technical and content perspectives.",
   },
   {
     id: 7,
@@ -69,6 +75,7 @@ const teammates = [
     interests: ["Smart Cities", "Healthcare"],
     roles: ["Backend Developer", "Full-Stack Engineer"],
     email: "mraza10@gatech.edu",
+    about: "Backend specialist focused on building robust APIs and integrations for smart city and healthcare applications. I believe technology should make urban living more sustainable and healthcare more accessible to everyone.",
   },
   {
     id: 8,
@@ -79,6 +86,7 @@ const teammates = [
     interests: ["Finance", "Open Source"],
     roles: ["Project Manager", "Team Facilitator"],
     email: "kmensah4@gatech.edu",
+    about: "Agile project manager and team facilitator with expertise in fintech and open source development. I'm passionate about creating collaborative environments where diverse teams can innovate and deliver exceptional results together.",
   },
   {
     id: 9,
@@ -89,6 +97,7 @@ const teammates = [
     interests: ["E-Commerce", "Consumer Behavior"],
     roles: ["Data Analyst", "BI Developer"],
     email: "lhoshino16@gatech.edu",
+    about: "Data analyst specializing in e-commerce analytics and consumer behavior insights. I love uncovering hidden patterns in data that help businesses better understand their customers and make more informed decisions.",
   },
   {
     id: 10,
@@ -99,6 +108,7 @@ const teammates = [
     interests: ["Civic Tech", "Education"],
     roles: ["Community Manager", "Design Researcher"],
     email: "zlee2@gatech.edu",
+    about: "Community builder and design researcher focused on civic technology and educational initiatives. I excel at facilitating workshops, conducting user research, and bringing people together to solve complex social challenges.",
   },
   {
     id: 11,
@@ -109,6 +119,7 @@ const teammates = [
     interests: ["Art", "Culture"],
     roles: ["Graphic Designer"],
     email: "irossi14@gatech.edu",
+    about: "Creative graphic designer with a deep appreciation for art and cultural expression. I specialize in typography and illustration, bringing visual stories to life that celebrate diversity and connect communities through beautiful design.",
   },
   {
     id: 12,
@@ -119,6 +130,7 @@ const teammates = [
     interests: ["FinTech", "Blockchain"],
     roles: ["Backend Developer"],
     email: "rpatel8@gatech.edu",
+    about: "Backend developer specializing in Java and microservices architecture for fintech applications. I'm fascinated by blockchain technology and its potential to revolutionize financial systems, making them more transparent and accessible.",
   },
   {
     id: 13,
@@ -129,6 +141,7 @@ const teammates = [
     interests: ["DevOps", "Cloud"],
     roles: ["DevOps Engineer"],
     email: "cwei19@gatech.edu",
+    about: "DevOps engineer passionate about cloud infrastructure and automation. I specialize in containerization and CI/CD pipelines, helping teams deploy faster and more reliably while maintaining security and scalability.",
   },
   {
     id: 14,
@@ -139,6 +152,7 @@ const teammates = [
     interests: ["Public Policy", "Social Justice"],
     roles: ["Research Analyst"],
     email: "slopez6@gatech.edu",
+    about: "Research analyst dedicated to public policy and social justice initiatives. I conduct thorough research and data analysis to inform policy decisions that create positive social change and promote equity in our communities.",
   },
   {
     id: 15,
@@ -149,6 +163,7 @@ const teammates = [
     interests: ["Gaming", "VR"],
     roles: ["Game Developer"],
     email: "mmuller11@gatech.edu",
+    about: "Game developer specializing in C++ and 3D modeling with a passion for immersive VR experiences. I love creating virtual worlds that tell compelling stories and push the boundaries of what's possible in interactive entertainment.",
   },
   {
     id: 16,
@@ -159,6 +174,7 @@ const teammates = [
     interests: ["Mobile Apps"],
     roles: ["iOS Developer"],
     email: "nkim4@gatech.edu",
+    about: "iOS developer focused on creating beautiful and intuitive mobile applications. I combine technical expertise in Swift with strong UI/UX sensibilities to build apps that users love and find genuinely helpful in their daily lives.",
   },
   {
     id: 17,
@@ -169,6 +185,7 @@ const teammates = [
     interests: ["IoT"],
     roles: ["Systems Engineer"],
     email: "ljohansson2@gatech.edu",
+    about: "Systems engineer specializing in distributed systems and IoT infrastructure. I'm passionate about building high-performance, scalable systems that can handle massive amounts of data from connected devices and sensors.",
   },
   {
     id: 18,
@@ -179,6 +196,7 @@ const teammates = [
     interests: ["Documentaries", "Travel"],
     roles: ["Media Producer"],
     email: "adubois15@gatech.edu",
+    about: "Media producer and storyteller specializing in documentary photography and video. I love capturing authentic human stories from around the world and creating compelling narratives that inspire empathy and understanding.",
   },
   {
     id: 19,
@@ -189,6 +207,7 @@ const teammates = [
     interests: ["User Experience"],
     roles: ["UX Researcher"],
     email: "csilva18@gatech.edu",
+    about: "UX researcher specializing in persona development and user behavior analysis. I'm passionate about understanding what makes people tick and translating those insights into design decisions that create meaningful user experiences.",
   },
   {
     id: 20,
@@ -199,6 +218,7 @@ const teammates = [
     interests: ["Cultural Studies"],
     roles: ["Anthropologist"],
     email: "aokafor1@gatech.edu",
+    about: "Cultural anthropologist specializing in ethnographic research and field studies. I'm fascinated by how different cultures solve problems and how we can learn from diverse perspectives to create more inclusive and effective solutions.",
   },
   {
     id: 21,
@@ -209,11 +229,13 @@ const teammates = [
     interests: ["Startups"],
     roles: ["Full-Stack Developer"],
     email: "ytanaka20@gatech.edu",
+    about: "Full-stack developer with a passion for startup culture and rapid prototyping. I specialize in Python and API development, helping early-stage companies quickly build and iterate on their product ideas to find market fit.",
   },
 ];
 
+// Team formation system - teams of 3 with strategic connections
 const groups = [
-  // 3 Full Groups
+  // Group 1 - Complete team (3/3)
   {
     id: 1,
     teammates: [
@@ -247,6 +269,44 @@ const groups = [
         roles: ["Content Strategist", "Marketing Lead"],
         email: "falmansoori3@gatech.edu",
       },
+    ],
+    timezones: ["UTC-5", "UTC+1", "UTC+4"],
+    skills: [
+      "React",
+      "Figma",
+      "User Research",
+      "Python",
+      "Machine Learning",
+      "Data Visualization",
+      "Copywriting",
+      "Marketing Strategy",
+      "SEO",
+    ],
+    interests: [
+      "EdTech",
+      "Accessibility",
+      "AI",
+      "Sustainability",
+      "Health",
+      "Startups",
+    ],
+    roles: [
+      "Frontend Developer",
+      "UX Designer",
+      "Data Scientist",
+      "Technical Writer",
+      "Content Strategist",
+      "Marketing Lead",
+    ],
+    isFull: true,
+    maxSize: 3,
+    slotsAvailable: 0,
+    mainContact: "achen7@gatech.edu",
+  },
+  // Group 2 - Partially formed team (2/3) - has sent invitation to user
+  {
+    id: 2,
+    teammates: [
       {
         id: 4,
         name: "Diego Rivera",
@@ -268,17 +328,8 @@ const groups = [
         email: "sdubois5@gatech.edu",
       },
     ],
-    timezones: ["UTC-5", "UTC+1", "UTC+4", "UTC-6", "UTC+2"],
+    timezones: ["UTC-6", "UTC+2"],
     skills: [
-      "React",
-      "Figma",
-      "User Research",
-      "Python",
-      "Machine Learning",
-      "Data Visualization",
-      "Copywriting",
-      "Marketing Strategy",
-      "SEO",
       "UI Design",
       "Branding",
       "Illustration",
@@ -286,345 +337,17 @@ const groups = [
       "User Interviews",
       "Project Coordination",
     ],
-    interests: [
-      "EdTech",
-      "Accessibility",
-      "AI",
-      "Sustainability",
-      "Health",
-      "Startups",
-      "Civic Tech",
-      "Education",
-      "Climate",
-      "Social Impact",
-    ],
+    interests: ["Civic Tech", "Education", "Climate", "Social Impact"],
     roles: [
-      "Frontend Developer",
-      "UX Designer",
-      "Data Scientist",
-      "Technical Writer",
-      "Content Strategist",
-      "Marketing Lead",
       "Visual Designer",
       "Product Designer",
-      "Project Manager",
+      "Project Manager", 
       "Business Analyst",
     ],
-    isFull: true,
-    maxSize: 5,
-    slotsAvailable: 0,
-    mainContact: "achen7@gatech.edu",
-  },
-  {
-    id: 2,
-    teammates: [
-      {
-        id: 6,
-        name: "Emily Nguyen",
-        initials: "EN",
-        timezone: "UTC-8",
-        skills: ["UX Writing", "Information Architecture", "Prototyping"],
-        interests: ["Productivity", "Mental Health"],
-        roles: ["Backend Developer", "Full-Stack Engineer"],
-        email: "enguyen9@gatech.edu",
-      },
-      {
-        id: 7,
-        name: "Mohammed Raza",
-        initials: "MR",
-        timezone: "UTC+3",
-        skills: ["JavaScript", "Node.js", "API Integration"],
-        interests: ["Smart Cities", "Healthcare"],
-        roles: ["Backend Developer", "Full-Stack Engineer"],
-        email: "mraza10@gatech.edu",
-      },
-      {
-        id: 8,
-        name: "Kofi Mensah",
-        initials: "KM",
-        timezone: "UTC+0",
-        skills: ["Agile Methodology", "Scrum", "Stakeholder Management"],
-        interests: ["Finance", "Open Source"],
-        roles: ["Project Manager", "Team Facilitator"],
-        email: "kmensah4@gatech.edu",
-      },
-      {
-        id: 9,
-        name: "Lina Hoshino",
-        initials: "LH",
-        timezone: "UTC+9",
-        skills: ["SQL", "Data Cleaning", "Business Intelligence"],
-        interests: ["E-Commerce", "Consumer Behavior"],
-        roles: ["Data Analyst", "BI Developer"],
-        email: "lhoshino16@gatech.edu",
-      },
-      {
-        id: 10,
-        name: "Zachary Lee",
-        initials: "ZL",
-        timezone: "UTC-7",
-        skills: ["Public Speaking", "User Research", "Workshop Facilitation"],
-        interests: ["Civic Tech", "Education"],
-        roles: ["Community Manager", "Design Researcher"],
-        email: "zlee2@gatech.edu",
-      },
-    ],
-    timezones: ["UTC-8", "UTC+3", "UTC+0", "UTC+9", "UTC-7"],
-    skills: [
-      "UX Writing",
-      "Information Architecture",
-      "Prototyping",
-      "JavaScript",
-      "Node.js",
-      "API Integration",
-      "Agile Methodology",
-      "Scrum",
-      "Stakeholder Management",
-      "SQL",
-      "Data Cleaning",
-      "Business Intelligence",
-      "Public Speaking",
-      "User Research",
-      "Workshop Facilitation",
-    ],
-    interests: [
-      "Productivity",
-      "Mental Health",
-      "Smart Cities",
-      "Healthcare",
-      "Finance",
-      "Open Source",
-      "E-Commerce",
-      "Consumer Behavior",
-      "Civic Tech",
-      "Education",
-    ],
-    roles: [
-      "Backend Developer",
-      "Full-Stack Engineer",
-      "Project Manager",
-      "Team Facilitator",
-      "Data Analyst",
-      "BI Developer",
-      "Community Manager",
-      "Design Researcher",
-    ],
-    isFull: true,
-    maxSize: 5,
-    slotsAvailable: 0,
-    mainContact: "enguyen9@gatech.edu",
-  },
-  {
-    id: 3,
-    teammates: [
-      {
-        id: 11,
-        name: "Isabella Rossi",
-        initials: "IR",
-        timezone: "UTC+1",
-        skills: ["Graphic Design", "Illustrator", "Typography"],
-        interests: ["Art", "Culture"],
-        roles: ["Graphic Designer"],
-        email: "irossi14@gatech.edu",
-      },
-      {
-        id: 12,
-        name: "Raj Patel",
-        initials: "RP",
-        timezone: "UTC+5:30",
-        skills: ["Java", "Spring", "Microservices"],
-        interests: ["FinTech", "Blockchain"],
-        roles: ["Backend Developer"],
-        email: "rpatel8@gatech.edu",
-      },
-      {
-        id: 13,
-        name: "Chen Wei",
-        initials: "CW",
-        timezone: "UTC+8",
-        skills: ["Kubernetes", "Docker", "CI/CD"],
-        interests: ["DevOps", "Cloud"],
-        roles: ["DevOps Engineer"],
-        email: "cwei19@gatech.edu",
-      },
-      {
-        id: 14,
-        name: "Sara López",
-        initials: "SL",
-        timezone: "UTC-3",
-        skills: ["Research", "Data Analysis", "Report Writing"],
-        interests: ["Public Policy", "Social Justice"],
-        roles: ["Research Analyst"],
-        email: "slopez6@gatech.edu",
-      },
-      {
-        id: 15,
-        name: "Max Müller",
-        initials: "MM",
-        timezone: "UTC+2",
-        skills: ["C++", "Game Development", "3D Modeling"],
-        interests: ["Gaming", "VR"],
-        roles: ["Game Developer"],
-        email: "mmuller11@gatech.edu",
-      },
-    ],
-    timezones: ["UTC+1", "UTC+5:30", "UTC+8", "UTC-3", "UTC+2"],
-    skills: [
-      "Graphic Design",
-      "Illustrator",
-      "Typography",
-      "Java",
-      "Spring",
-      "Microservices",
-      "Kubernetes",
-      "Docker",
-      "CI/CD",
-      "Research",
-      "Data Analysis",
-      "Report Writing",
-      "C++",
-      "Game Development",
-      "3D Modeling",
-    ],
-    interests: [
-      "Art",
-      "Culture",
-      "FinTech",
-      "Blockchain",
-      "DevOps",
-      "Cloud",
-      "Public Policy",
-      "Social Justice",
-      "Gaming",
-      "VR",
-    ],
-    roles: [
-      "Graphic Designer",
-      "Backend Developer",
-      "DevOps Engineer",
-      "Research Analyst",
-      "Game Developer",
-    ],
-    isFull: true,
-    maxSize: 5,
-    slotsAvailable: 0,
-    mainContact: "irossi14@gatech.edu",
-  },
-
-  // 3 Open Groups
-  {
-    id: 4,
-    teammates: [
-      {
-        id: 16,
-        name: "Nina Kim",
-        initials: "NK",
-        timezone: "UTC+9",
-        skills: ["Swift", "iOS Development", "UI/UX"],
-        interests: ["Mobile Apps"],
-        roles: ["iOS Developer"],
-        email: "nkim4@gatech.edu",
-      },
-    ],
-    timezones: ["UTC+9"],
-    skills: ["Swift", "iOS Development", "UI/UX"],
-    interests: ["Mobile Apps"],
-    roles: ["iOS Developer"],
     isFull: false,
-    maxSize: 5,
-    slotsAvailable: 4,
-    mainContact: "nkim4@gatech.edu",
-  },
-  {
-    id: 5,
-    teammates: [
-      {
-        id: 17,
-        name: "Lars Johansson",
-        initials: "LJ",
-        timezone: "UTC+1",
-        skills: ["Go", "Distributed Systems", "Performance Tuning"],
-        interests: ["IoT"],
-        roles: ["Systems Engineer"],
-        email: "ljohansson2@gatech.edu",
-      },
-      {
-        id: 18,
-        name: "Amelie Dubois",
-        initials: "AD",
-        timezone: "UTC+2",
-        skills: ["Photography", "Video Editing", "Storytelling"],
-        interests: ["Documentaries", "Travel"],
-        roles: ["Media Producer"],
-        email: "adubois15@gatech.edu",
-      },
-    ],
-    timezones: ["UTC+1", "UTC+2"],
-    skills: [
-      "Go",
-      "Distributed Systems",
-      "Performance Tuning",
-      "Photography",
-      "Video Editing",
-      "Storytelling",
-    ],
-    interests: ["IoT", "Documentaries", "Travel"],
-    roles: ["Systems Engineer", "Media Producer"],
-    isFull: false,
-    maxSize: 5,
-    slotsAvailable: 3,
-    mainContact: "ljohansson2@gatech.edu",
-  },
-  {
-    id: 6,
-    teammates: [
-      {
-        id: 19,
-        name: "Carlos Silva",
-        initials: "CS",
-        timezone: "UTC-3",
-        skills: ["UX Research", "Persona Development"],
-        interests: ["User Experience"],
-        roles: ["UX Researcher"],
-        email: "csilva18@gatech.edu",
-      },
-      {
-        id: 20,
-        name: "Ayodele Okafor",
-        initials: "AO",
-        timezone: "UTC+1",
-        skills: ["Ethnography", "Field Studies"],
-        interests: ["Cultural Studies"],
-        roles: ["Anthropologist"],
-        email: "aokafor1@gatech.edu",
-      },
-      {
-        id: 21,
-        name: "Yuki Tanaka",
-        initials: "YT",
-        timezone: "UTC+9",
-        skills: ["Python", "Flask", "REST APIs"],
-        interests: ["Startups"],
-        roles: ["Full-Stack Developer"],
-        email: "ytanaka20@gatech.edu",
-      },
-    ],
-    timezones: ["UTC-3", "UTC+1", "UTC+9"],
-    skills: [
-      "UX Research",
-      "Persona Development",
-      "Ethnography",
-      "Field Studies",
-      "Python",
-      "Flask",
-      "REST APIs",
-    ],
-    interests: ["User Experience", "Cultural Studies", "Startups"],
-    roles: ["UX Researcher", "Anthropologist", "Full-Stack Developer"],
-    isFull: false,
-    maxSize: 5,
-    slotsAvailable: 2,
-    mainContact: "csilva18@gatech.edu",
+    maxSize: 3,
+    slotsAvailable: 1,
+    mainContact: "drivera17@gatech.edu",
   },
 ];
 
@@ -709,36 +432,178 @@ let currentProfile = null;
 let nextTeammateId = teammates.length + 1;
 
 // Navigation
-function navigateToProfile(id) {
+function navigateToProfile(id, source = 'main') {
   currentProfile = teammates.find((t) => t.id === id);
-  showProfile(id);
+  showProfile(id, source);
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("profile-view").classList.remove("hidden");
-  document.getElementById("groups-view").classList.remove("hidden");
+  document.getElementById("groups-view").classList.add("hidden");
 }
 
 function navigateToMain() {
+  // If user doesn't have a profile and tries to go to main, redirect back to profile creation
+  if (!hasUserProfile()) {
+    alert("Please create your profile first to access the teammate finder features.");
+    return;
+  }
+  
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("main-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   clearFormErrors();
+  
+  // Scroll to the top of the page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function navigateToCreateProfile() {
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   initializeMultiSelects();
+  
+  // Reset the header text for creating mode
+  const headerTitle = document.querySelector('#create-profile-view .header-text h1');
+  if (headerTitle) {
+    headerTitle.textContent = "Create Your Profile";
+  }
+  
+  // Reset the form button text in case it was changed to "Update Profile"
+  const submitButton = document.querySelector('#create-profile-form button[type="submit"]');
+  if (submitButton) {
+    submitButton.textContent = "Create Profile";
+  }
+  
+  // Hide cancel button during initial profile setup
+  const cancelBtn = document.getElementById("cancel-profile-btn");
+  if (cancelBtn) {
+    cancelBtn.style.display = hasUserProfile() ? "inline-block" : "none";
+  }
 }
 
 function navigateToGroups() {
+  // Check if coming from connections view
+  const connectionsView = document.getElementById("connections-view");
+  const fromConnections = connectionsView && !connectionsView.classList.contains("hidden");
+  
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("groups-view").classList.remove("hidden");
+  
+  // Store context for back navigation
+  if (fromConnections) {
+    document.getElementById("groups-view").dataset.source = 'connections';
+  } else {
+    document.getElementById("groups-view").dataset.source = 'main';
+  }
+}
+
+// View user's own profile
+function viewUserProfile() {
+  const userProfile = getUserProfile();
+  if (!userProfile) return;
+
+  // Hide all other views
+  document.getElementById("main-view").classList.add("hidden");
+  document.getElementById("profile-view").classList.add("hidden");
+  document.getElementById("create-profile-view").classList.add("hidden");
+  document.getElementById("connections-view").classList.add("hidden");
+  document.getElementById("groups-view").classList.add("hidden");
+  document.getElementById("user-profile-view").classList.remove("hidden");
+
+  // Populate the profile display
+  document.getElementById("user-profile-name").textContent = userProfile.name;
+  document.getElementById("user-profile-timezone").textContent = userProfile.timezone;
+  
+  // Display about me section (only if it exists and is not empty)
+  const aboutSection = document.getElementById("user-about-section");
+  const aboutElement = document.getElementById("user-profile-about");
+  if (userProfile.about && userProfile.about.trim()) {
+    aboutElement.textContent = userProfile.about;
+    aboutSection.style.display = "block";
+  } else {
+    aboutSection.style.display = "none";
+  }
+  
+  // Display skills
+  document.getElementById("user-profile-skills").innerHTML = userProfile.skills
+    .map(skill => `<span class="tag">${skill}</span>`)
+    .join("");
+    
+  // Display interests
+  document.getElementById("user-profile-interests").innerHTML = userProfile.interests
+    .map(interest => `<span class="tag">${interest}</span>`)
+    .join("");
+    
+  // Display roles
+  document.getElementById("user-profile-roles").innerHTML = userProfile.roles
+    .map(role => `<span class="tag">${role}</span>`)
+    .join("");
+}
+
+// Edit user profile (redirect to create profile with existing data)
+function editUserProfile() {
+  const userProfile = getUserProfile();
+  if (!userProfile) return;
+
+  // Navigate to create profile view
+  navigateToCreateProfile();
+  
+  // Update header text for editing mode
+  const headerTitle = document.querySelector('#create-profile-view .header-text h1');
+  if (headerTitle) {
+    headerTitle.textContent = "Update Your Profile";
+  }
+  
+  // Use setTimeout to ensure DOM is fully updated after navigation
+  setTimeout(() => {
+    // Pre-populate the form with existing data
+    document.getElementById("profile-name").value = userProfile.name;
+    document.getElementById("profile-timezone").value = userProfile.timezone;
+    document.getElementById("profile-about-textarea").value = userProfile.about || '';
+    
+    // Pre-select skills
+    const skillsContainer = document.getElementById("skills-select");
+    skillsContainer.querySelectorAll(".multi-select-option").forEach(option => {
+      if (userProfile.skills.includes(option.dataset.value)) {
+        option.classList.add("selected");
+      }
+    });
+    
+    // Pre-select interests
+    const interestsContainer = document.getElementById("interests-select");
+    interestsContainer.querySelectorAll(".multi-select-option").forEach(option => {
+      if (userProfile.interests.includes(option.dataset.value)) {
+        option.classList.add("selected");
+      }
+    });
+    
+    // Pre-select roles
+    const rolesContainer = document.getElementById("roles-select");
+    rolesContainer.querySelectorAll(".multi-select-option").forEach(option => {
+      if (userProfile.roles.includes(option.dataset.value)) {
+        option.classList.add("selected");
+      }
+    });
+  }, 10); // Small delay to ensure DOM is updated
+
+  // Change the form button text to indicate editing
+  const submitButton = document.querySelector('#create-profile-form button[type="submit"]');
+  if (submitButton) {
+    submitButton.textContent = "Update Profile";
+  }
 }
 
 // Multi-select functionality
@@ -867,10 +732,12 @@ function createProfile(formData) {
     skills: formData.skills,
     interests: formData.interests,
     roles: formData.roles,
+    about: formData.about || '', // Optional field
+    email: `${formData.name.toLowerCase().replace(/\s+/g, '')}@gatech.edu`, // Generate email
   };
 
   teammates.push(newProfile);
-  filteredTeammates = [...teammates];
+  updateFilteredTeammates(); // Use the new function instead of directly copying teammates
   updateTeammateCount();
   return newProfile;
 }
@@ -891,7 +758,7 @@ function resetForm() {
 function updateTeammateCount() {
   const countElement = document.getElementById("teammate-count");
   if (countElement) {
-    countElement.textContent = `Showing ${filteredTeammates.length} teammate${
+    countElement.textContent = `Showing ${filteredTeammates.length} possible teammate${
       filteredTeammates.length !== 1 ? "s" : ""
     }`;
   }
@@ -905,22 +772,54 @@ function handleCreateProfile(event) {
     return;
   }
 
+  // Check if this is an update (user already has a profile) or new creation
+  const isUpdating = hasUserProfile();
+
   const formData = {
     name: document.getElementById("profile-name").value.trim(),
     timezone: document.getElementById("profile-timezone").value,
     skills: getSelectedOptions("skills-select"),
     interests: getSelectedOptions("interests-select"),
     roles: getSelectedOptions("roles-select"),
+    about: document.getElementById("profile-about-textarea").value.trim(),
   };
 
   const newProfile = createProfile(formData);
+  
+  // Save profile to localStorage
+  saveUserProfile(newProfile);
+  
   resetForm();
+  
+  // Calculate compatibility and render teammates
+  addCompatibilityToTeammates();
   renderTeammates();
 
-  // Show success message and navigate back
-  alert(
-    `Profile created successfully! Welcome to the team, ${newProfile.name}!`
-  );
+  // Hide the "Create Your Profile" button since profile now exists
+  const createProfileButton = document.querySelector('a[onclick="navigateToCreateProfile()"]');
+  if (createProfileButton) {
+    createProfileButton.style.display = 'none';
+  }
+
+  // Show Profile button since profile now exists
+  const profileButton = document.getElementById("view-profile");
+  if (profileButton) {
+    profileButton.style.display = 'inline-block';
+  }
+
+  // Show Connections button since profile now exists
+  const connectionsButton = document.getElementById("view-connections");
+  if (connectionsButton) {
+    connectionsButton.style.display = 'inline-block';
+  }
+
+  // Show appropriate success message based on whether it's create or update
+  if (isUpdating) {
+    alert(`Profile updated successfully!`);
+  } else {
+    alert(`Profile created successfully! Welcome to the team, ${newProfile.name}!`);
+  }
+  
   navigateToMain();
 }
 
@@ -935,13 +834,68 @@ function renderTeammates() {
     return;
   }
 
+  // Load connections to check status
+  loadConnections();
+
   container.innerHTML = filteredTeammates
     .map(
-      (teammate) => `
-        <div class="teammate-row" onclick="navigateToProfile(${teammate.id})">
+      (teammate) => {
+        const compatibilityClass = 
+          teammate.compatibility >= 80 ? 'high' : 
+          teammate.compatibility >= 60 ? 'medium' : 'low';
+        
+        // Check if teammate is in a complete group
+        const teammateGroup = groups.find(group => 
+          group.teammates.some(tm => tm.id === teammate.id)
+        );
+        const isInCompleteGroup = teammateGroup && teammateGroup.isFull;
+        
+        // Check connection status
+        const isConnected = connections.accepted.some(c => c.id === teammate.id);
+        const requestSent = connections.sent.some(c => c.id === teammate.id);
+        const requestPending = connections.pending.some(c => c.id === teammate.id);
+        
+        let connectionStatusBadge = '';
+        let rowClass = 'teammate-row';
+        let clickHandler = `onclick="navigateToProfile(${teammate.id})"`;
+        
+        if (isInCompleteGroup) {
+          connectionStatusBadge = '<div class="connection-badge matched">Team Complete</div>';
+          rowClass += ' team-complete';
+          clickHandler = ''; // Remove click handler for complete teams
+        } else if (isConnected) {
+          if (teammateGroup) {
+            // Check if connected to all group members
+            const otherGroupMembers = teammateGroup.teammates.filter(tm => tm.id !== teammate.id);
+            const connectedToAllGroupMembers = otherGroupMembers.every(member => 
+              connections.accepted.some(c => c.id === member.id)
+            );
+            
+            if (connectedToAllGroupMembers && otherGroupMembers.length > 0) {
+              connectionStatusBadge = '<div class="connection-badge connected group-connected">Connected to Group</div>';
+            } else {
+              connectionStatusBadge = '<div class="connection-badge connected">Connected</div>';
+            }
+          } else {
+            connectionStatusBadge = '<div class="connection-badge connected">Connected</div>';
+          }
+        } else if (requestSent) {
+          connectionStatusBadge = '<div class="connection-badge sent">Request Sent</div>';
+        } else if (requestPending) {
+          connectionStatusBadge = '<div class="connection-badge pending">Pending Request</div>';
+        }
+        
+        return `
+        <div class="${rowClass}" data-teammate-id="${teammate.id}" ${clickHandler}>
             <div class="teammate-name">
                 <div class="avatar">${teammate.initials}</div>
-                <span>${teammate.name}</span>
+                <div class="name-and-status">
+                    <span>${teammate.name}</span>
+                    ${connectionStatusBadge}
+                </div>
+            </div>
+            <div class="compatibility-score ${compatibilityClass}">
+                ${teammate.compatibility}%
             </div>
             <div>${teammate.timezone}</div>
             <div>
@@ -962,8 +916,8 @@ function renderTeammates() {
                   .map((role) => `<span class="tag role">${role}</span>`)
                   .join("")}
             </div>
-        </div>
-    `
+        </div>`;
+      }
     )
     .join("");
 
@@ -976,8 +930,14 @@ function applyFilters() {
   const skillsFilter = document.getElementById("skills").value;
   const interestsFilter = document.getElementById("interests").value;
   const rolesFilter = document.getElementById("roles").value;
+  const userProfile = getUserProfile();
 
   filteredTeammates = teammates.filter((teammate) => {
+    // Exclude user's own profile
+    if (userProfile && teammate.id === userProfile.id) {
+      return false;
+    }
+    
     const matchesTimezone =
       !timezoneFilter || teammate.timezone === timezoneFilter;
     const matchesSkills =
@@ -989,19 +949,65 @@ function applyFilters() {
     return matchesTimezone && matchesSkills && matchesInterests && matchesRoles;
   });
 
+  // Sort filtered teammates by availability and compatibility
+  filteredTeammates.sort((a, b) => {
+    // Helper function to check if teammate is in a complete group
+    const isInCompleteGroup = (teammate) => {
+      const teammateGroup = groups.find(group => 
+        group.teammates.some(tm => tm.id === teammate.id)
+      );
+      return teammateGroup && teammateGroup.isFull;
+    };
+    
+    const aInCompleteGroup = isInCompleteGroup(a);
+    const bInCompleteGroup = isInCompleteGroup(b);
+    
+    // If one is in a complete group and the other isn't, prioritize the available one
+    if (aInCompleteGroup !== bInCompleteGroup) {
+      return aInCompleteGroup ? 1 : -1; // Move complete group members to bottom
+    }
+    
+    // If both have same availability status, sort by compatibility (highest first)
+    return b.compatibility - a.compatibility;
+  });
+
   renderTeammates();
 }
 
 // Profile
-function showProfile(id) {
+function showProfile(id, source = 'main') {
   const teammate = teammates.find((t) => t.id === id);
   if (!teammate) return;
+
+  // Store current profile ID and source for connections
+  const profileView = document.getElementById('profile-view');
+  profileView.dataset.currentProfileId = id;
+  profileView.dataset.source = source;
+
+  // Update back button based on source
+  const backButton = document.querySelector('#profile-view .form-button');
+  if (source === 'connections') {
+    backButton.onclick = () => navigateToConnections();
+  } else {
+    backButton.onclick = () => navigateToMain();
+  }
 
   document.getElementById("profile-avatar").textContent = teammate.initials;
   document.getElementById("profile-name").textContent = teammate.name;
   document.getElementById(
     "profile-timezone"
   ).innerHTML = `📍 ${teammate.timezone}`;
+
+  // Display about me section (only if it exists and is not empty)
+  const aboutSection = document.getElementById("profile-about-section");
+  const aboutElement = document.getElementById("profile-about");
+  
+  if (teammate.about && teammate.about.trim()) {
+    aboutElement.textContent = teammate.about;
+    aboutSection.style.display = "block";
+  } else {
+    aboutSection.style.display = "none";
+  }
 
   document.getElementById("profile-skills").innerHTML = teammate.skills
     .map((skill) => `<span class="tag">${skill}</span>`)
@@ -1015,35 +1021,91 @@ function showProfile(id) {
     .map((interest) => `<span class="tag interest">${interest}</span>`)
     .join("");
 
-  // Check if already connected
+  // Load connections and check connection status
+  loadConnections();
   const connectButton = document.querySelector(".connect-button");
-  const isConnected = connectedTeammates.includes(id);
-
-  connectButton.disabled = isConnected;
-
-  if (isConnected) {
-    connectButton.innerHTML = `✅ Connected with ${teammate.name}`;
-  } else {
-    connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
-  }
+  const successMessage = document.getElementById("success-message");
+  
+  const isConnected = connections.accepted.some(c => c.id === id);
+  const requestSent = connections.sent.some(c => c.id === id);
+  const requestPending = connections.pending.some(c => c.id === id);
+  
+  // Check if teammate is in a complete group
+  const teammateGroup = groups.find(group => 
+    group.teammates.some(tm => tm.id === id)
+  );
+  const isInCompleteGroup = teammateGroup && teammateGroup.isFull;
+  
+  // Check if current user is already in a group
+  const userInGroup = isUserInGroup();
 
   // Reset success message
-  document.getElementById("success-message").classList.remove("show");
+  successMessage.style.display = 'none';
+
+  if (isInCompleteGroup) {
+    connectButton.style.display = 'none';
+    successMessage.style.display = 'block';
+    successMessage.innerHTML = `<strong>Team Complete</strong><br>${teammate.name} is already part of a complete team and is not available for new connections.`;
+  } else if (userInGroup) {
+    connectButton.style.display = 'none';
+    successMessage.style.display = 'block';
+    successMessage.innerHTML = `<strong>Already in Team</strong><br>You are already part of a team and cannot send new connection requests.`;
+  } else if (isConnected) {
+    connectButton.style.display = 'none';
+    successMessage.style.display = 'block';
+    successMessage.innerHTML = `<strong>You're connected!</strong><br>You are already connected with ${teammate.name}.`;
+  } else if (requestSent || requestPending) {
+    connectButton.style.display = 'none';
+    successMessage.style.display = 'block';
+    successMessage.innerHTML = `<strong>Request pending</strong><br>Your connection request with ${teammate.name} is pending.`;
+  } else {
+    connectButton.style.display = 'block';
+    connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
+  }
+  
+  // Initialize message input character counter
+  initializeMessageInput();
 }
 
-// Connection
-function sendConnectionRequest() {
-  if (!currentProfile || connectedTeammates.includes(currentProfile.id)) return;
-
-  connectedTeammates.push(currentProfile.id);
-
-  const connectButton = document.querySelector(".connect-button");
-  connectButton.disabled = true;
-  connectButton.innerHTML = `✅ Connected with ${currentProfile.name}`;
-
-  document.getElementById("success-name").textContent = currentProfile.name;
-  document.getElementById("success-message").classList.add("show");
+// Initialize message input functionality
+function initializeMessageInput() {
+  const messageInput = document.getElementById('connection-message');
+  const charCount = document.getElementById('message-char-count');
+  
+  if (!messageInput || !charCount) return;
+  
+  // Clear any existing message
+  messageInput.value = '';
+  
+  // Update character count
+  function updateCharCount() {
+    const length = messageInput.value.length;
+    charCount.textContent = length;
+    
+    // Add warning class if approaching limit
+    const charCountElement = charCount.parentElement;
+    if (length > 450) {
+      charCountElement.classList.add('warning');
+    } else {
+      charCountElement.classList.remove('warning');
+    }
+  }
+  
+  // Remove existing listeners to avoid duplicates
+  messageInput.removeEventListener('input', updateCharCount);
+  messageInput.removeEventListener('paste', updateCharCount);
+  
+  // Add event listeners
+  messageInput.addEventListener('input', updateCharCount);
+  messageInput.addEventListener('paste', () => {
+    setTimeout(updateCharCount, 10); // Delay to ensure paste content is processed
+  });
+  
+  // Initialize count
+  updateCharCount();
 }
+
+// Note: sendConnectionRequest function is now defined in the connections section above
 
 // Event listeners
 function initializeEventListeners() {
@@ -1066,10 +1128,158 @@ function initializeEventListeners() {
     .addEventListener("change", () => clearFieldError("timezone"));
 }
 
+// Profile state management
+let userProfile = null;
+
+function hasUserProfile() {
+  return userProfile !== null;
+}
+
+function getUserProfile() {
+  return userProfile;
+}
+
+function saveUserProfile(profile) {
+  userProfile = profile;
+}
+
+// Calculate compatibility percentage between user and teammate
+function calculateCompatibility(userProfile, teammate) {
+  if (!userProfile) return Math.floor(Math.random() * 40) + 30; // Random 30-70% if no profile
+  
+  let matchPoints = 0;
+  let totalPoints = 0;
+  
+  // Timezone compatibility (20% weight)
+  totalPoints += 20;
+  if (userProfile.timezone === teammate.timezone) {
+    matchPoints += 20;
+  } else {
+    // Partial points for nearby timezones
+    const userOffset = parseInt(userProfile.timezone.replace('UTC', ''));
+    const teammateOffset = parseInt(teammate.timezone.replace('UTC', ''));
+    const timeDiff = Math.abs(userOffset - teammateOffset);
+    if (timeDiff <= 3) matchPoints += 10;
+    else if (timeDiff <= 6) matchPoints += 5;
+  }
+  
+  // Skills complement (30% weight) - rewards skills the user doesn't have
+  totalPoints += 30;
+  const skillComplement = teammate.skills.filter(skill => !userProfile.skills.includes(skill)).length;
+  const skillMatch = Math.min(skillComplement / Math.max(teammate.skills.length, 1), 1);
+  matchPoints += skillMatch * 30;
+  
+  // Interests overlap (25% weight) - still rewards shared interests for project alignment
+  totalPoints += 25;
+  const interestOverlap = userProfile.interests.filter(interest => teammate.interests.includes(interest)).length;
+  const interestMatch = Math.min(interestOverlap / Math.max(userProfile.interests.length, teammate.interests.length), 1);
+  matchPoints += interestMatch * 25;
+  
+  // Role complement (25% weight) - rewards roles the user doesn't have
+  totalPoints += 25;
+  const roleComplement = teammate.roles.filter(role => !userProfile.roles.includes(role)).length;
+  const roleMatch = Math.min(roleComplement / Math.max(teammate.roles.length, 1), 1);
+  matchPoints += roleMatch * 25;
+  
+  return Math.round((matchPoints / totalPoints) * 100);
+}
+
+// Add compatibility to teammates and sort by it
+function addCompatibilityToTeammates() {
+  const userProfile = getUserProfile();
+  
+  teammates.forEach(teammate => {
+    teammate.compatibility = calculateCompatibility(userProfile, teammate);
+  });
+  
+  // Sort by availability and compatibility
+  teammates.sort((a, b) => {
+    // Helper function to check if teammate is in a complete group
+    const isInCompleteGroup = (teammate) => {
+      const teammateGroup = groups.find(group => 
+        group.teammates.some(tm => tm.id === teammate.id)
+      );
+      return teammateGroup && teammateGroup.isFull;
+    };
+    
+    const aInCompleteGroup = isInCompleteGroup(a);
+    const bInCompleteGroup = isInCompleteGroup(b);
+    
+    // If one is in a complete group and the other isn't, prioritize the available one
+    if (aInCompleteGroup !== bInCompleteGroup) {
+      return aInCompleteGroup ? 1 : -1; // Move complete group members to bottom
+    }
+    
+    // If both have same availability status, sort by compatibility (highest first)
+    return b.compatibility - a.compatibility;
+  });
+  
+  // Update filtered teammates to exclude user's own profile
+  updateFilteredTeammates();
+}
+
+// Update filtered teammates excluding user's own profile
+function updateFilteredTeammates() {
+  const userProfile = getUserProfile();
+  if (userProfile) {
+    filteredTeammates = teammates.filter(teammate => teammate.id !== userProfile.id);
+  } else {
+    filteredTeammates = [...teammates];
+  }
+}
+
+// Helper function to reset profile (for testing purposes)
+function resetProfile() {
+  userProfile = null;
+  location.reload();
+}
+
+// Make resetProfile available globally for testing
+window.resetProfile = resetProfile;
+
 // Initialize
 document.addEventListener("DOMContentLoaded", function () {
   initializeEventListeners();
-  renderTeammates();
+  
+  // Check if user has a profile
+  if (!hasUserProfile()) {
+    // Show profile creation view first
+    navigateToCreateProfile();
+    
+    // Hide Profile button since no profile exists yet
+    const profileButton = document.getElementById("view-profile");
+    if (profileButton) {
+      profileButton.style.display = 'none';
+    }
+    
+    // Hide Connections button since no profile exists yet
+    const connectionsButton = document.getElementById("view-connections");
+    if (connectionsButton) {
+      connectionsButton.style.display = 'none';
+    }
+  } else {
+    // Add compatibility scores and show main view
+    addCompatibilityToTeammates();
+    renderTeammates();
+    
+    // Hide the "Create Your Profile" button since profile exists
+    const createProfileButton = document.querySelector('a[onclick="navigateToCreateProfile()"]');
+    if (createProfileButton) {
+      createProfileButton.style.display = 'none';
+    }
+    
+    // Show Profile button since profile exists
+    const profileButton = document.getElementById("view-profile");
+    if (profileButton) {
+      profileButton.style.display = 'inline-block';
+    }
+    
+    // Show Connections button since profile exists
+    const connectionsButton = document.getElementById("view-connections");
+    if (connectionsButton) {
+      connectionsButton.style.display = 'inline-block';
+    }
+  }
 });
 
 function capitalize(str) {
@@ -1083,8 +1293,14 @@ function navigateToGroups() {
 }
 
 /* card version of “Show All Groups” */
-function showAllGroups() {
+function showAllGroups(source) {
   navigateToGroups(); // show the view first
+
+  // If no source provided, check the stored context
+  if (!source) {
+    const groupsView = document.getElementById("groups-view");
+    source = groupsView.dataset.source || 'main';
+  }
 
   const panel = document.getElementById("groups-view");
   panel.innerHTML = ""; // clear any previous run
@@ -1093,10 +1309,26 @@ function showAllGroups() {
   const grid = document.createElement("div");
   grid.className = "groups-grid";
 
+  // Add header with back button based on source
+  const header = document.createElement("div");
+  header.className = "groups-header";
+  const backButton = source === 'connections' ? 
+    '<button class="form-button" onclick="navigateToConnections()">Back</button>' :
+    '<button class="form-button" onclick="navigateToMain()">Back</button>';
+  
+  header.innerHTML = `
+    ${backButton}
+    <h1>All Groups</h1>
+  `;
+  panel.appendChild(header);
+
   groups.forEach((group) => {
     const card = document.createElement("div");
     card.className = `group-card ${group.isFull ? "full" : "open"}`;
     card.id = `group-${group.id}`;
+
+    // Check if user is in this group
+    const userProfile = getUserProfile();
 
     card.innerHTML = `
       <div class="card-header">
@@ -1105,21 +1337,23 @@ function showAllGroups() {
           ${group.isFull ? "Full" : `${group.slotsAvailable}&nbsp;open`}
         </span>
       </div>
+      ${userProfile && group.teammates.some(tm => tm.id === userProfile.id) ? '<div class="user-in-group-badge">You are in this group</div>' : ''}
 
       <p><strong>Main&nbsp;Contact:</strong> ${group.mainContact}</p>
       <p><strong>Timezones:</strong> ${group.timezones.join(", ")}</p>
-      <p><strong>Skills:</strong> ${group.skills.join(", ")}</p>
+      <p><strong>Skills:</strong> ${group.skills.slice(0, 8).join(", ")}${group.skills.length > 8 ? '...' : ''}</p>
       <p><strong>Interests:</strong> ${group.interests.join(", ")}</p>
       <p><strong>Roles:</strong> ${group.roles.join(", ")}</p>
 
-      <p><strong>Teammates:</strong></p>
+      <p><strong>Teammates (${group.teammates.length}/${group.maxSize}):</strong></p>
       <ul class="teammate-list">
         ${group.teammates
           .map(
             (tm) => `
-              <li>
+              <li class="${userProfile && tm.id === userProfile.id ? 'current-user' : ''}">
                 ${tm.name} (${tm.initials}) – ${tm.email}
                 <br><small>Roles: ${tm.roles.join(", ")}</small>
+                ${userProfile && tm.id === userProfile.id ? ' <span class="you-indicator">(You)</span>' : ''}
               </li>`
           )
           .join("")}
@@ -1801,5 +2035,77 @@ function renderConnectionCard(connection, type) {
         <div class="connection-date">${dateLabel}: ${formatDate(connection[dateField])}</div>
       </div>
     </div>
-`;
+    ${teamMessage}
+    ${customMessage}
+    ${actions}
+  `;
+  
+  return div;
+}
+
+// Open email client
+function openEmailClient(email) {
+  window.location.href = `mailto:${email}`;
+}
+
+// Render all connections
+function renderConnections() {
+  // Render pending requests
+  const pendingContainer = document.getElementById('pending-requests-container');
+  const noPending = document.getElementById('no-pending-requests');
+  
+  pendingContainer.innerHTML = '';
+  
+  if (connections.pending.length === 0) {
+    noPending.style.display = 'block';
+  } else {
+    noPending.style.display = 'none';
+    connections.pending.forEach(request => {
+      pendingContainer.appendChild(renderConnectionCard(request, 'pending'));
+    });
+  }
+  
+  // Render connected teammates
+  const connectedContainer = document.getElementById('connected-teammates-container');
+  const noConnections = document.getElementById('no-connections');
+  
+  connectedContainer.innerHTML = '';
+  
+  if (connections.accepted.length === 0) {
+    noConnections.style.display = 'block';
+  } else {
+    noConnections.style.display = 'none';
+    
+    // Check if user is connected to a complete group
+    const userProfile = getUserProfile();
+    const userGroup = userProfile ? groups.find(group => 
+      group.teammates.some(tm => tm.id === userProfile.id)
+    ) : null;
+    
+    if (userGroup && userGroup.isFull) {
+      // Render as a group with group-level actions
+      const groupCard = renderGroupConnectionCard(userGroup);
+      connectedContainer.appendChild(groupCard);
+    } else {
+      // Render individual connections
+      connections.accepted.forEach(connection => {
+        connectedContainer.appendChild(renderConnectionCard(connection, 'accepted'));
+      });
+    }
+  }
+  
+  // Render sent requests
+  const sentContainer = document.getElementById('sent-requests-container');
+  const noSent = document.getElementById('no-sent-requests');
+  
+  sentContainer.innerHTML = '';
+  
+  if (connections.sent.length === 0) {
+    noSent.style.display = 'block';
+  } else {
+    noSent.style.display = 'none';
+    connections.sent.forEach(request => {
+      sentContainer.appendChild(renderConnectionCard(request, 'sent'));
+    });
+  }
 }
