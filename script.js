@@ -1374,10 +1374,14 @@ let connections = {
   accepted: [] // Established connections
 };
 
+// Track if connections have been initialized
+let connectionsInitialized = false;
+
 // Initialize connections data (non-persistent for demo)
 function loadConnections() {
-  // Only initialize if connections is empty (first load)
-  if (connections.pending.length === 0 && connections.sent.length === 0 && connections.accepted.length === 0) {
+  // Only initialize once on first load
+  if (!connectionsInitialized) {
+    connectionsInitialized = true;
     // Initialize with team formation context - user has pending invitation from Group 2
     connections = {
       pending: [
