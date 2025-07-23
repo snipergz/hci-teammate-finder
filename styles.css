@@ -260,24 +260,19 @@ body {
   background: #f8f9fa;
   border-radius: 12px;
   margin-bottom: 20px;
-}
-
-.back-button {
   display: flex;
-  align-items: center;
-  color: #666;
-  text-decoration: none;
-  margin-bottom: 20px;
-  font-size: 14px;
-}
-
-.back-button:hover {
-  color: #333;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .profile-info {
   display: flex;
   align-items: center;
+}
+
+.profile-header .form-button {
+  margin-bottom: 0;
+  align-self: flex-start;
 }
 
 .profile-avatar {
@@ -1103,16 +1098,8 @@ body {
   margin: 0;
 }
 
-.groups-header .back-button {
+.groups-header .form-button {
   margin-bottom: 0;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.groups-header .back-button:hover {
-  background-color: #f1f5f9;
 }
 
 /* Connections View Styles */

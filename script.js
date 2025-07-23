@@ -985,12 +985,10 @@ function showProfile(id, source = 'main') {
   profileView.dataset.source = source;
 
   // Update back button based on source
-  const backButton = document.querySelector('.back-button');
+  const backButton = document.querySelector('#profile-view .form-button');
   if (source === 'connections') {
-    backButton.textContent = '← Back to connections';
     backButton.onclick = () => navigateToConnections();
   } else {
-    backButton.textContent = '← Back to teammates';
     backButton.onclick = () => navigateToMain();
   }
 
@@ -1315,8 +1313,8 @@ function showAllGroups(source) {
   const header = document.createElement("div");
   header.className = "groups-header";
   const backButton = source === 'connections' ? 
-    '<a href="#" class="back-button" onclick="navigateToConnections()">← Back to connections</a>' :
-    '<a href="#" class="back-button" onclick="navigateToMain()">← Back to main</a>';
+    '<button class="form-button" onclick="navigateToConnections()">Back</button>' :
+    '<button class="form-button" onclick="navigateToMain()">Back</button>';
   
   header.innerHTML = `
     ${backButton}
