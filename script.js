@@ -1827,6 +1827,11 @@ function declineConnection(requestId) {
 
 // Cancel sent connection request
 function cancelSentRequest(requestId) {
+  const request = connections.sent.find(r => r.id === requestId);
+  if (!request) return;
+  
+  if (!confirm(`Are you sure you want to cancel your connection request to ${request.name}?`)) return;
+  
   const requestIndex = connections.sent.findIndex(r => r.id === requestId);
   if (requestIndex === -1) return;
   
@@ -1958,13 +1963,13 @@ function renderGroupConnectionCard(group) {
       </div>
     </div>
     <div class="connection-actions group-actions">
-      <button class="form-button primary" onclick="openEmailClient('${groupEmails}')">
+      <button class="form-button primary" onclick="openEmailClient('${groupEmails}')" aria-label="Send email to your team members">
         📧 Email Team
       </button>
-      <button class="form-button secondary" onclick="showAllGroups('connections')">
+      <button class="form-button secondary" onclick="showAllGroups('connections')" aria-label="View detailed information about your team">
         View Team Details
       </button>
-      <button class="form-button cancel-btn" onclick="removeGroupConnections(${group.id})">
+      <button class="form-button cancel-btn" onclick="removeGroupConnections(${group.id})" aria-label="Leave your current team - this action cannot be undone">
         Leave Team
       </button>
     </div>
@@ -2017,7 +2022,7 @@ function renderConnectionCard(connection, type) {
   } else if (type === 'sent') {
     actions = `
       <div class="connection-actions">
-        <button class="form-button cancel-btn" onclick="cancelSentRequest(${connection.id})">
+        <button class="form-button cancel-btn" onclick="cancelSentRequest(${connection.id})" aria-label="Cancel your connection request to ${connection.name}">
           Cancel Request
         </button>
       </div>

@@ -781,6 +781,22 @@ body {
   box-shadow: none;
 }
 
+/* Focus styles for accessibility */
+.form-button:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.form-button.primary:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.form-button.secondary:focus {
+  outline: 3px solid #d1d5db;
+  outline-offset: 2px;
+}
+
 /* Update the existing #groups-view style */
 #groups-view {
   margin-top: 20px;
@@ -1391,13 +1407,73 @@ body {
 }
 
 .connection-actions .cancel-btn {
-  background: #64748b;
-  border-color: #64748b;
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+  font-weight: 600;
+  position: relative;
 }
 
 .connection-actions .cancel-btn:hover {
-  background: #475569;
-  border-color: #475569;
+  background: #b91c1c;
+  border-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.25);
+}
+
+.connection-actions .cancel-btn:focus {
+  outline: 3px solid #fca5a5;
+  outline-offset: 2px;
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.connection-actions .cancel-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+}
+
+/* Enhanced accessibility for destructive actions */
+.connection-actions .cancel-btn::before {
+  content: "⚠️ ";
+  margin-right: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connection-actions .cancel-btn:hover {
+    transform: none;
+  }
+  
+  .connection-actions .cancel-btn:active {
+    transform: none;
+  }
+}
+
+/* High contrast mode support for destructive buttons */
+@media (prefers-contrast: high) {
+  .connection-actions .cancel-btn {
+    background: #991b1b;
+    border-color: #991b1b;
+    border-width: 3px;
+  }
+  
+  .connection-actions .cancel-btn:hover,
+  .connection-actions .cancel-btn:focus {
+    background: #7f1d1d;
+    border-color: #7f1d1d;
+  }
+}
+
+/* Improved visual hierarchy for destructive actions */
+.connection-actions .cancel-btn {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  min-height: 44px; /* Touch target size for mobile accessibility */
+}
+
+/* Keyboard navigation improvements */
+.connection-actions .cancel-btn:focus-visible {
+  outline: 3px solid #fecaca;
+  outline-offset: 3px;
 }
 
 .connection-actions .message-btn {
@@ -1458,11 +1534,18 @@ body {
   
   .connection-actions {
     width: 100%;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
   }
   
   .connection-actions .form-button {
     flex: 1;
+    min-width: 100px;
+    max-width: 150px;
+    font-size: 12px;
+    padding: 8px 12px;
+    white-space: nowrap;
   }
 }
 
