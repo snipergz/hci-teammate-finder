@@ -1607,9 +1607,25 @@ function sendConnectionRequest() {
   
   // Update message based on whether a custom message was included
   if (message) {
-    successMessage.innerHTML = `<strong>Connection request sent!</strong><br>Your request to connect with ${teammate.name} has been sent with your personal message.`;
+    successMessage.innerHTML = `
+      <strong>Connection request sent!</strong><br>
+      Your request to connect with ${teammate.name} has been sent with your personal message.
+      <div class="success-actions">
+        <button class="form-button secondary" onclick="navigateToConnections()">
+          🤝 View Connections
+        </button>
+      </div>
+    `;
   } else {
-    successMessage.innerHTML = `<strong>Connection request sent!</strong><br>Your request to connect with ${teammate.name} has been sent.`;
+    successMessage.innerHTML = `
+      <strong>Connection request sent!</strong><br>
+      Your request to connect with ${teammate.name} has been sent.
+      <div class="success-actions">
+        <button class="form-button secondary" onclick="navigateToConnections()">
+          🤝 View Connections
+        </button>
+      </div>
+    `;
   }
   
   // Clear the message input for next use

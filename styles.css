@@ -1558,3 +1558,15 @@ body {
   display: block;
   margin-bottom: 6px;
 }
+
+/* Success message actions */
+.success-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.success-actions .form-button {
+  padding: 8px 16px;
+  font-size: 14px;
+}
