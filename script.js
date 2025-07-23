@@ -1037,6 +1037,9 @@ function showProfile(id, source = 'main') {
     group.teammates.some(tm => tm.id === id)
   );
   const isInCompleteGroup = teammateGroup && teammateGroup.isFull;
+  
+  // Check if current user is already in a group
+  const userInGroup = isUserInGroup();
 
   // Reset success message
   successMessage.style.display = 'none';
@@ -1045,6 +1048,10 @@ function showProfile(id, source = 'main') {
     connectButton.style.display = 'none';
     successMessage.style.display = 'block';
     successMessage.innerHTML = `<strong>Team Complete</strong><br>${teammate.name} is already part of a complete team and is not available for new connections.`;
+  } else if (userInGroup) {
+    connectButton.style.display = 'none';
+    successMessage.style.display = 'block';
+    successMessage.innerHTML = `<strong>Already in Team</strong><br>You are already part of a team and cannot send new connection requests.`;
   } else if (isConnected) {
     connectButton.style.display = 'none';
     successMessage.style.display = 'block';
@@ -1476,11 +1483,27 @@ function updateConnectionBadge(teammateId, status) {
   }
 }
 
+// Check if user is already part of a group
+function isUserInGroup() {
+  const userProfile = getUserProfile();
+  if (!userProfile) return false;
+  
+  return groups.some(group => 
+    group.teammates.some(tm => tm.id === userProfile.id)
+  );
+}
+
 // Send connection request
 function sendConnectionRequest() {
   const currentUser = getUserProfile();
   if (!currentUser) {
     alert('Please create your profile first');
+    return;
+  }
+  
+  // Check if user is already part of a group
+  if (isUserInGroup()) {
+    alert('You are already part of a team and cannot send new connection requests. If you want to connect with new teammates, you would need to leave your current team first.');
     return;
   }
   
