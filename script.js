@@ -427,18 +427,44 @@ const rolesOptions = [
 
 // Timezone mapping for human-friendly display
 const timezoneMap = {
-  "UTC-8": "Pacific Time (Los Angeles, Vancouver)",
-  "UTC-7": "Mountain Time (Denver, Phoenix)",
-  "UTC-6": "Central Time (Chicago, Mexico City)",
-  "UTC-5": "Eastern Time (New York, Toronto)",
-  "UTC+0": "Greenwich Time (London, Dublin)",
-  "UTC+1": "Central European Time (Paris, Berlin)",
-  "UTC+2": "Eastern European Time (Cairo, Helsinki)",
-  "UTC+3": "Moscow Time (Moscow, Istanbul)",
-  "UTC+4": "Gulf Time (Dubai, Baku)",
-  "UTC+5:30": "India Standard Time (Mumbai, Delhi)",
-  "UTC+8": "China Standard Time (Beijing, Singapore)",
-  "UTC+9": "Japan Standard Time (Tokyo, Seoul)"
+  "UTC-12": "Baker Island Time (UTC-12) - Baker Island",
+  "UTC-11": "Samoa Standard Time (UTC-11) - Pago Pago",
+  "UTC-10": "Hawaii-Aleutian Time (UTC-10) - Honolulu, Anchorage",
+  "UTC-9:30": "Marquesas Time (UTC-9:30) - Marquesas Islands",
+  "UTC-9": "Alaska Time (UTC-9) - Anchorage, Juneau",
+  "UTC-8": "Pacific Time (UTC-8) - Los Angeles, Vancouver",
+  "UTC-7": "Mountain Time (UTC-7) - Denver, Phoenix",
+  "UTC-6": "Central Time (UTC-6) - Chicago, Mexico City",
+  "UTC-5": "Eastern Time (UTC-5) - New York, Toronto",
+  "UTC-4": "Atlantic Time (UTC-4) - Halifax, Caracas",
+  "UTC-3:30": "Newfoundland Time (UTC-3:30) - St. John's",
+  "UTC-3": "Argentina Time (UTC-3) - Buenos Aires, São Paulo",
+  "UTC-2": "Fernando de Noronha Time (UTC-2) - Fernando de Noronha",
+  "UTC-1": "Azores Time (UTC-1) - Azores, Cape Verde",
+  "UTC+0": "Greenwich Time (UTC+0) - London, Dublin",
+  "UTC+1": "Central European Time (UTC+1) - Paris, Berlin",
+  "UTC+2": "Eastern European Time (UTC+2) - Cairo, Helsinki",
+  "UTC+3": "Moscow Time (UTC+3) - Moscow, Istanbul",
+  "UTC+3:30": "Iran Time (UTC+3:30) - Tehran",
+  "UTC+4": "Gulf Time (UTC+4) - Dubai, Baku",
+  "UTC+4:30": "Afghanistan Time (UTC+4:30) - Kabul",
+  "UTC+5": "Pakistan Time (UTC+5) - Karachi, Tashkent",
+  "UTC+5:30": "India Standard Time (UTC+5:30) - Mumbai, Delhi",
+  "UTC+5:45": "Nepal Time (UTC+5:45) - Kathmandu",
+  "UTC+6": "Bangladesh Time (UTC+6) - Dhaka, Almaty",
+  "UTC+6:30": "Myanmar Time (UTC+6:30) - Yangon, Cocos Islands",
+  "UTC+7": "Indochina Time (UTC+7) - Bangkok, Jakarta",
+  "UTC+8": "China Standard Time (UTC+8) - Beijing, Singapore",
+  "UTC+8:45": "Australian Central Western Time (UTC+8:45) - Eucla",
+  "UTC+9": "Japan Standard Time (UTC+9) - Tokyo, Seoul",
+  "UTC+9:30": "Australian Central Time (UTC+9:30) - Adelaide, Darwin",
+  "UTC+10": "Australian Eastern Time (UTC+10) - Sydney, Melbourne",
+  "UTC+10:30": "Lord Howe Time (UTC+10:30) - Lord Howe Island",
+  "UTC+11": "Solomon Islands Time (UTC+11) - Honiara, Noumea",
+  "UTC+12": "New Zealand Time (UTC+12) - Auckland, Wellington",
+  "UTC+12:45": "Chatham Islands Time (UTC+12:45) - Chatham Islands",
+  "UTC+13": "Phoenix Islands Time (UTC+13) - Nuku'alofa, Apia",
+  "UTC+14": "Line Islands Time (UTC+14) - Kiritimati"
 };
 
 // Function to get human-friendly timezone display
@@ -449,18 +475,44 @@ function getTimezoneDisplay(utcOffset) {
 // Function to get short timezone display for compact views
 function getTimezoneShort(utcOffset) {
   const mapping = {
-    "UTC-8": "PST/PDT",
-    "UTC-7": "MST/MDT", 
-    "UTC-6": "CST/CDT",
-    "UTC-5": "EST/EDT",
-    "UTC+0": "GMT/UTC",
+    "UTC-12": "BIT",
+    "UTC-11": "SST",
+    "UTC-10": "HST",
+    "UTC-9:30": "MART",
+    "UTC-9": "AKST",
+    "UTC-8": "PST",
+    "UTC-7": "MST", 
+    "UTC-6": "CST",
+    "UTC-5": "EST",
+    "UTC-4": "AST",
+    "UTC-3:30": "NST",
+    "UTC-3": "ART",
+    "UTC-2": "FNT",
+    "UTC-1": "AZOT",
+    "UTC+0": "GMT",
     "UTC+1": "CET",
     "UTC+2": "EET",
     "UTC+3": "MSK",
+    "UTC+3:30": "IRST",
     "UTC+4": "GST",
+    "UTC+4:30": "AFT",
+    "UTC+5": "PKT",
     "UTC+5:30": "IST",
+    "UTC+5:45": "NPT",
+    "UTC+6": "BST",
+    "UTC+6:30": "MMT",
+    "UTC+7": "ICT",
     "UTC+8": "CST",
-    "UTC+9": "JST"
+    "UTC+8:45": "ACWST",
+    "UTC+9": "JST",
+    "UTC+9:30": "ACST",
+    "UTC+10": "AEST",
+    "UTC+10:30": "LHST",
+    "UTC+11": "SBT",
+    "UTC+12": "NZST",
+    "UTC+12:45": "CHAST",
+    "UTC+13": "PHOT",
+    "UTC+14": "LINT"
   };
   return mapping[utcOffset] || utcOffset;
 }
@@ -471,12 +523,13 @@ function parseTimezoneOffset(timezone) {
   const offsetStr = timezone.replace('UTC', '');
   if (offsetStr === '') return 0;
   
-  // Handle decimal hours like +5:30
+  // Handle decimal hours like +5:30, +9:30, +3:30, etc.
   if (offsetStr.includes(':')) {
     const [hours, minutes] = offsetStr.split(':');
     const hoursNum = parseInt(hours);
     const minutesNum = parseInt(minutes);
-    return hoursNum + (minutesNum / 60) * (hoursNum < 0 ? -1 : 1);
+    const sign = hoursNum < 0 ? -1 : 1;
+    return Math.abs(hoursNum) + (minutesNum / 60) * sign;
   }
   
   return parseFloat(offsetStr);
