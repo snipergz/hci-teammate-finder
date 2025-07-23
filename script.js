@@ -1941,7 +1941,7 @@ function renderGroupConnectionCard(group) {
     </div>
     <div class="connection-actions group-actions">
       <button class="form-button primary" onclick="openEmailClient('${groupEmails}')">
-        📧 Message Team
+        📧 Email Team
       </button>
       <button class="form-button secondary" onclick="showAllGroups('connections')">
         View Team Details
