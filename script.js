@@ -1299,9 +1299,9 @@ function showProfile(id, source = "main") {
   }
 
   document.getElementById("profile-avatar").textContent = teammate.initials;
-  document.getElementById("profile-name").textContent = teammate.name;
+  document.getElementById("profile-name-display").textContent = teammate.name;
   document.getElementById(
-    "profile-timezone"
+    "profile-timezone-display"
   ).innerHTML = `📍 ${getTimezoneDisplay(teammate.timezone)}`;
 
   // Display about me section (only if it exists and is not empty)

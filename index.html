@@ -26,7 +26,11 @@
 
         .filter-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                     <div class="profile-avatar" id="profile-avatar"></div>
+                    <div class="profile-details">
+                        <h2 id="profile-name-display"></h2>
+                        <div class="profile-timezone" id="profile-timezone-display"></div>
+                    </div>      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -619,8 +623,8 @@
                 <div class="profile-info">
                     <div class="profile-avatar" id="profile-avatar"></div>
                     <div class="profile-details">
-                        <h2 id="profile-name"></h2>
-                        <div class="profile-timezone" id="profile-timezone"></div>
+                        <h2 id="profile-name-display"></h2>
+                        <div class="profile-timezone" id="profile-timezone-display"></div>
                     </div>
                 </div>
                 <button class="form-button" onclick="navigateToMain()">Back</button>
