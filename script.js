@@ -1727,6 +1727,128 @@ function showAllGroups(source) {
   panel.appendChild(grid);
 }
 
+// Show a specific team/group (used when viewing team from pending requests)
+function showSpecificTeam(teamId, source) {
+  try {
+    navigateToGroups(); // show the view first
+
+    const panel = document.getElementById("groups-view");
+    if (!panel) {
+      console.error("Groups view panel not found");
+      return;
+    }
+    
+    panel.innerHTML = ""; // clear any previous content
+
+    // Find the specific group
+    const group = groups.find(g => g.id === teamId);
+    if (!group) {
+      panel.innerHTML = `
+        <div class="groups-header">
+          <button class="form-button" onclick="navigateToConnections()">Back</button>
+          <h1>Team Not Found</h1>
+        </div>
+        <div class="empty-state">
+          <div class="empty-icon">❌</div>
+          <h4>Team not found</h4>
+          <p>The requested team could not be found.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Create wrapper for single team view
+    const container = document.createElement("div");
+    container.className = "specific-team-view";
+
+    // Add header with back button
+    const header = document.createElement("div");
+    header.className = "groups-header";
+    const backButton = source === "connections" 
+      ? '<button class="form-button" onclick="navigateToConnections()">Back</button>'
+      : '<button class="form-button" onclick="navigateToMain()">Back</button>';
+
+    header.innerHTML = `
+      ${backButton}
+      <h1>Team ${group.id} Details</h1>
+    `;
+    container.appendChild(header);
+
+    // Create the group card
+    const card = document.createElement("div");
+    card.className = `group-card ${group.isFull ? "full" : "open"} single-team-card`;
+    card.id = `group-${group.id}`;
+
+    // Check if user is in this group
+    const userProfile = getUserProfile();
+
+    card.innerHTML = `
+      <div class="card-header">
+        <h3 class="group-title">Group ${group.id}</h3>
+        <span class="status-badge">
+          ${group.isFull ? "Full" : `${group.slotsAvailable}&nbsp;open`}
+        </span>
+      </div>
+      ${
+        userProfile && group.teammates.some((tm) => tm.id === userProfile.id)
+          ? '<div class="user-in-group-badge">You are in this group</div>'
+          : ""
+      }
+
+      <p><strong>Main&nbsp;Contact:</strong> ${group.mainContact}</p>
+      <p><strong>Timezones:</strong> ${group.timezones
+        .map((tz) => getTimezoneShort(tz))
+        .join(", ")}</p>
+      <p><strong>Skills:</strong> ${group.skills.slice(0, 8).join(", ")}${
+      group.skills.length > 8 ? "..." : ""
+    }</p>
+      <p><strong>Interests:</strong> ${group.interests.join(", ")}</p>
+      <p><strong>Roles:</strong> ${group.roles.join(", ")}</p>
+
+      <p><strong>Teammates (${group.teammates.length}/${
+      group.maxSize
+    }):</strong></p>
+      <ul class="teammate-list">
+        ${group.teammates
+          .map(
+            (tm) => `
+              <li class="${
+                userProfile && tm.id === userProfile.id ? "current-user" : ""
+              }">
+                ${tm.name} (${tm.initials}) – ${tm.email}
+                <br><small>Roles: ${tm.roles.join(", ")}</small>
+                ${
+                  userProfile && tm.id === userProfile.id
+                    ? ' <span class="you-indicator">(You)</span>'
+                    : ""
+                }
+              </li>`
+          )
+          .join("")}
+      </ul>
+    `;
+    
+    container.appendChild(card);
+    panel.appendChild(container);
+  } catch (error) {
+    console.error("Error in showSpecificTeam:", error);
+    const panel = document.getElementById("groups-view");
+    if (panel) {
+      panel.innerHTML = `
+        <div class="groups-header">
+          <button class="form-button" onclick="navigateToConnections()">Back</button>
+          <h1>Error</h1>
+        </div>
+        <div class="empty-state">
+          <div class="empty-icon">❌</div>
+          <h4>An error occurred</h4>
+          <p>Unable to display team details. Please try again.</p>
+        </div>
+      `;
+    }
+  }
+}
+
 // Connections functionality
 let connections = {
   pending: [], // Incoming requests
@@ -2357,7 +2479,7 @@ function renderGroupConnectionCard(group) {
       <button class="form-button primary" onclick="openEmailClient('${groupEmails}')" aria-label="Send email to your team members">
         📧 Email Team
       </button>
-      <button class="form-button secondary" onclick="showAllGroups('connections')" aria-label="View detailed information about your team">
+      <button class="form-button secondary" onclick="showSpecificTeam(${group.id}, 'connections')" aria-label="View detailed information about your team">
         View Team Details
       </button>
       <button class="form-button cancel-btn" onclick="removeGroupConnections(${
@@ -2424,7 +2546,7 @@ function renderConnectionCard(connection, type) {
         </button>
         ${
           connection.teamInvitation
-            ? `<button class="form-button secondary" onclick="showAllGroups('connections')">View Team</button>`
+            ? `<button class="form-button secondary" onclick="showSpecificTeam(${connection.teamId}, 'connections')">View Team</button>`
             : ""
         }
       </div>

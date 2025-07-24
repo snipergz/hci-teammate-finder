@@ -1937,3 +1937,44 @@ body {
   padding: 8px 16px;
   font-size: 14px;
 }
+
+/* ==== Specific team view (for pending requests) ==== */
+.specific-team-view {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.single-team-card {
+  max-width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #3b82f6;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.single-team-card .card-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.single-team-card .group-title {
+  font-size: 24px;
+  color: #1e293b;
+}
+
+.single-team-card .status-badge {
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+.specific-team-view .groups-header {
+  margin-bottom: 24px;
+}
+
+.specific-team-view .groups-header h1 {
+  color: #1e293b;
+  font-size: 28px;
+  margin: 0;
+}
