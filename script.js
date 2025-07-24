@@ -1276,6 +1276,24 @@ function showProfile(id, source = "main") {
   const backButton = document.querySelector("#profile-view .form-button");
   if (source === "connections") {
     backButton.onclick = () => navigateToConnections();
+  } else if (source === "groups") {
+    backButton.onclick = () => {
+      const groupsView = document.getElementById("groups-view");
+      const groupsSource = groupsView.dataset.source || "main";
+      if (groupsSource === "connections") {
+        showAllGroups("connections");
+      } else {
+        showAllGroups("main");
+      }
+    };
+  } else if (source.startsWith("team-")) {
+    // Extract team ID from source (format: "team-123")
+    const teamId = parseInt(source.replace("team-", ""));
+    backButton.onclick = () => {
+      const groupsView = document.getElementById("groups-view");
+      const groupsSource = groupsView.dataset.source || "main";
+      showSpecificTeam(teamId, groupsSource);
+    };
   } else {
     backButton.onclick = () => navigateToMain();
   }
@@ -1716,6 +1734,15 @@ function showAllGroups(source) {
                     ? ' <span class="you-indicator">(You)</span>'
                     : ""
                 }
+                  </div>
+                  ${
+                    userProfile && tm.id !== userProfile.id
+                      ? `<button class="form-button secondary teammate-profile-btn" onclick="navigateToProfile(${tm.id}, 'groups')">
+                          View Profile
+                        </button>`
+                      : ""
+                  }
+                </div>
               </li>`
           )
           .join("")}
@@ -1815,13 +1842,24 @@ function showSpecificTeam(teamId, source) {
               <li class="${
                 userProfile && tm.id === userProfile.id ? "current-user" : ""
               }">
-                ${tm.name} (${tm.initials}) – ${tm.email}
-                <br><small>Roles: ${tm.roles.join(", ")}</small>
-                ${
-                  userProfile && tm.id === userProfile.id
-                    ? ' <span class="you-indicator">(You)</span>'
-                    : ""
-                }
+                <div class="teammate-info">
+                  <div class="teammate-details">
+                    ${tm.name} (${tm.initials}) – ${tm.email}
+                    <br><small>Roles: ${tm.roles.join(", ")}</small>
+                    ${
+                      userProfile && tm.id === userProfile.id
+                        ? ' <span class="you-indicator">(You)</span>'
+                        : ""
+                    }
+                  </div>
+                  ${
+                    userProfile && tm.id !== userProfile.id
+                      ? `<button class="form-button secondary teammate-profile-btn" onclick="navigateToProfile(${tm.id}, 'team-${teamId}')">
+                          View Profile
+                        </button>`
+                      : ""
+                  }
+                </div>
               </li>`
           )
           .join("")}
