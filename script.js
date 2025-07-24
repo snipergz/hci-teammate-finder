@@ -1166,26 +1166,45 @@ function initFilterDropdowns() {
 /* helper – builds the chips row */
 function renderSelectedChips(type, container) {
   container.innerHTML = "";
+
   activeFilters[type].forEach((val) => {
     const chip = document.createElement("span");
-    chip.className = "filter-tag";
-    chip.textContent = val;
+    chip.className = "filter-chip";
     chip.innerHTML = `
-  <span class="chip-label">${val}</span>
-  <span class="chip-close" aria-label="Remove ${val} filter">✕</span>
-`;
-    /* small “x” to remove from chip */
-    chip.querySelector(".chip-close").addEventListener("click", (e) => {
-      e.stopPropagation();
+      <span class="chip-label">${val}</span>
+      <span class="chip-close" aria-label="Remove ${val} filter">✕</span>
+    `;
+
+    /* remove helper (shared by pill & ✕) */
+    const removeValue = () => {
+      // 1. update state
       activeFilters[type].delete(val);
-      /* un‑mark in dropdown */
+
+      // 2. un‑select in dropdown list
       container
         .closest(".filter-group")
         .querySelector(`.filter-option[data-value="${CSS.escape(val)}"]`)
         .classList.remove("selected");
+
+      // 3. redraw chips & placeholder
       renderSelectedChips(type, container);
+      const placeholder = container
+        .closest(".filter-group")
+        .querySelector(".filter-toggle .placeholder");
+      placeholder.textContent = activeFilters[type].size
+        ? `${activeFilters[type].size} selected`
+        : `Any ${type}`;
+
+      // 4. re‑filter results
       applyFilters();
+    };
+
+    chip.addEventListener("click", removeValue);
+    chip.querySelector(".chip-close").addEventListener("click", (e) => {
+      e.stopPropagation(); // don’t double‑fire
+      removeValue();
     });
+
     container.appendChild(chip);
   });
 }
