@@ -9,7 +9,8 @@ const teammates = [
     interests: ["EdTech", "Accessibility"],
     roles: ["Frontend Developer", "UX Designer"],
     email: "achen7@gatech.edu",
-    about: "I'm passionate about creating inclusive digital experiences that make technology accessible to everyone. With 3 years of experience in both development and design, I love bridging the gap between user needs and technical implementation.",
+    about:
+      "I'm passionate about creating inclusive digital experiences that make technology accessible to everyone. With 3 years of experience in both development and design, I love bridging the gap between user needs and technical implementation.",
   },
   {
     id: 2,
@@ -20,7 +21,8 @@ const teammates = [
     interests: ["AI", "Sustainability"],
     roles: ["Data Scientist", "Technical Writer"],
     email: "jsmith12@gatech.edu",
-    about: "Data storyteller with a background in environmental science. I'm excited about using AI and machine learning to tackle climate challenges. Always happy to explain complex concepts in simple terms!",
+    about:
+      "Data storyteller with a background in environmental science. I'm excited about using AI and machine learning to tackle climate challenges. Always happy to explain complex concepts in simple terms!",
   },
   {
     id: 3,
@@ -31,7 +33,8 @@ const teammates = [
     interests: ["Health", "Startups"],
     roles: ["Content Strategist", "Marketing Lead"],
     email: "falmansoori3@gatech.edu",
-    about: "Strategic content creator with a passion for health tech and startup ecosystems. I help emerging companies find their voice and connect with their audience through compelling storytelling and data-driven marketing strategies.",
+    about:
+      "Strategic content creator with a passion for health tech and startup ecosystems. I help emerging companies find their voice and connect with their audience through compelling storytelling and data-driven marketing strategies.",
   },
   {
     id: 4,
@@ -42,7 +45,8 @@ const teammates = [
     interests: ["Civic Tech", "Education"],
     roles: ["Visual Designer", "Product Designer"],
     email: "drivera17@gatech.edu",
-    about: "Visual storyteller who believes design can change the world. I specialize in creating engaging interfaces for social impact projects. When I'm not designing, you'll find me sketching urban landscapes or volunteering at local schools.",
+    about:
+      "Visual storyteller who believes design can change the world. I specialize in creating engaging interfaces for social impact projects. When I'm not designing, you'll find me sketching urban landscapes or volunteering at local schools.",
   },
   {
     id: 5,
@@ -53,7 +57,8 @@ const teammates = [
     interests: ["Climate", "Social Impact"],
     roles: ["Project Manager", "Business Analyst"],
     email: "sdubois5@gatech.edu",
-    about: "Organized project leader with a strong commitment to climate action and social impact initiatives. I excel at bringing teams together, managing complex timelines, and ensuring every voice is heard in the decision-making process.",
+    about:
+      "Organized project leader with a strong commitment to climate action and social impact initiatives. I excel at bringing teams together, managing complex timelines, and ensuring every voice is heard in the decision-making process.",
   },
   {
     id: 6,
@@ -64,7 +69,8 @@ const teammates = [
     interests: ["Productivity", "Mental Health"],
     roles: ["Backend Developer", "Full-Stack Engineer"],
     email: "enguyen9@gatech.edu",
-    about: "Full-stack developer with a unique background in UX writing and information architecture. I'm passionate about building productivity tools that support mental health and creating seamless user experiences from both technical and content perspectives.",
+    about:
+      "Full-stack developer with a unique background in UX writing and information architecture. I'm passionate about building productivity tools that support mental health and creating seamless user experiences from both technical and content perspectives.",
   },
   {
     id: 7,
@@ -75,7 +81,8 @@ const teammates = [
     interests: ["Smart Cities", "Healthcare"],
     roles: ["Backend Developer", "Full-Stack Engineer"],
     email: "mraza10@gatech.edu",
-    about: "Backend specialist focused on building robust APIs and integrations for smart city and healthcare applications. I believe technology should make urban living more sustainable and healthcare more accessible to everyone.",
+    about:
+      "Backend specialist focused on building robust APIs and integrations for smart city and healthcare applications. I believe technology should make urban living more sustainable and healthcare more accessible to everyone.",
   },
   {
     id: 8,
@@ -86,7 +93,8 @@ const teammates = [
     interests: ["Finance", "Open Source"],
     roles: ["Project Manager", "Team Facilitator"],
     email: "kmensah4@gatech.edu",
-    about: "Agile project manager and team facilitator with expertise in fintech and open source development. I'm passionate about creating collaborative environments where diverse teams can innovate and deliver exceptional results together.",
+    about:
+      "Agile project manager and team facilitator with expertise in fintech and open source development. I'm passionate about creating collaborative environments where diverse teams can innovate and deliver exceptional results together.",
   },
   {
     id: 9,
@@ -97,7 +105,8 @@ const teammates = [
     interests: ["E-Commerce", "Consumer Behavior"],
     roles: ["Data Analyst", "BI Developer"],
     email: "lhoshino16@gatech.edu",
-    about: "Data analyst specializing in e-commerce analytics and consumer behavior insights. I love uncovering hidden patterns in data that help businesses better understand their customers and make more informed decisions.",
+    about:
+      "Data analyst specializing in e-commerce analytics and consumer behavior insights. I love uncovering hidden patterns in data that help businesses better understand their customers and make more informed decisions.",
   },
   {
     id: 10,
@@ -108,7 +117,8 @@ const teammates = [
     interests: ["Civic Tech", "Education"],
     roles: ["Community Manager", "Design Researcher"],
     email: "zlee2@gatech.edu",
-    about: "Community builder and design researcher focused on civic technology and educational initiatives. I excel at facilitating workshops, conducting user research, and bringing people together to solve complex social challenges.",
+    about:
+      "Community builder and design researcher focused on civic technology and educational initiatives. I excel at facilitating workshops, conducting user research, and bringing people together to solve complex social challenges.",
   },
   {
     id: 11,
@@ -119,7 +129,8 @@ const teammates = [
     interests: ["Art", "Culture"],
     roles: ["Graphic Designer"],
     email: "irossi14@gatech.edu",
-    about: "Creative graphic designer with a deep appreciation for art and cultural expression. I specialize in typography and illustration, bringing visual stories to life that celebrate diversity and connect communities through beautiful design.",
+    about:
+      "Creative graphic designer with a deep appreciation for art and cultural expression. I specialize in typography and illustration, bringing visual stories to life that celebrate diversity and connect communities through beautiful design.",
   },
   {
     id: 12,
@@ -130,7 +141,8 @@ const teammates = [
     interests: ["FinTech", "Blockchain"],
     roles: ["Backend Developer"],
     email: "rpatel8@gatech.edu",
-    about: "Backend developer specializing in Java and microservices architecture for fintech applications. I'm fascinated by blockchain technology and its potential to revolutionize financial systems, making them more transparent and accessible.",
+    about:
+      "Backend developer specializing in Java and microservices architecture for fintech applications. I'm fascinated by blockchain technology and its potential to revolutionize financial systems, making them more transparent and accessible.",
   },
   {
     id: 13,
@@ -141,7 +153,8 @@ const teammates = [
     interests: ["DevOps", "Cloud"],
     roles: ["DevOps Engineer"],
     email: "cwei19@gatech.edu",
-    about: "DevOps engineer passionate about cloud infrastructure and automation. I specialize in containerization and CI/CD pipelines, helping teams deploy faster and more reliably while maintaining security and scalability.",
+    about:
+      "DevOps engineer passionate about cloud infrastructure and automation. I specialize in containerization and CI/CD pipelines, helping teams deploy faster and more reliably while maintaining security and scalability.",
   },
   {
     id: 14,
@@ -152,7 +165,8 @@ const teammates = [
     interests: ["Public Policy", "Social Justice"],
     roles: ["Research Analyst"],
     email: "slopez6@gatech.edu",
-    about: "Research analyst dedicated to public policy and social justice initiatives. I conduct thorough research and data analysis to inform policy decisions that create positive social change and promote equity in our communities.",
+    about:
+      "Research analyst dedicated to public policy and social justice initiatives. I conduct thorough research and data analysis to inform policy decisions that create positive social change and promote equity in our communities.",
   },
   {
     id: 15,
@@ -163,7 +177,8 @@ const teammates = [
     interests: ["Gaming", "VR"],
     roles: ["Game Developer"],
     email: "mmuller11@gatech.edu",
-    about: "Game developer specializing in C++ and 3D modeling with a passion for immersive VR experiences. I love creating virtual worlds that tell compelling stories and push the boundaries of what's possible in interactive entertainment.",
+    about:
+      "Game developer specializing in C++ and 3D modeling with a passion for immersive VR experiences. I love creating virtual worlds that tell compelling stories and push the boundaries of what's possible in interactive entertainment.",
   },
   {
     id: 16,
@@ -174,7 +189,8 @@ const teammates = [
     interests: ["Mobile Apps"],
     roles: ["iOS Developer"],
     email: "nkim4@gatech.edu",
-    about: "iOS developer focused on creating beautiful and intuitive mobile applications. I combine technical expertise in Swift with strong UI/UX sensibilities to build apps that users love and find genuinely helpful in their daily lives.",
+    about:
+      "iOS developer focused on creating beautiful and intuitive mobile applications. I combine technical expertise in Swift with strong UI/UX sensibilities to build apps that users love and find genuinely helpful in their daily lives.",
   },
   {
     id: 17,
@@ -185,7 +201,8 @@ const teammates = [
     interests: ["IoT"],
     roles: ["Systems Engineer"],
     email: "ljohansson2@gatech.edu",
-    about: "Systems engineer specializing in distributed systems and IoT infrastructure. I'm passionate about building high-performance, scalable systems that can handle massive amounts of data from connected devices and sensors.",
+    about:
+      "Systems engineer specializing in distributed systems and IoT infrastructure. I'm passionate about building high-performance, scalable systems that can handle massive amounts of data from connected devices and sensors.",
   },
   {
     id: 18,
@@ -196,7 +213,8 @@ const teammates = [
     interests: ["Documentaries", "Travel"],
     roles: ["Media Producer"],
     email: "adubois15@gatech.edu",
-    about: "Media producer and storyteller specializing in documentary photography and video. I love capturing authentic human stories from around the world and creating compelling narratives that inspire empathy and understanding.",
+    about:
+      "Media producer and storyteller specializing in documentary photography and video. I love capturing authentic human stories from around the world and creating compelling narratives that inspire empathy and understanding.",
   },
   {
     id: 19,
@@ -207,7 +225,8 @@ const teammates = [
     interests: ["User Experience"],
     roles: ["UX Researcher"],
     email: "csilva18@gatech.edu",
-    about: "UX researcher specializing in persona development and user behavior analysis. I'm passionate about understanding what makes people tick and translating those insights into design decisions that create meaningful user experiences.",
+    about:
+      "UX researcher specializing in persona development and user behavior analysis. I'm passionate about understanding what makes people tick and translating those insights into design decisions that create meaningful user experiences.",
   },
   {
     id: 20,
@@ -218,7 +237,8 @@ const teammates = [
     interests: ["Cultural Studies"],
     roles: ["Anthropologist"],
     email: "aokafor1@gatech.edu",
-    about: "Cultural anthropologist specializing in ethnographic research and field studies. I'm fascinated by how different cultures solve problems and how we can learn from diverse perspectives to create more inclusive and effective solutions.",
+    about:
+      "Cultural anthropologist specializing in ethnographic research and field studies. I'm fascinated by how different cultures solve problems and how we can learn from diverse perspectives to create more inclusive and effective solutions.",
   },
   {
     id: 21,
@@ -229,7 +249,8 @@ const teammates = [
     interests: ["Startups"],
     roles: ["Full-Stack Developer"],
     email: "ytanaka20@gatech.edu",
-    about: "Full-stack developer with a passion for startup culture and rapid prototyping. I specialize in Python and API development, helping early-stage companies quickly build and iterate on their product ideas to find market fit.",
+    about:
+      "Full-stack developer with a passion for startup culture and rapid prototyping. I specialize in Python and API development, helping early-stage companies quickly build and iterate on their product ideas to find market fit.",
   },
 ];
 
@@ -341,7 +362,7 @@ const groups = [
     roles: [
       "Visual Designer",
       "Product Designer",
-      "Project Manager", 
+      "Project Manager",
       "Business Analyst",
     ],
     isFull: false,
@@ -464,7 +485,7 @@ const timezoneMap = {
   "UTC+12": "New Zealand Time (UTC+12) - Auckland, Wellington",
   "UTC+12:45": "Chatham Islands Time (UTC+12:45) - Chatham Islands",
   "UTC+13": "Phoenix Islands Time (UTC+13) - Nuku'alofa, Apia",
-  "UTC+14": "Line Islands Time (UTC+14) - Kiritimati"
+  "UTC+14": "Line Islands Time (UTC+14) - Kiritimati",
 };
 
 // Function to get human-friendly timezone display
@@ -481,7 +502,7 @@ function getTimezoneShort(utcOffset) {
     "UTC-9:30": "MART",
     "UTC-9": "AKST",
     "UTC-8": "PST",
-    "UTC-7": "MST", 
+    "UTC-7": "MST",
     "UTC-6": "CST",
     "UTC-5": "EST",
     "UTC-4": "AST",
@@ -512,26 +533,26 @@ function getTimezoneShort(utcOffset) {
     "UTC+12": "NZST",
     "UTC+12:45": "CHAST",
     "UTC+13": "PHOT",
-    "UTC+14": "LINT"
+    "UTC+14": "LINT",
   };
   return mapping[utcOffset] || utcOffset;
 }
 
 // Helper function to parse timezone offset including decimal hours
 function parseTimezoneOffset(timezone) {
-  if (!timezone || !timezone.startsWith('UTC')) return 0;
-  const offsetStr = timezone.replace('UTC', '');
-  if (offsetStr === '') return 0;
-  
+  if (!timezone || !timezone.startsWith("UTC")) return 0;
+  const offsetStr = timezone.replace("UTC", "");
+  if (offsetStr === "") return 0;
+
   // Handle decimal hours like +5:30, +9:30, +3:30, etc.
-  if (offsetStr.includes(':')) {
-    const [hours, minutes] = offsetStr.split(':');
+  if (offsetStr.includes(":")) {
+    const [hours, minutes] = offsetStr.split(":");
     const hoursNum = parseInt(hours);
     const minutesNum = parseInt(minutes);
     const sign = hoursNum < 0 ? -1 : 1;
     return Math.abs(hoursNum) + (minutesNum / 60) * sign;
   }
-  
+
   return parseFloat(offsetStr);
 }
 
@@ -542,7 +563,7 @@ let currentProfile = null;
 let nextTeammateId = teammates.length + 1;
 
 // Navigation
-function navigateToProfile(id, source = 'main') {
+function navigateToProfile(id, source = "main") {
   currentProfile = teammates.find((t) => t.id === id);
   showProfile(id, source);
   document.getElementById("main-view").classList.add("hidden");
@@ -551,18 +572,20 @@ function navigateToProfile(id, source = 'main') {
   document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("profile-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
-  
+
   // Scroll to the top of the page
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function navigateToMain() {
   // If user doesn't have a profile and tries to go to main, redirect back to profile creation
   if (!hasUserProfile()) {
-    alert("Please create your profile first to access the teammate finder features.");
+    alert(
+      "Please create your profile first to access the teammate finder features."
+    );
     return;
   }
-  
+
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
@@ -570,9 +593,9 @@ function navigateToMain() {
   document.getElementById("main-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   clearFormErrors();
-  
+
   // Scroll to the top of the page
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function navigateToCreateProfile() {
@@ -583,19 +606,23 @@ function navigateToCreateProfile() {
   document.getElementById("create-profile-view").classList.remove("hidden");
   document.getElementById("groups-view").classList.add("hidden");
   initializeMultiSelects();
-  
+
   // Reset the header text for creating mode
-  const headerTitle = document.querySelector('#create-profile-view .header-text h1');
+  const headerTitle = document.querySelector(
+    "#create-profile-view .header-text h1"
+  );
   if (headerTitle) {
     headerTitle.textContent = "Create Your Profile";
   }
-  
+
   // Reset the form button text in case it was changed to "Update Profile"
-  const submitButton = document.querySelector('#create-profile-form button[type="submit"]');
+  const submitButton = document.querySelector(
+    '#create-profile-form button[type="submit"]'
+  );
   if (submitButton) {
     submitButton.textContent = "Create Profile";
   }
-  
+
   // Hide cancel button during initial profile setup
   const cancelBtn = document.getElementById("cancel-profile-btn");
   if (cancelBtn) {
@@ -606,20 +633,21 @@ function navigateToCreateProfile() {
 function navigateToGroups() {
   // Check if coming from connections view
   const connectionsView = document.getElementById("connections-view");
-  const fromConnections = connectionsView && !connectionsView.classList.contains("hidden");
-  
+  const fromConnections =
+    connectionsView && !connectionsView.classList.contains("hidden");
+
   document.getElementById("main-view").classList.add("hidden");
   document.getElementById("profile-view").classList.add("hidden");
   document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
   document.getElementById("connections-view").classList.add("hidden");
   document.getElementById("groups-view").classList.remove("hidden");
-  
+
   // Store context for back navigation
   if (fromConnections) {
-    document.getElementById("groups-view").dataset.source = 'connections';
+    document.getElementById("groups-view").dataset.source = "connections";
   } else {
-    document.getElementById("groups-view").dataset.source = 'main';
+    document.getElementById("groups-view").dataset.source = "main";
   }
 }
 
@@ -638,8 +666,9 @@ function viewUserProfile() {
 
   // Populate the profile display
   document.getElementById("user-profile-name").textContent = userProfile.name;
-  document.getElementById("user-profile-timezone").textContent = getTimezoneDisplay(userProfile.timezone);
-  
+  document.getElementById("user-profile-timezone").textContent =
+    getTimezoneDisplay(userProfile.timezone);
+
   // Display about me section (only if it exists and is not empty)
   const aboutSection = document.getElementById("user-about-section");
   const aboutElement = document.getElementById("user-profile-about");
@@ -649,20 +678,21 @@ function viewUserProfile() {
   } else {
     aboutSection.style.display = "none";
   }
-  
+
   // Display skills
   document.getElementById("user-profile-skills").innerHTML = userProfile.skills
-    .map(skill => `<span class="tag">${skill}</span>`)
+    .map((skill) => `<span class="tag">${skill}</span>`)
     .join("");
-    
+
   // Display interests
-  document.getElementById("user-profile-interests").innerHTML = userProfile.interests
-    .map(interest => `<span class="tag">${interest}</span>`)
-    .join("");
-    
+  document.getElementById("user-profile-interests").innerHTML =
+    userProfile.interests
+      .map((interest) => `<span class="tag">${interest}</span>`)
+      .join("");
+
   // Display roles
   document.getElementById("user-profile-roles").innerHTML = userProfile.roles
-    .map(role => `<span class="tag">${role}</span>`)
+    .map((role) => `<span class="tag">${role}</span>`)
     .join("");
 }
 
@@ -673,47 +703,58 @@ function editUserProfile() {
 
   // Navigate to create profile view
   navigateToCreateProfile();
-  
+
   // Update header text for editing mode
-  const headerTitle = document.querySelector('#create-profile-view .header-text h1');
+  const headerTitle = document.querySelector(
+    "#create-profile-view .header-text h1"
+  );
   if (headerTitle) {
     headerTitle.textContent = "Update Your Profile";
   }
-  
+
   // Use setTimeout to ensure DOM is fully updated after navigation
   setTimeout(() => {
     // Pre-populate the form with existing data
     document.getElementById("profile-name").value = userProfile.name;
     document.getElementById("profile-timezone").value = userProfile.timezone;
-    document.getElementById("profile-about-textarea").value = userProfile.about || '';
-    
+    document.getElementById("profile-about-textarea").value =
+      userProfile.about || "";
+
     // Pre-select skills
     const skillsContainer = document.getElementById("skills-select");
-    skillsContainer.querySelectorAll(".multi-select-option").forEach(option => {
-      if (userProfile.skills.includes(option.dataset.value)) {
-        option.classList.add("selected");
-      }
-    });
-    
+    skillsContainer
+      .querySelectorAll(".multi-select-option")
+      .forEach((option) => {
+        if (userProfile.skills.includes(option.dataset.value)) {
+          option.classList.add("selected");
+        }
+      });
+
     // Pre-select interests
     const interestsContainer = document.getElementById("interests-select");
-    interestsContainer.querySelectorAll(".multi-select-option").forEach(option => {
-      if (userProfile.interests.includes(option.dataset.value)) {
-        option.classList.add("selected");
-      }
-    });
-    
+    interestsContainer
+      .querySelectorAll(".multi-select-option")
+      .forEach((option) => {
+        if (userProfile.interests.includes(option.dataset.value)) {
+          option.classList.add("selected");
+        }
+      });
+
     // Pre-select roles
     const rolesContainer = document.getElementById("roles-select");
-    rolesContainer.querySelectorAll(".multi-select-option").forEach(option => {
-      if (userProfile.roles.includes(option.dataset.value)) {
-        option.classList.add("selected");
-      }
-    });
+    rolesContainer
+      .querySelectorAll(".multi-select-option")
+      .forEach((option) => {
+        if (userProfile.roles.includes(option.dataset.value)) {
+          option.classList.add("selected");
+        }
+      });
   }, 10); // Small delay to ensure DOM is updated
 
   // Change the form button text to indicate editing
-  const submitButton = document.querySelector('#create-profile-form button[type="submit"]');
+  const submitButton = document.querySelector(
+    '#create-profile-form button[type="submit"]'
+  );
   if (submitButton) {
     submitButton.textContent = "Update Profile";
   }
@@ -845,8 +886,8 @@ function createProfile(formData) {
     skills: formData.skills,
     interests: formData.interests,
     roles: formData.roles,
-    about: formData.about || '', // Optional field
-    email: `${formData.name.toLowerCase().replace(/\s+/g, '')}@gatech.edu`, // Generate email
+    about: formData.about || "", // Optional field
+    email: `${formData.name.toLowerCase().replace(/\s+/g, "")}@gatech.edu`, // Generate email
   };
 
   teammates.push(newProfile);
@@ -871,9 +912,9 @@ function resetForm() {
 function updateTeammateCount() {
   const countElement = document.getElementById("teammate-count");
   if (countElement) {
-    countElement.textContent = `Showing ${filteredTeammates.length} possible teammate${
-      filteredTeammates.length !== 1 ? "s" : ""
-    }`;
+    countElement.textContent = `Showing ${
+      filteredTeammates.length
+    } possible teammate${filteredTeammates.length !== 1 ? "s" : ""}`;
   }
 }
 
@@ -898,41 +939,45 @@ function handleCreateProfile(event) {
   };
 
   const newProfile = createProfile(formData);
-  
+
   // Save profile to localStorage
   saveUserProfile(newProfile);
-  
+
   resetForm();
-  
+
   // Calculate compatibility and render teammates
   addCompatibilityToTeammates();
   renderTeammates();
 
   // Hide the "Create Your Profile" button since profile now exists
-  const createProfileButton = document.querySelector('a[onclick="navigateToCreateProfile()"]');
+  const createProfileButton = document.querySelector(
+    'a[onclick="navigateToCreateProfile()"]'
+  );
   if (createProfileButton) {
-    createProfileButton.style.display = 'none';
+    createProfileButton.style.display = "none";
   }
 
   // Show Profile button since profile now exists
   const profileButton = document.getElementById("view-profile");
   if (profileButton) {
-    profileButton.style.display = 'inline-block';
+    profileButton.style.display = "inline-block";
   }
 
   // Show Connections button since profile now exists
   const connectionsButton = document.getElementById("view-connections");
   if (connectionsButton) {
-    connectionsButton.style.display = 'inline-block';
+    connectionsButton.style.display = "inline-block";
   }
 
   // Show appropriate success message based on whether it's create or update
   if (isUpdating) {
     alert(`Profile updated successfully!`);
   } else {
-    alert(`Profile created successfully! Welcome to the team, ${newProfile.name}!`);
+    alert(
+      `Profile created successfully! Welcome to the team, ${newProfile.name}!`
+    );
   }
-  
+
   navigateToMain();
 }
 
@@ -951,55 +996,71 @@ function renderTeammates() {
   loadConnections();
 
   container.innerHTML = filteredTeammates
-    .map(
-      (teammate) => {
-        const compatibilityClass = 
-          teammate.compatibility >= 80 ? 'high' : 
-          teammate.compatibility >= 60 ? 'medium' : 'low';
-        
-        // Check if teammate is in a complete group
-        const teammateGroup = groups.find(group => 
-          group.teammates.some(tm => tm.id === teammate.id)
-        );
-        const isInCompleteGroup = teammateGroup && teammateGroup.isFull;
-        
-        // Check connection status
-        const isConnected = connections.accepted.some(c => c.id === teammate.id);
-        const requestSent = connections.sent.some(c => c.id === teammate.id);
-        const requestPending = connections.pending.some(c => c.id === teammate.id);
-        
-        let connectionStatusBadge = '';
-        let rowClass = 'teammate-row';
-        let clickHandler = `onclick="navigateToProfile(${teammate.id})"`;
-        
-        if (isInCompleteGroup) {
-          connectionStatusBadge = '<div class="connection-badge matched">Team Complete</div>';
-          rowClass += ' team-complete';
-          // Keep click handler - users can still view profiles of complete team members
-        } else if (isConnected) {
-          if (teammateGroup) {
-            // Check if connected to all group members
-            const otherGroupMembers = teammateGroup.teammates.filter(tm => tm.id !== teammate.id);
-            const connectedToAllGroupMembers = otherGroupMembers.every(member => 
-              connections.accepted.some(c => c.id === member.id)
-            );
-            
-            if (connectedToAllGroupMembers && otherGroupMembers.length > 0) {
-              connectionStatusBadge = '<div class="connection-badge connected group-connected">Connected to Group</div>';
-            } else {
-              connectionStatusBadge = '<div class="connection-badge connected">Connected</div>';
-            }
+    .map((teammate) => {
+      const compatibilityClass =
+        teammate.compatibility >= 80
+          ? "high"
+          : teammate.compatibility >= 60
+          ? "medium"
+          : "low";
+
+      // Check if teammate is in a complete group
+      const teammateGroup = groups.find((group) =>
+        group.teammates.some((tm) => tm.id === teammate.id)
+      );
+      const isInCompleteGroup = teammateGroup && teammateGroup.isFull;
+
+      // Check connection status
+      const isConnected = connections.accepted.some(
+        (c) => c.id === teammate.id
+      );
+      const requestSent = connections.sent.some((c) => c.id === teammate.id);
+      const requestPending = connections.pending.some(
+        (c) => c.id === teammate.id
+      );
+
+      let connectionStatusBadge = "";
+      let rowClass = "teammate-row";
+      let clickHandler = `onclick="navigateToProfile(${teammate.id})"`;
+
+      if (isInCompleteGroup) {
+        connectionStatusBadge =
+          '<div class="connection-badge matched">Team Complete</div>';
+        rowClass += " team-complete";
+        // Keep click handler - users can still view profiles of complete team members
+      } else if (isConnected) {
+        if (teammateGroup) {
+          // Check if connected to all group members
+          const otherGroupMembers = teammateGroup.teammates.filter(
+            (tm) => tm.id !== teammate.id
+          );
+          const connectedToAllGroupMembers = otherGroupMembers.every((member) =>
+            connections.accepted.some((c) => c.id === member.id)
+          );
+
+          if (connectedToAllGroupMembers && otherGroupMembers.length > 0) {
+            connectionStatusBadge =
+              '<div class="connection-badge connected group-connected">Connected to Group</div>';
           } else {
-            connectionStatusBadge = '<div class="connection-badge connected">Connected</div>';
+            connectionStatusBadge =
+              '<div class="connection-badge connected">Connected</div>';
           }
-        } else if (requestSent) {
-          connectionStatusBadge = '<div class="connection-badge sent">Request Sent</div>';
-        } else if (requestPending) {
-          connectionStatusBadge = '<div class="connection-badge pending">Pending Request</div>';
+        } else {
+          connectionStatusBadge =
+            '<div class="connection-badge connected">Connected</div>';
         }
-        
-        return `
-        <div class="${rowClass}" data-teammate-id="${teammate.id}" ${clickHandler}>
+      } else if (requestSent) {
+        connectionStatusBadge =
+          '<div class="connection-badge sent">Request Sent</div>';
+      } else if (requestPending) {
+        connectionStatusBadge =
+          '<div class="connection-badge pending">Pending Request</div>';
+      }
+
+      return `
+        <div class="${rowClass}" data-teammate-id="${
+        teammate.id
+      }" ${clickHandler}>
             <div class="teammate-name">
                 <div class="avatar">${teammate.initials}</div>
                 <div class="name-and-status">
@@ -1030,57 +1091,152 @@ function renderTeammates() {
                   .join("")}
             </div>
         </div>`;
-      }
-    )
+    })
     .join("");
 
   updateTeammateCount();
 }
 
 // Filtering
-function applyFilters() {
-  const timezoneFilter = document.getElementById("timezone").value;
-  const skillsFilter = document.getElementById("skills").value;
-  const interestsFilter = document.getElementById("interests").value;
-  const rolesFilter = document.getElementById("roles").value;
-  const userProfile = getUserProfile();
+/********************************************************************
+ * 1.  CLIENT‑SIDE STATE  ───────────────────────────────────────────
+ *******************************************************************/
+const activeFilters = {
+  timezone: new Set(), // e.g. ["UTC‑5","UTC‑6"]
+  skills: new Set(), // e.g. ["React","Figma"]
+  interests: new Set(), // …
+  roles: new Set(),
+};
 
-  filteredTeammates = teammates.filter((teammate) => {
-    // Exclude user's own profile
-    if (userProfile && teammate.id === userProfile.id) {
-      return false;
-    }
-    
-    const matchesTimezone =
-      !timezoneFilter || teammate.timezone === timezoneFilter;
-    const matchesSkills =
-      !skillsFilter || teammate.skills.includes(skillsFilter);
-    const matchesInterests =
-      !interestsFilter || teammate.interests.includes(interestsFilter);
-    const matchesRoles = !rolesFilter || teammate.roles.includes(rolesFilter);
+/********************************************************************
+ * 2.  DROPDOWN INITIALISATION  ────────────────────────────────────
+ *******************************************************************/
+function initFilterDropdowns() {
+  document.querySelectorAll(".filter-dropdown").forEach((drop) => {
+    const type = drop.dataset.filter; // timezone | skills …
+    const toggle = drop.querySelector(".filter-toggle");
+    const optionsEl = drop.querySelector(".filter-options");
+    const chipsBox = document.querySelector(
+      `.selected-filters[data-filter="${type}"]`
+    );
+    const placeholder = toggle.querySelector(".placeholder");
 
-    return matchesTimezone && matchesSkills && matchesInterests && matchesRoles;
+    /* open / close */
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      optionsEl.classList.toggle("open");
+    });
+
+    /* option click */
+    optionsEl.querySelectorAll(".filter-option").forEach((opt) => {
+      opt.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const val = opt.dataset.value;
+
+        /* toggle UI */
+        opt.classList.toggle("selected");
+        if (opt.classList.contains("selected")) {
+          activeFilters[type].add(val);
+        } else {
+          activeFilters[type].delete(val);
+        }
+
+        /* render little chips under the dropdown */
+        renderSelectedChips(type, chipsBox);
+
+        /* update placeholder */
+        placeholder.textContent = activeFilters[type].size
+          ? `${activeFilters[type].size} selected`
+          : `Any ${type}`;
+
+        /* re‑filter list */
+        applyFilters();
+      });
+    });
   });
 
-  // Sort filtered teammates by availability and compatibility
+  /* close any open list if user clicks elsewhere */
+  document.addEventListener("click", () => {
+    document
+      .querySelectorAll(".filter-options.open")
+      .forEach((el) => el.classList.remove("open"));
+  });
+}
+
+/* helper – builds the chips row */
+function renderSelectedChips(type, container) {
+  container.innerHTML = "";
+  activeFilters[type].forEach((val) => {
+    const chip = document.createElement("span");
+    chip.className = "filter-tag";
+    chip.textContent = val;
+    chip.innerHTML = `
+  <span class="chip-label">${val}</span>
+  <span class="chip-close" aria-label="Remove ${val} filter">✕</span>
+`;
+    /* small “x” to remove from chip */
+    chip.querySelector(".chip-close").addEventListener("click", (e) => {
+      e.stopPropagation();
+      activeFilters[type].delete(val);
+      /* un‑mark in dropdown */
+      container
+        .closest(".filter-group")
+        .querySelector(`.filter-option[data-value="${CSS.escape(val)}"]`)
+        .classList.remove("selected");
+      renderSelectedChips(type, container);
+      applyFilters();
+    });
+    container.appendChild(chip);
+  });
+}
+
+/********************************************************************
+ * 3.  CLEAR‑ALL BUTTON  ────────────────────────────────────────────
+ *******************************************************************/
+function clearAllFilters() {
+  Object.keys(activeFilters).forEach((k) => activeFilters[k].clear());
+  /* reset UI */
+  document
+    .querySelectorAll(".filter-option.selected")
+    .forEach((opt) => opt.classList.remove("selected"));
+  document.querySelectorAll(".filter-tag").forEach((ch) => ch.remove());
+  document.querySelectorAll(".filter-toggle .placeholder").forEach((ph) => {
+    const parent = ph.closest(".filter-dropdown").dataset.filter;
+    ph.textContent = `Any ${parent}`;
+  });
+  applyFilters();
+}
+
+/********************************************************************
+ * 4.  APPLY FILTERS (multi‑value aware)  ───────────────────────────
+ *******************************************************************/
+function applyFilters() {
+  const userProfile = getUserProfile();
+
+  filteredTeammates = teammates.filter((t) => {
+    /* skip myself */
+    if (userProfile && t.id === userProfile.id) return false;
+
+    /* any() matcher helper */
+    const matchAny = (selection, values) =>
+      selection.size === 0 || [...selection].some((v) => values.includes(v));
+
+    return (
+      matchAny(activeFilters.timezone, [t.timezone]) &&
+      matchAny(activeFilters.skills, t.skills) &&
+      matchAny(activeFilters.interests, t.interests) &&
+      matchAny(activeFilters.roles, t.roles)
+    );
+  });
+
+  /* … keep the rest of your sort + render logic unchanged … */
   filteredTeammates.sort((a, b) => {
-    // Helper function to check if teammate is in a complete group
-    const isInCompleteGroup = (teammate) => {
-      const teammateGroup = groups.find(group => 
-        group.teammates.some(tm => tm.name === teammate.name || tm.id === teammate.id)
-      );
-      return !!(teammateGroup && teammateGroup.isFull);
-    };
-    
-    const aInCompleteGroup = isInCompleteGroup(a);
-    const bInCompleteGroup = isInCompleteGroup(b);
-    
-    // If one is in a complete group and the other isn't, prioritize the available one
-    if (aInCompleteGroup !== bInCompleteGroup) {
-      return aInCompleteGroup ? 1 : -1; // Move complete group members to bottom
-    }
-    
-    // If both have same availability status, sort by compatibility (highest first)
+    /* same availability / compatibility sort you already had */
+    const isInFull = (tm) =>
+      groups.some((g) => g.isFull && g.teammates.some((x) => x.id === tm.id));
+    const af = isInFull(a),
+      bf = isInFull(b);
+    if (af !== bf) return af ? 1 : -1;
     return b.compatibility - a.compatibility;
   });
 
@@ -1088,18 +1244,18 @@ function applyFilters() {
 }
 
 // Profile
-function showProfile(id, source = 'main') {
+function showProfile(id, source = "main") {
   const teammate = teammates.find((t) => t.id === id);
   if (!teammate) return;
 
   // Store current profile ID and source for connections
-  const profileView = document.getElementById('profile-view');
+  const profileView = document.getElementById("profile-view");
   profileView.dataset.currentProfileId = id;
   profileView.dataset.source = source;
 
   // Update back button based on source
-  const backButton = document.querySelector('#profile-view .form-button');
-  if (source === 'connections') {
+  const backButton = document.querySelector("#profile-view .form-button");
+  if (source === "connections") {
     backButton.onclick = () => navigateToConnections();
   } else {
     backButton.onclick = () => navigateToMain();
@@ -1114,7 +1270,7 @@ function showProfile(id, source = 'main') {
   // Display about me section (only if it exists and is not empty)
   const aboutSection = document.getElementById("profile-about-section");
   const aboutElement = document.getElementById("profile-about");
-  
+
   if (teammate.about && teammate.about.trim()) {
     aboutElement.textContent = teammate.about;
     aboutSection.style.display = "block";
@@ -1138,39 +1294,39 @@ function showProfile(id, source = 'main') {
   loadConnections();
   const connectButton = document.querySelector(".connect-button");
   const successMessage = document.getElementById("success-message");
-  
-  const isConnected = connections.accepted.some(c => c.id === id);
-  const requestSent = connections.sent.some(c => c.id === id);
-  const requestPending = connections.pending.some(c => c.id === id);
-  
+
+  const isConnected = connections.accepted.some((c) => c.id === id);
+  const requestSent = connections.sent.some((c) => c.id === id);
+  const requestPending = connections.pending.some((c) => c.id === id);
+
   // Check if teammate is in a complete group
-  const teammateGroup = groups.find(group => 
-    group.teammates.some(tm => tm.id === id)
+  const teammateGroup = groups.find((group) =>
+    group.teammates.some((tm) => tm.id === id)
   );
   const isInCompleteGroup = teammateGroup && teammateGroup.isFull;
-  
+
   // Check if current user is already in a group
   const userInGroup = isUserInGroup();
 
   // Reset success message
-  successMessage.style.display = 'none';
+  successMessage.style.display = "none";
 
   if (isInCompleteGroup) {
-    connectButton.style.display = 'none';
-    successMessage.style.display = 'block';
+    connectButton.style.display = "none";
+    successMessage.style.display = "block";
     successMessage.innerHTML = `<strong>Team Complete</strong><br>${teammate.name} is already part of a complete team and is not available for new connections.`;
   } else if (userInGroup) {
-    connectButton.style.display = 'none';
-    successMessage.style.display = 'block';
+    connectButton.style.display = "none";
+    successMessage.style.display = "block";
     successMessage.innerHTML = `<strong>Already in Team</strong><br>You are already part of a team and cannot send new connection requests.`;
   } else if (isConnected) {
-    connectButton.style.display = 'none';
-    successMessage.style.display = 'block';
+    connectButton.style.display = "none";
+    successMessage.style.display = "block";
     successMessage.innerHTML = `<strong>You're connected!</strong><br>You are already connected with ${teammate.name}.`;
   } else if (requestSent || requestPending) {
-    connectButton.style.display = 'none';
-    successMessage.style.display = 'block';
-    
+    connectButton.style.display = "none";
+    successMessage.style.display = "block";
+
     // Check if this is a pending request FROM the teammate (they sent to user)
     if (requestPending) {
       successMessage.innerHTML = `
@@ -1187,48 +1343,48 @@ function showProfile(id, source = 'main') {
       successMessage.innerHTML = `<strong>Request pending</strong><br>Your connection request with ${teammate.name} is pending.`;
     }
   } else {
-    connectButton.style.display = 'block';
+    connectButton.style.display = "block";
     connectButton.innerHTML = `🤝 Connect with <span id="connect-name">${teammate.name}</span>`;
   }
-  
+
   // Initialize message input character counter
   initializeMessageInput();
 }
 
 // Initialize message input functionality
 function initializeMessageInput() {
-  const messageInput = document.getElementById('connection-message');
-  const charCount = document.getElementById('message-char-count');
-  
+  const messageInput = document.getElementById("connection-message");
+  const charCount = document.getElementById("message-char-count");
+
   if (!messageInput || !charCount) return;
-  
+
   // Clear any existing message
-  messageInput.value = '';
-  
+  messageInput.value = "";
+
   // Update character count
   function updateCharCount() {
     const length = messageInput.value.length;
     charCount.textContent = length;
-    
+
     // Add warning class if approaching limit
     const charCountElement = charCount.parentElement;
     if (length > 450) {
-      charCountElement.classList.add('warning');
+      charCountElement.classList.add("warning");
     } else {
-      charCountElement.classList.remove('warning');
+      charCountElement.classList.remove("warning");
     }
   }
-  
+
   // Remove existing listeners to avoid duplicates
-  messageInput.removeEventListener('input', updateCharCount);
-  messageInput.removeEventListener('paste', updateCharCount);
-  
+  messageInput.removeEventListener("input", updateCharCount);
+  messageInput.removeEventListener("paste", updateCharCount);
+
   // Add event listeners
-  messageInput.addEventListener('input', updateCharCount);
-  messageInput.addEventListener('paste', () => {
+  messageInput.addEventListener("input", updateCharCount);
+  messageInput.addEventListener("paste", () => {
     setTimeout(updateCharCount, 10); // Delay to ensure paste content is processed
   });
-  
+
   // Initialize count
   updateCharCount();
 }
@@ -1237,11 +1393,6 @@ function initializeMessageInput() {
 
 // Event listeners
 function initializeEventListeners() {
-  document.getElementById("timezone").addEventListener("change", applyFilters);
-  document.getElementById("skills").addEventListener("change", applyFilters);
-  document.getElementById("interests").addEventListener("change", applyFilters);
-  document.getElementById("roles").addEventListener("change", applyFilters);
-
   // Form submission
   document
     .getElementById("create-profile-form")
@@ -1274,10 +1425,10 @@ function saveUserProfile(profile) {
 // Calculate compatibility percentage between user and teammate
 function calculateCompatibility(userProfile, teammate) {
   if (!userProfile) return Math.floor(Math.random() * 40) + 30; // Random 30-70% if no profile
-  
+
   let matchPoints = 0;
   let totalPoints = 0;
-  
+
   // Timezone compatibility (20% weight)
   totalPoints += 20;
   if (userProfile.timezone === teammate.timezone) {
@@ -1290,58 +1441,76 @@ function calculateCompatibility(userProfile, teammate) {
     if (timeDiff <= 3) matchPoints += 10;
     else if (timeDiff <= 6) matchPoints += 5;
   }
-  
+
   // Skills complement (30% weight) - rewards skills the user doesn't have
   totalPoints += 30;
-  const skillComplement = teammate.skills.filter(skill => !userProfile.skills.includes(skill)).length;
-  const skillMatch = Math.min(skillComplement / Math.max(teammate.skills.length, 1), 1);
+  const skillComplement = teammate.skills.filter(
+    (skill) => !userProfile.skills.includes(skill)
+  ).length;
+  const skillMatch = Math.min(
+    skillComplement / Math.max(teammate.skills.length, 1),
+    1
+  );
   matchPoints += skillMatch * 30;
-  
+
   // Interests overlap (25% weight) - still rewards shared interests for project alignment
   totalPoints += 25;
-  const interestOverlap = userProfile.interests.filter(interest => teammate.interests.includes(interest)).length;
-  const interestMatch = Math.min(interestOverlap / Math.max(userProfile.interests.length, teammate.interests.length), 1);
+  const interestOverlap = userProfile.interests.filter((interest) =>
+    teammate.interests.includes(interest)
+  ).length;
+  const interestMatch = Math.min(
+    interestOverlap /
+      Math.max(userProfile.interests.length, teammate.interests.length),
+    1
+  );
   matchPoints += interestMatch * 25;
-  
+
   // Role complement (25% weight) - rewards roles the user doesn't have
   totalPoints += 25;
-  const roleComplement = teammate.roles.filter(role => !userProfile.roles.includes(role)).length;
-  const roleMatch = Math.min(roleComplement / Math.max(teammate.roles.length, 1), 1);
+  const roleComplement = teammate.roles.filter(
+    (role) => !userProfile.roles.includes(role)
+  ).length;
+  const roleMatch = Math.min(
+    roleComplement / Math.max(teammate.roles.length, 1),
+    1
+  );
   matchPoints += roleMatch * 25;
-  
+
   return Math.round((matchPoints / totalPoints) * 100);
 }
 
 // Add compatibility to teammates and sort by it
 function addCompatibilityToTeammates() {
   const userProfile = getUserProfile();
-  
-  teammates.forEach(teammate => {
+
+  teammates.forEach((teammate) => {
     teammate.compatibility = calculateCompatibility(userProfile, teammate);
   });
-  
+
   // Sort by availability and compatibility
   teammates.sort((a, b) => {
     // Helper function to check if teammate is in a complete group
     const isInCompleteGroup = (teammate) => {
-      const teammateGroup = groups.find(group => 
-        group.teammates.some(tm => tm.name === teammate.name || tm.id === teammate.id)
+      const teammateGroup = groups.find((group) =>
+        group.teammates.some(
+          (tm) => tm.name === teammate.name || tm.id === teammate.id
+        )
       );
       return !!(teammateGroup && teammateGroup.isFull);
     };
-    
+
     const aInCompleteGroup = isInCompleteGroup(a);
     const bInCompleteGroup = isInCompleteGroup(b);
-    
+
     // If one is in a complete group and the other isn't, prioritize the available one
     if (aInCompleteGroup !== bInCompleteGroup) {
       return aInCompleteGroup ? 1 : -1; // Move complete group members to bottom
     }
-    
+
     // If both have same availability status, sort by compatibility (highest first)
     return b.compatibility - a.compatibility;
   });
-  
+
   // Update filtered teammates to exclude user's own profile
   updateFilteredTeammates();
 }
@@ -1350,29 +1519,33 @@ function addCompatibilityToTeammates() {
 function updateFilteredTeammates() {
   const userProfile = getUserProfile();
   if (userProfile) {
-    filteredTeammates = teammates.filter(teammate => teammate.id !== userProfile.id);
+    filteredTeammates = teammates.filter(
+      (teammate) => teammate.id !== userProfile.id
+    );
   } else {
     filteredTeammates = [...teammates];
   }
-  
+
   // Apply the same sorting logic to ensure consistent order
   filteredTeammates.sort((a, b) => {
     // Helper function to check if teammate is in a complete group
     const isInCompleteGroup = (teammate) => {
-      const teammateGroup = groups.find(group => 
-        group.teammates.some(tm => tm.name === teammate.name || tm.id === teammate.id)
+      const teammateGroup = groups.find((group) =>
+        group.teammates.some(
+          (tm) => tm.name === teammate.name || tm.id === teammate.id
+        )
       );
       return !!(teammateGroup && teammateGroup.isFull);
     };
-    
+
     const aInCompleteGroup = isInCompleteGroup(a);
     const bInCompleteGroup = isInCompleteGroup(b);
-    
+
     // If one is in a complete group and the other isn't, prioritize the available one
     if (aInCompleteGroup !== bInCompleteGroup) {
       return aInCompleteGroup ? 1 : -1; // Move complete group members to bottom
     }
-    
+
     // If both have same availability status, sort by compatibility (highest first)
     return b.compatibility - a.compatibility;
   });
@@ -1389,45 +1562,48 @@ window.resetProfile = resetProfile;
 
 // Initialize
 document.addEventListener("DOMContentLoaded", function () {
+  initFilterDropdowns(); //  <<‑‑ NEW
   initializeEventListeners();
-  
+
   // Check if user has a profile
   if (!hasUserProfile()) {
     // Show profile creation view first
     navigateToCreateProfile();
-    
+
     // Hide Profile button since no profile exists yet
     const profileButton = document.getElementById("view-profile");
     if (profileButton) {
-      profileButton.style.display = 'none';
+      profileButton.style.display = "none";
     }
-    
+
     // Hide Connections button since no profile exists yet
     const connectionsButton = document.getElementById("view-connections");
     if (connectionsButton) {
-      connectionsButton.style.display = 'none';
+      connectionsButton.style.display = "none";
     }
   } else {
     // Add compatibility scores and show main view
     addCompatibilityToTeammates();
     renderTeammates();
-    
+
     // Hide the "Create Your Profile" button since profile exists
-    const createProfileButton = document.querySelector('a[onclick="navigateToCreateProfile()"]');
+    const createProfileButton = document.querySelector(
+      'a[onclick="navigateToCreateProfile()"]'
+    );
     if (createProfileButton) {
-      createProfileButton.style.display = 'none';
+      createProfileButton.style.display = "none";
     }
-    
+
     // Show Profile button since profile exists
     const profileButton = document.getElementById("view-profile");
     if (profileButton) {
-      profileButton.style.display = 'inline-block';
+      profileButton.style.display = "inline-block";
     }
-    
+
     // Show Connections button since profile exists
     const connectionsButton = document.getElementById("view-connections");
     if (connectionsButton) {
-      connectionsButton.style.display = 'inline-block';
+      connectionsButton.style.display = "inline-block";
     }
   }
 });
@@ -1449,7 +1625,7 @@ function showAllGroups(source) {
   // If no source provided, check the stored context
   if (!source) {
     const groupsView = document.getElementById("groups-view");
-    source = groupsView.dataset.source || 'main';
+    source = groupsView.dataset.source || "main";
   }
 
   const panel = document.getElementById("groups-view");
@@ -1462,10 +1638,11 @@ function showAllGroups(source) {
   // Add header with back button based on source
   const header = document.createElement("div");
   header.className = "groups-header";
-  const backButton = source === 'connections' ? 
-    '<button class="form-button" onclick="navigateToConnections()">Back</button>' :
-    '<button class="form-button" onclick="navigateToMain()">Back</button>';
-  
+  const backButton =
+    source === "connections"
+      ? '<button class="form-button" onclick="navigateToConnections()">Back</button>'
+      : '<button class="form-button" onclick="navigateToMain()">Back</button>';
+
   header.innerHTML = `
     ${backButton}
     <h1>All Groups</h1>
@@ -1487,23 +1664,39 @@ function showAllGroups(source) {
           ${group.isFull ? "Full" : `${group.slotsAvailable}&nbsp;open`}
         </span>
       </div>
-      ${userProfile && group.teammates.some(tm => tm.id === userProfile.id) ? '<div class="user-in-group-badge">You are in this group</div>' : ''}
+      ${
+        userProfile && group.teammates.some((tm) => tm.id === userProfile.id)
+          ? '<div class="user-in-group-badge">You are in this group</div>'
+          : ""
+      }
 
       <p><strong>Main&nbsp;Contact:</strong> ${group.mainContact}</p>
-      <p><strong>Timezones:</strong> ${group.timezones.map(tz => getTimezoneShort(tz)).join(", ")}</p>
-      <p><strong>Skills:</strong> ${group.skills.slice(0, 8).join(", ")}${group.skills.length > 8 ? '...' : ''}</p>
+      <p><strong>Timezones:</strong> ${group.timezones
+        .map((tz) => getTimezoneShort(tz))
+        .join(", ")}</p>
+      <p><strong>Skills:</strong> ${group.skills.slice(0, 8).join(", ")}${
+      group.skills.length > 8 ? "..." : ""
+    }</p>
       <p><strong>Interests:</strong> ${group.interests.join(", ")}</p>
       <p><strong>Roles:</strong> ${group.roles.join(", ")}</p>
 
-      <p><strong>Teammates (${group.teammates.length}/${group.maxSize}):</strong></p>
+      <p><strong>Teammates (${group.teammates.length}/${
+      group.maxSize
+    }):</strong></p>
       <ul class="teammate-list">
         ${group.teammates
           .map(
             (tm) => `
-              <li class="${userProfile && tm.id === userProfile.id ? 'current-user' : ''}">
+              <li class="${
+                userProfile && tm.id === userProfile.id ? "current-user" : ""
+              }">
                 ${tm.name} (${tm.initials}) – ${tm.email}
                 <br><small>Roles: ${tm.roles.join(", ")}</small>
-                ${userProfile && tm.id === userProfile.id ? ' <span class="you-indicator">(You)</span>' : ''}
+                ${
+                  userProfile && tm.id === userProfile.id
+                    ? ' <span class="you-indicator">(You)</span>'
+                    : ""
+                }
               </li>`
           )
           .join("")}
@@ -1519,7 +1712,7 @@ function showAllGroups(source) {
 let connections = {
   pending: [], // Incoming requests
   sent: [], // Outgoing requests
-  accepted: [] // Established connections
+  accepted: [], // Established connections
 };
 
 // Track if connections have been initialized
@@ -1541,18 +1734,21 @@ function loadConnections() {
           skills: ["UI Design", "Branding", "Illustration"],
           interests: ["Civic Tech", "Education"],
           roles: ["Visual Designer", "Product Designer"],
-          dateSent: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+          dateSent: new Date(
+            Date.now() - 1 * 24 * 60 * 60 * 1000
+          ).toISOString(), // 1 day ago
           teamInvitation: true,
           teamId: 2,
-          teamMessage: "Join our team! We have complementary skills and are looking for someone to complete our group of 3."
-        }
+          teamMessage:
+            "Join our team! We have complementary skills and are looking for someone to complete our group of 3.",
+        },
       ],
       sent: [
         // No pre-existing requests
       ],
       accepted: [
         // No pre-existing connections - user starts fresh
-      ]
+      ],
     };
   }
 }
@@ -1569,11 +1765,11 @@ function navigateToConnections() {
   document.getElementById("create-profile-view").classList.add("hidden");
   document.getElementById("user-profile-view").classList.add("hidden");
   document.getElementById("groups-view").classList.add("hidden");
-  
+
   const connectionsView = document.getElementById("connections-view");
   connectionsView.classList.remove("hidden");
-  connectionsView.dataset.wasActive = 'true'; // Mark that connections was active
-  
+  connectionsView.dataset.wasActive = "true"; // Mark that connections was active
+
   loadConnections();
   updateConnectionCounts();
   renderConnections();
@@ -1582,36 +1778,42 @@ function navigateToConnections() {
 // Show specific connection tab
 function showConnectionTab(tabName) {
   // Hide all tab contents
-  const tabs = document.querySelectorAll('.tab-content');
-  tabs.forEach(tab => tab.classList.remove('active'));
-  
+  const tabs = document.querySelectorAll(".tab-content");
+  tabs.forEach((tab) => tab.classList.remove("active"));
+
   // Hide all tab buttons
-  const buttons = document.querySelectorAll('.tab-button');
-  buttons.forEach(button => button.classList.remove('active'));
-  
+  const buttons = document.querySelectorAll(".tab-button");
+  buttons.forEach((button) => button.classList.remove("active"));
+
   // Show selected tab
-  document.getElementById(`${tabName}-tab`).classList.add('active');
-  document.querySelector(`[onclick="showConnectionTab('${tabName}')"]`).classList.add('active');
-  
+  document.getElementById(`${tabName}-tab`).classList.add("active");
+  document
+    .querySelector(`[onclick="showConnectionTab('${tabName}')"]`)
+    .classList.add("active");
+
   renderConnections();
 }
 
 // Update connection counts in badges
 function updateConnectionCounts() {
-  document.getElementById('pending-count').textContent = connections.pending.length;
-  document.getElementById('connected-count').textContent = connections.accepted.length;
-  document.getElementById('sent-count').textContent = connections.sent.length;
+  document.getElementById("pending-count").textContent =
+    connections.pending.length;
+  document.getElementById("connected-count").textContent =
+    connections.accepted.length;
+  document.getElementById("sent-count").textContent = connections.sent.length;
 }
 
 // Update connection badge for specific teammate on main page
 function updateConnectionBadge(teammateId, status) {
   // Find the teammate card on the main page
-  const teammateCard = document.querySelector(`[data-teammate-id="${teammateId}"]`);
+  const teammateCard = document.querySelector(
+    `[data-teammate-id="${teammateId}"]`
+  );
   if (!teammateCard) return;
-  
+
   // Find or create the badge container
-  let badgeElement = teammateCard.querySelector('.connection-badge');
-  
+  let badgeElement = teammateCard.querySelector(".connection-badge");
+
   if (status === null) {
     // Remove badge if status is null
     if (badgeElement) {
@@ -1619,56 +1821,58 @@ function updateConnectionBadge(teammateId, status) {
     }
     return;
   }
-  
+
   if (!badgeElement) {
     // Create badge element if it doesn't exist
-    badgeElement = document.createElement('div');
-    badgeElement.className = 'connection-badge';
-    
+    badgeElement = document.createElement("div");
+    badgeElement.className = "connection-badge";
+
     // Insert after the name or at the beginning of the card
-    const nameElement = teammateCard.querySelector('h3');
+    const nameElement = teammateCard.querySelector("h3");
     if (nameElement) {
-      nameElement.insertAdjacentElement('afterend', badgeElement);
+      nameElement.insertAdjacentElement("afterend", badgeElement);
     } else {
-      teammateCard.insertAdjacentElement('afterbegin', badgeElement);
+      teammateCard.insertAdjacentElement("afterbegin", badgeElement);
     }
   }
-  
+
   // Update badge content and class based on status
-  badgeElement.className = 'connection-badge'; // Reset classes
-  
+  badgeElement.className = "connection-badge"; // Reset classes
+
   switch (status) {
-    case 'pending_received':
-      badgeElement.textContent = 'Pending Request';
-      badgeElement.classList.add('pending');
+    case "pending_received":
+      badgeElement.textContent = "Pending Request";
+      badgeElement.classList.add("pending");
       break;
-    case 'pending_sent':
-      badgeElement.textContent = 'Request Sent';
-      badgeElement.classList.add('sent');
+    case "pending_sent":
+      badgeElement.textContent = "Request Sent";
+      badgeElement.classList.add("sent");
       break;
-    case 'connected':
+    case "connected":
       // Check if this is a group connection
-      const teammateGroup = groups.find(group => 
-        group.teammates.some(tm => tm.id === teammateId)
+      const teammateGroup = groups.find((group) =>
+        group.teammates.some((tm) => tm.id === teammateId)
       );
-      
+
       if (teammateGroup) {
         // Check if connected to all group members
-        const otherGroupMembers = teammateGroup.teammates.filter(tm => tm.id !== teammateId);
-        const connectedToAllGroupMembers = otherGroupMembers.every(member => 
-          connections.accepted.some(c => c.id === member.id)
+        const otherGroupMembers = teammateGroup.teammates.filter(
+          (tm) => tm.id !== teammateId
         );
-        
+        const connectedToAllGroupMembers = otherGroupMembers.every((member) =>
+          connections.accepted.some((c) => c.id === member.id)
+        );
+
         if (connectedToAllGroupMembers && otherGroupMembers.length > 0) {
-          badgeElement.textContent = 'Connected to Group';
-          badgeElement.classList.add('connected', 'group-connected');
+          badgeElement.textContent = "Connected to Group";
+          badgeElement.classList.add("connected", "group-connected");
         } else {
-          badgeElement.textContent = 'Connected';
-          badgeElement.classList.add('connected');
+          badgeElement.textContent = "Connected";
+          badgeElement.classList.add("connected");
         }
       } else {
-        badgeElement.textContent = 'Connected';
-        badgeElement.classList.add('connected');
+        badgeElement.textContent = "Connected";
+        badgeElement.classList.add("connected");
       }
       break;
     default:
@@ -1680,9 +1884,9 @@ function updateConnectionBadge(teammateId, status) {
 function isUserInGroup() {
   const userProfile = getUserProfile();
   if (!userProfile) return false;
-  
-  return groups.some(group => 
-    group.teammates.some(tm => tm.id === userProfile.id)
+
+  return groups.some((group) =>
+    group.teammates.some((tm) => tm.id === userProfile.id)
   );
 }
 
@@ -1690,41 +1894,43 @@ function isUserInGroup() {
 function sendConnectionRequest() {
   const currentUser = getUserProfile();
   if (!currentUser) {
-    alert('Please create your profile first');
+    alert("Please create your profile first");
     return;
   }
-  
+
   // Check if user is already part of a group
   if (isUserInGroup()) {
-    alert('You are already part of a team and cannot send new connection requests. If you want to connect with new teammates, you would need to leave your current team first.');
+    alert(
+      "You are already part of a team and cannot send new connection requests. If you want to connect with new teammates, you would need to leave your current team first."
+    );
     return;
   }
-  
-  const profileElement = document.getElementById('profile-view');
+
+  const profileElement = document.getElementById("profile-view");
   const profileId = parseInt(profileElement.dataset.currentProfileId);
-  const teammate = teammates.find(t => t.id === profileId);
-  
+  const teammate = teammates.find((t) => t.id === profileId);
+
   if (!teammate) return;
-  
+
   // Check if already connected or request exists
-  const alreadyConnected = connections.accepted.some(c => c.id === profileId);
-  const requestSent = connections.sent.some(c => c.id === profileId);
-  const requestPending = connections.pending.some(c => c.id === profileId);
-  
+  const alreadyConnected = connections.accepted.some((c) => c.id === profileId);
+  const requestSent = connections.sent.some((c) => c.id === profileId);
+  const requestPending = connections.pending.some((c) => c.id === profileId);
+
   if (alreadyConnected) {
-    alert('You are already connected with this teammate');
+    alert("You are already connected with this teammate");
     return;
   }
-  
+
   if (requestSent || requestPending) {
-    alert('A connection request already exists with this teammate');
+    alert("A connection request already exists with this teammate");
     return;
   }
-  
+
   // Get the message from the input field
-  const messageInput = document.getElementById('connection-message');
-  const message = messageInput ? messageInput.value.trim() : '';
-  
+  const messageInput = document.getElementById("connection-message");
+  const message = messageInput ? messageInput.value.trim() : "";
+
   // Add to sent requests
   connections.sent.push({
     id: profileId,
@@ -1735,24 +1941,24 @@ function sendConnectionRequest() {
     interests: teammate.interests,
     roles: teammate.roles,
     message: message, // Include the custom message
-    dateSent: new Date().toISOString()
+    dateSent: new Date().toISOString(),
   });
-  
+
   saveConnections();
-  
+
   // Update the connection badge on main page
-  updateConnectionBadge(profileId, 'pending_sent');
-  
+  updateConnectionBadge(profileId, "pending_sent");
+
   // Re-render teammates to show updated badge
   renderTeammates();
-  
+
   // Show success message
-  const successMessage = document.getElementById('success-message');
-  const successName = document.getElementById('success-name');
-  
-  successMessage.style.display = 'block';
+  const successMessage = document.getElementById("success-message");
+  const successName = document.getElementById("success-name");
+
+  successMessage.style.display = "block";
   successName.textContent = teammate.name;
-  
+
   // Update message based on whether a custom message was included
   if (message) {
     successMessage.innerHTML = `
@@ -1775,45 +1981,45 @@ function sendConnectionRequest() {
       </div>
     `;
   }
-  
+
   // Clear the message input for next use
   if (messageInput) {
-    messageInput.value = '';
+    messageInput.value = "";
     // Update character count
-    const charCount = document.getElementById('message-char-count');
+    const charCount = document.getElementById("message-char-count");
     if (charCount) {
-      charCount.textContent = '0';
-      charCount.parentElement.classList.remove('warning');
+      charCount.textContent = "0";
+      charCount.parentElement.classList.remove("warning");
     }
   }
-  
+
   // Hide the connect button
-  document.querySelector('.connect-button').style.display = 'none';
+  document.querySelector(".connect-button").style.display = "none";
 }
 
 // Auto-handle other connections when joining a team
 function autoHandleConnectionsAfterTeamJoin() {
   // Get all other pending requests to reject
   const otherPendingRequests = [...connections.pending];
-  
+
   // Get all sent requests to cancel
   const sentRequests = [...connections.sent];
-  
+
   // Clear all pending requests (auto-reject)
-  otherPendingRequests.forEach(request => {
+  otherPendingRequests.forEach((request) => {
     updateConnectionBadge(request.id, null);
   });
   connections.pending = [];
-  
+
   // Clear all sent requests (auto-cancel)
-  sentRequests.forEach(request => {
+  sentRequests.forEach((request) => {
     updateConnectionBadge(request.id, null);
   });
   connections.sent = [];
-  
+
   // Update counts
   updateConnectionCounts();
-  
+
   // Re-render teammates list to update connection badges
   renderTeammates();
 }
@@ -1825,24 +2031,25 @@ function refreshGroupsDisplay() {
   if (groupsView && !groupsView.classList.contains("hidden")) {
     // Check if we came from connections (if connections view was the previous view)
     const connectionsView = document.getElementById("connections-view");
-    const wasFromConnections = connectionsView && connectionsView.dataset.wasActive === 'true';
-    showAllGroups(wasFromConnections ? 'connections' : 'main'); // Refresh the groups display
+    const wasFromConnections =
+      connectionsView && connectionsView.dataset.wasActive === "true";
+    showAllGroups(wasFromConnections ? "connections" : "main"); // Refresh the groups display
   }
 }
 
 // Accept connection request
 function acceptConnection(requestId) {
-  const requestIndex = connections.pending.findIndex(r => r.id === requestId);
+  const requestIndex = connections.pending.findIndex((r) => r.id === requestId);
   if (requestIndex === -1) return;
-  
+
   const request = connections.pending[requestIndex];
-  
+
   // Check if this is a team invitation
   if (request.teamInvitation) {
     // Add user to the team
     const userProfile = getUserProfile();
     if (userProfile) {
-      const team = groups.find(g => g.id === request.teamId);
+      const team = groups.find((g) => g.id === request.teamId);
       if (team && !team.isFull) {
         // Add user to team
         team.teammates.push({
@@ -1855,28 +2062,34 @@ function acceptConnection(requestId) {
           roles: userProfile.roles,
           email: userProfile.email,
         });
-        
+
         // Update team metadata
-        team.timezones = [...new Set([...team.timezones, userProfile.timezone])];
+        team.timezones = [
+          ...new Set([...team.timezones, userProfile.timezone]),
+        ];
         team.skills = [...new Set([...team.skills, ...userProfile.skills])];
-        team.interests = [...new Set([...team.interests, ...userProfile.interests])];
+        team.interests = [
+          ...new Set([...team.interests, ...userProfile.interests]),
+        ];
         team.roles = [...new Set([...team.roles, ...userProfile.roles])];
-        
+
         // Update team status
         team.slotsAvailable = team.maxSize - team.teammates.length;
         team.isFull = team.slotsAvailable === 0;
-        
+
         // Move accepted team invitation to connections
         connections.accepted.push({
           ...request,
-          dateConnected: new Date().toISOString()
+          dateConnected: new Date().toISOString(),
         });
-        
+
         // Auto-connect to all other team members
-        team.teammates.forEach(member => {
+        team.teammates.forEach((member) => {
           if (member.id !== userProfile.id && member.id !== request.id) {
             // Check if not already connected
-            const alreadyConnected = connections.accepted.some(c => c.id === member.id);
+            const alreadyConnected = connections.accepted.some(
+              (c) => c.id === member.id
+            );
             if (!alreadyConnected) {
               connections.accepted.push({
                 id: member.id,
@@ -1886,161 +2099,179 @@ function acceptConnection(requestId) {
                 skills: member.skills,
                 interests: member.interests,
                 roles: member.roles,
-                dateConnected: new Date().toISOString()
+                dateConnected: new Date().toISOString(),
               });
             }
           }
         });
-        
+
         // Remove from pending
         connections.pending.splice(requestIndex, 1);
-        
+
         // Auto-handle all other connections (reject pending, cancel sent)
         autoHandleConnectionsAfterTeamJoin();
-        
+
         // Show success message for team joining
-        alert(`Congratulations! You've successfully joined Team ${team.id}. All other pending requests have been automatically handled.`);
-        
+        alert(
+          `Congratulations! You've successfully joined Team ${team.id}. All other pending requests have been automatically handled.`
+        );
+
         // Update displays
         saveConnections();
         updateConnectionCounts();
         renderConnections();
-        
+
         // Update connection badges for all team members
-        team.teammates.forEach(member => {
+        team.teammates.forEach((member) => {
           if (member.id !== userProfile.id) {
-            updateConnectionBadge(member.id, 'connected');
+            updateConnectionBadge(member.id, "connected");
           }
         });
-        
+
         refreshGroupsDisplay();
-        
+
         return; // Exit early for team invitations
       }
     }
   }
-  
+
   // Regular connection acceptance (non-team)
   connections.accepted.push({
     ...request,
-    dateConnected: new Date().toISOString()
+    dateConnected: new Date().toISOString(),
   });
-  
+
   // Remove from pending
   connections.pending.splice(requestIndex, 1);
-  
+
   saveConnections();
   updateConnectionCounts();
   renderConnections();
-  
+
   // Update the connection badge on main page
-  updateConnectionBadge(requestId, 'connected');
-  
+  updateConnectionBadge(requestId, "connected");
+
   // Re-render teammates to show updated badges
   renderTeammates();
 }
 
 // Decline connection request
 function declineConnection(requestId) {
-  const requestIndex = connections.pending.findIndex(r => r.id === requestId);
+  const requestIndex = connections.pending.findIndex((r) => r.id === requestId);
   if (requestIndex === -1) return;
-  
+
   connections.pending.splice(requestIndex, 1);
   saveConnections();
   updateConnectionCounts();
   renderConnections();
-  
+
   // Update the connection badge on main page (remove badge)
   updateConnectionBadge(requestId, null);
-  
+
   // Re-render teammates to show updated badges
   renderTeammates();
 }
 
 // Cancel sent connection request
 function cancelSentRequest(requestId) {
-  const request = connections.sent.find(r => r.id === requestId);
+  const request = connections.sent.find((r) => r.id === requestId);
   if (!request) return;
-  
-  if (!confirm(`Are you sure you want to cancel your connection request to ${request.name}?`)) return;
-  
-  const requestIndex = connections.sent.findIndex(r => r.id === requestId);
+
+  if (
+    !confirm(
+      `Are you sure you want to cancel your connection request to ${request.name}?`
+    )
+  )
+    return;
+
+  const requestIndex = connections.sent.findIndex((r) => r.id === requestId);
   if (requestIndex === -1) return;
-  
+
   connections.sent.splice(requestIndex, 1);
   saveConnections();
   updateConnectionCounts();
   renderConnections();
-  
+
   // Update the connection badge on main page (remove badge)
   updateConnectionBadge(requestId, null);
-  
+
   // Re-render teammates to show updated badges
   renderTeammates();
 }
 
 // Remove all connections from a group (leave team)
 function removeGroupConnections(groupId) {
-  if (!confirm('Are you sure you want to leave this team? This will remove all connections with your teammates and remove you from the group.')) return;
-  
+  if (
+    !confirm(
+      "Are you sure you want to leave this team? This will remove all connections with your teammates and remove you from the group."
+    )
+  )
+    return;
+
   const userProfile = getUserProfile();
   if (!userProfile) return;
-  
-  const group = groups.find(g => g.id === groupId);
+
+  const group = groups.find((g) => g.id === groupId);
   if (!group) return;
-  
+
   // Get all team member IDs except the user
   const teamMemberIds = group.teammates
-    .filter(tm => tm.id !== userProfile.id)
-    .map(tm => tm.id);
-  
+    .filter((tm) => tm.id !== userProfile.id)
+    .map((tm) => tm.id);
+
   // Remove all connections with team members
-  teamMemberIds.forEach(memberId => {
-    const connectionIndex = connections.accepted.findIndex(c => c.id === memberId);
+  teamMemberIds.forEach((memberId) => {
+    const connectionIndex = connections.accepted.findIndex(
+      (c) => c.id === memberId
+    );
     if (connectionIndex !== -1) {
       connections.accepted.splice(connectionIndex, 1);
     }
   });
-  
+
   // Remove user from the group
-  const userIndex = group.teammates.findIndex(tm => tm.id === userProfile.id);
+  const userIndex = group.teammates.findIndex((tm) => tm.id === userProfile.id);
   if (userIndex !== -1) {
     group.teammates.splice(userIndex, 1);
   }
-  
+
   // Update group metadata
-  group.timezones = group.teammates.map(tm => tm.timezone);
-  group.skills = [...new Set(group.teammates.flatMap(tm => tm.skills))];
-  group.interests = [...new Set(group.teammates.flatMap(tm => tm.interests))];
-  group.roles = [...new Set(group.teammates.flatMap(tm => tm.roles))];
+  group.timezones = group.teammates.map((tm) => tm.timezone);
+  group.skills = [...new Set(group.teammates.flatMap((tm) => tm.skills))];
+  group.interests = [...new Set(group.teammates.flatMap((tm) => tm.interests))];
+  group.roles = [...new Set(group.teammates.flatMap((tm) => tm.roles))];
   group.slotsAvailable = group.maxSize - group.teammates.length;
   group.isFull = group.slotsAvailable === 0;
-  
+
   // Update displays
   saveConnections();
   updateConnectionCounts();
   renderConnections();
   renderTeammates(); // Update main page to reflect new availability
   refreshGroupsDisplay();
-  
-  alert('You have successfully left the team. You can now form new connections.');
+
+  alert(
+    "You have successfully left the team. You can now form new connections."
+  );
 }
 
 // Remove established connection
 function removeConnection(connectionId) {
-  if (!confirm('Are you sure you want to remove this connection?')) return;
-  
-  const connectionIndex = connections.accepted.findIndex(c => c.id === connectionId);
+  if (!confirm("Are you sure you want to remove this connection?")) return;
+
+  const connectionIndex = connections.accepted.findIndex(
+    (c) => c.id === connectionId
+  );
   if (connectionIndex === -1) return;
-  
+
   connections.accepted.splice(connectionIndex, 1);
   saveConnections();
   updateConnectionCounts();
   renderConnections();
-  
+
   // Update the connection badge on main page (remove badge)
   updateConnectionBadge(connectionId, null);
-  
+
   // Re-render teammates to show updated badges
   renderTeammates();
 }
@@ -2050,11 +2281,11 @@ function formatDate(dateString) {
   const date = new Date(dateString);
   const now = new Date();
   const diffInHours = (now - date) / (1000 * 60 * 60);
-  
+
   if (diffInHours < 24) {
-    return 'Today';
+    return "Today";
   } else if (diffInHours < 48) {
-    return 'Yesterday';
+    return "Yesterday";
   } else {
     const days = Math.floor(diffInHours / 24);
     return `${days} days ago`;
@@ -2063,35 +2294,44 @@ function formatDate(dateString) {
 
 // Render group connection card for complete teams
 function renderGroupConnectionCard(group) {
-  const div = document.createElement('div');
-  div.className = 'connection-card group-connection-card';
-  
+  const div = document.createElement("div");
+  div.className = "connection-card group-connection-card";
+
   const userProfile = getUserProfile();
-  const otherMembers = group.teammates.filter(tm => tm.id !== userProfile.id);
-  
+  const otherMembers = group.teammates.filter((tm) => tm.id !== userProfile.id);
+
   // Get all member emails for group messaging
-  const groupEmails = group.teammates.map(tm => tm.email).join(',');
-  
-  const membersList = otherMembers.map(member => 
-    `<div class="group-member">
+  const groupEmails = group.teammates.map((tm) => tm.email).join(",");
+
+  const membersList = otherMembers
+    .map(
+      (member) =>
+        `<div class="group-member">
       <span class="member-avatar">${member.initials}</span>
       <span class="member-name">${member.name}</span>
       <span class="member-role">${member.roles[0]}</span>
     </div>`
-  ).join('');
-  
+    )
+    .join("");
+
   div.innerHTML = `
     <div class="connection-info">
       <div class="group-connection-header">
         <h3>🎯 Team ${group.id} - Complete</h3>
-        <p>${group.teammates.length} members • Connected ${formatDate(connections.accepted[0]?.dateConnected || new Date().toISOString())}</p>
+        <p>${group.teammates.length} members • Connected ${formatDate(
+    connections.accepted[0]?.dateConnected || new Date().toISOString()
+  )}</p>
       </div>
       <div class="group-members">
         ${membersList}
       </div>
       <div class="group-summary">
-        <p><strong>Shared Skills:</strong> ${group.skills.slice(0, 6).join(', ')}${group.skills.length > 6 ? '...' : ''}</p>
-        <p><strong>Focus Areas:</strong> ${group.interests.slice(0, 4).join(', ')}${group.interests.length > 4 ? '...' : ''}</p>
+        <p><strong>Shared Skills:</strong> ${group.skills
+          .slice(0, 6)
+          .join(", ")}${group.skills.length > 6 ? "..." : ""}</p>
+        <p><strong>Focus Areas:</strong> ${group.interests
+          .slice(0, 4)
+          .join(", ")}${group.interests.length > 4 ? "..." : ""}</p>
       </div>
     </div>
     <div class="connection-actions group-actions">
@@ -2101,57 +2341,76 @@ function renderGroupConnectionCard(group) {
       <button class="form-button secondary" onclick="showAllGroups('connections')" aria-label="View detailed information about your team">
         View Team Details
       </button>
-      <button class="form-button cancel-btn" onclick="removeGroupConnections(${group.id})" aria-label="Leave your current team - this action cannot be undone">
+      <button class="form-button cancel-btn" onclick="removeGroupConnections(${
+        group.id
+      })" aria-label="Leave your current team - this action cannot be undone">
         Leave Team
       </button>
     </div>
   `;
-  
+
   return div;
 }
 
 // Render connection card
 function renderConnectionCard(connection, type) {
-  const div = document.createElement('div');
-  div.className = 'connection-card';
-  
+  const div = document.createElement("div");
+  div.className = "connection-card";
+
   // Add special styling for team invitations
   if (connection.teamInvitation) {
-    div.classList.add('team-invitation');
+    div.classList.add("team-invitation");
   }
-  
-  const initials = connection.name.split(' ').map(n => n[0]).join('');
+
+  const initials = connection.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("");
   const topSkills = connection.skills.slice(0, 3);
-  
+
   // Team invitation message
-  const teamMessage = connection.teamInvitation && connection.teamMessage ? 
-    `<div class="team-invitation-message">
+  const teamMessage =
+    connection.teamInvitation && connection.teamMessage
+      ? `<div class="team-invitation-message">
       <strong>🎯 Team Invitation</strong><br>
       ${connection.teamMessage}
-    </div>` : '';
-  
+    </div>`
+      : "";
+
   // Custom connection message (for regular connection requests)
-  const customMessage = !connection.teamInvitation && connection.message && connection.message.trim() ? 
-    `<div class="connection-message">
+  const customMessage =
+    !connection.teamInvitation &&
+    connection.message &&
+    connection.message.trim()
+      ? `<div class="connection-message">
       <strong>💬 Message:</strong><br>
       "${connection.message}"
-    </div>` : '';
-  
-  let actions = '';
-  if (type === 'pending') {
-    const acceptText = connection.teamInvitation ? '✓ Join Team' : '✓ Accept';
+    </div>`
+      : "";
+
+  let actions = "";
+  if (type === "pending") {
+    const acceptText = connection.teamInvitation ? "✓ Join Team" : "✓ Accept";
     actions = `
       <div class="connection-actions">
-        <button class="form-button primary accept-btn" onclick="acceptConnection(${connection.id})">
+        <button class="form-button primary accept-btn" onclick="acceptConnection(${
+          connection.id
+        })">
           ${acceptText}
         </button>
-        <button class="form-button decline-btn" onclick="declineConnection(${connection.id})">
+        <button class="form-button decline-btn" onclick="declineConnection(${
+          connection.id
+        })">
           ✗ Decline
         </button>
-        ${connection.teamInvitation ? `<button class="form-button secondary" onclick="showAllGroups('connections')">View Team</button>` : ''}
+        ${
+          connection.teamInvitation
+            ? `<button class="form-button secondary" onclick="showAllGroups('connections')">View Team</button>`
+            : ""
+        }
       </div>
     `;
-  } else if (type === 'sent') {
+  } else if (type === "sent") {
     actions = `
       <div class="connection-actions">
         <button class="form-button cancel-btn" onclick="cancelSentRequest(${connection.id})" aria-label="Cancel your connection request to ${connection.name}">
@@ -2159,7 +2418,7 @@ function renderConnectionCard(connection, type) {
         </button>
       </div>
     `;
-  } else if (type === 'accepted') {
+  } else if (type === "accepted") {
     actions = `
       <div class="connection-actions">
         <button class="form-button secondary" onclick="navigateToProfile(${connection.id}, 'connections')">
@@ -2174,27 +2433,33 @@ function renderConnectionCard(connection, type) {
       </div>
     `;
   }
-  
-  const dateField = type === 'accepted' ? 'dateConnected' : 'dateSent';
-  const dateLabel = type === 'accepted' ? 'Connected' : 'Sent';
-  
+
+  const dateField = type === "accepted" ? "dateConnected" : "dateSent";
+  const dateLabel = type === "accepted" ? "Connected" : "Sent";
+
   div.innerHTML = `
     <div class="connection-info">
       <div class="connection-avatar">${initials}</div>
       <div class="connection-details">
         <h4>${connection.name}</h4>
-        <p>${getTimezoneShort(connection.timezone)} • ${connection.roles.slice(0, 2).join(', ')}</p>
+        <p>${getTimezoneShort(connection.timezone)} • ${connection.roles
+    .slice(0, 2)
+    .join(", ")}</p>
         <div class="connection-tags">
-          ${topSkills.map(skill => `<span class="connection-tag">${skill}</span>`).join('')}
+          ${topSkills
+            .map((skill) => `<span class="connection-tag">${skill}</span>`)
+            .join("")}
         </div>
-        <div class="connection-date">${dateLabel}: ${formatDate(connection[dateField])}</div>
+        <div class="connection-date">${dateLabel}: ${formatDate(
+    connection[dateField]
+  )}</div>
       </div>
     </div>
     ${teamMessage}
     ${customMessage}
     ${actions}
   `;
-  
+
   return div;
 }
 
@@ -2206,61 +2471,69 @@ function openEmailClient(email) {
 // Render all connections
 function renderConnections() {
   // Render pending requests
-  const pendingContainer = document.getElementById('pending-requests-container');
-  const noPending = document.getElementById('no-pending-requests');
-  
-  pendingContainer.innerHTML = '';
-  
+  const pendingContainer = document.getElementById(
+    "pending-requests-container"
+  );
+  const noPending = document.getElementById("no-pending-requests");
+
+  pendingContainer.innerHTML = "";
+
   if (connections.pending.length === 0) {
-    noPending.style.display = 'block';
+    noPending.style.display = "block";
   } else {
-    noPending.style.display = 'none';
-    connections.pending.forEach(request => {
-      pendingContainer.appendChild(renderConnectionCard(request, 'pending'));
+    noPending.style.display = "none";
+    connections.pending.forEach((request) => {
+      pendingContainer.appendChild(renderConnectionCard(request, "pending"));
     });
   }
-  
+
   // Render connected teammates
-  const connectedContainer = document.getElementById('connected-teammates-container');
-  const noConnections = document.getElementById('no-connections');
-  
-  connectedContainer.innerHTML = '';
-  
+  const connectedContainer = document.getElementById(
+    "connected-teammates-container"
+  );
+  const noConnections = document.getElementById("no-connections");
+
+  connectedContainer.innerHTML = "";
+
   if (connections.accepted.length === 0) {
-    noConnections.style.display = 'block';
+    noConnections.style.display = "block";
   } else {
-    noConnections.style.display = 'none';
-    
+    noConnections.style.display = "none";
+
     // Check if user is connected to a complete group
     const userProfile = getUserProfile();
-    const userGroup = userProfile ? groups.find(group => 
-      group.teammates.some(tm => tm.id === userProfile.id)
-    ) : null;
-    
+    const userGroup = userProfile
+      ? groups.find((group) =>
+          group.teammates.some((tm) => tm.id === userProfile.id)
+        )
+      : null;
+
     if (userGroup && userGroup.isFull) {
       // Render as a group with group-level actions
       const groupCard = renderGroupConnectionCard(userGroup);
       connectedContainer.appendChild(groupCard);
     } else {
       // Render individual connections
-      connections.accepted.forEach(connection => {
-        connectedContainer.appendChild(renderConnectionCard(connection, 'accepted'));
+      connections.accepted.forEach((connection) => {
+        connectedContainer.appendChild(
+          renderConnectionCard(connection, "accepted")
+        );
       });
     }
   }
-  
+
   // Render sent requests
-  const sentContainer = document.getElementById('sent-requests-container');
-  const noSent = document.getElementById('no-sent-requests');
-  
-  sentContainer.innerHTML = '';
-  
+  const sentContainer = document.getElementById("sent-requests-container");
+  const noSent = document.getElementById("no-sent-requests");
+
+  sentContainer.innerHTML = "";
+
   if (connections.sent.length === 0) {
-    noSent.style.display = 'block';
+    noSent.style.display = "block";
   } else {
-    noSent.style.display = 'none';
-    connections.sent.forEach(request => {
-      sentContainer.appendChild(renderConnectionCard(request, 'sent'));
+    noSent.style.display = "none";
+    connections.sent.forEach((request) => {
+      sentContainer.appendChild(renderConnectionCard(request, "sent"));
     });
   }
 }

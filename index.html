@@ -8,6 +8,241 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+<style>
+
+        .filters {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .filters h2 {
+            margin: 0 0 24px 0;
+            color: #1e293b;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .filter-dropdown {
+            position: relative;
+        }
+
+        .filter-toggle {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #374151;
+            transition: all 0.2s;
+        }
+
+        .filter-toggle:hover {
+            border-color: #d1d5db;
+        }
+
+        .filter-toggle.active {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .filter-toggle::after {
+            content: '▼';
+            font-size: 12px;
+            color: #9ca3af;
+            transition: transform 0.2s;
+        }
+
+        .filter-toggle.open::after {
+            transform: rotate(180deg);
+        }
+
+        .filter-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+            margin-top: 4px;
+        }
+
+        .filter-options.open {
+            display: block;
+        }
+
+        .filter-option {
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #374151;
+            transition: background-color 0.15s;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .filter-option:last-child {
+            border-bottom: none;
+        }
+
+        .filter-option:hover {
+            background-color: #f9fafb;
+        }
+
+        .filter-option.selected {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 500;
+        }
+
+        .selected-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+            min-height: 32px;
+        }
+
+        .filter-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            animation: slideIn 0.2s ease-out;
+        }
+
+        .filter-tag .remove {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: background-color 0.15s;
+        }
+
+        .filter-tag .remove:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .clear-all {
+            margin-top: 16px;
+            padding: 8px 16px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 6px;
+            color: #6b7280;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .clear-all:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        /* Demo section */
+        .demo-section {
+            margin-top: 32px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-section h3 {
+            margin: 0 0 16px 0;
+            color: #1e293b;
+        }
+
+        .active-filters {
+            font-family: monospace;
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #475569;
+        }
+
+        /* chip now position:relative so the ✕ can float */
+.filter-tag{
+  position:relative;
+  padding-right:28px;             /* make room for the button */
+}
+
+/* ✕ button */
+.chip-close{
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  width:18px;height:18px;
+  background:#fff;
+  color:#1d4ed8;
+  border-radius:50%;
+  font-size:11px;
+  line-height:18px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 1px 3px rgba(0,0,0,.12);
+  transition:background-color .15s,color .15s;
+}
+
+.chip-close:hover{
+  background:#1d4ed8;
+  color:#fff;
+}
+
+    </style>
+
 <body>
     <div class="container">
         <!-- Main List View -->
@@ -40,145 +275,167 @@
                 </div>
             </div>
 
-            <div class="filters">
-                <h2>Find Your Teammates</h2>
-                <div class="filter-row">
-                    <!-- Timezone filter -->
-                    <div class="filter-group">
-                        <label for="timezone">Timezone</label>
-                        <select id="timezone">
-                            <option value="">Any timezone</option>
-                            <option value="UTC-12">Baker Island Time (UTC-12) - Baker Island</option>
-                            <option value="UTC-11">Samoa Standard Time (UTC-11) - Pago Pago</option>
-                            <option value="UTC-10">Hawaii-Aleutian Time (UTC-10) - Honolulu, Anchorage</option>
-                            <option value="UTC-9:30">Marquesas Time (UTC-9:30) - Marquesas Islands</option>
-                            <option value="UTC-9">Alaska Time (UTC-9) - Anchorage, Juneau</option>
-                            <option value="UTC-8">Pacific Time (UTC-8) - Los Angeles, Vancouver</option>
-                            <option value="UTC-7">Mountain Time (UTC-7) - Denver, Phoenix</option>
-                            <option value="UTC-6">Central Time (UTC-6) - Chicago, Mexico City</option>
-                            <option value="UTC-5">Eastern Time (UTC-5) - New York, Toronto</option>
-                            <option value="UTC-4">Atlantic Time (UTC-4) - Halifax, Caracas</option>
-                            <option value="UTC-3:30">Newfoundland Time (UTC-3:30) - St. John's</option>
-                            <option value="UTC-3">Argentina Time (UTC-3) - Buenos Aires, São Paulo</option>
-                            <option value="UTC-2">Fernando de Noronha Time (UTC-2) - Fernando de Noronha</option>
-                            <option value="UTC-1">Azores Time (UTC-1) - Azores, Cape Verde</option>
-                            <option value="UTC+0">Greenwich Time (UTC+0) - London, Dublin</option>
-                            <option value="UTC+1">Central European Time (UTC+1) - Paris, Berlin</option>
-                            <option value="UTC+2">Eastern European Time (UTC+2) - Cairo, Helsinki</option>
-                            <option value="UTC+3">Moscow Time (UTC+3) - Moscow, Istanbul</option>
-                            <option value="UTC+3:30">Iran Time (UTC+3:30) - Tehran</option>
-                            <option value="UTC+4">Gulf Time (UTC+4) - Dubai, Baku</option>
-                            <option value="UTC+4:30">Afghanistan Time (UTC+4:30) - Kabul</option>
-                            <option value="UTC+5">Pakistan Time (UTC+5) - Karachi, Tashkent</option>
-                            <option value="UTC+5:30">India Standard Time (UTC+5:30) - Mumbai, Delhi</option>
-                            <option value="UTC+5:45">Nepal Time (UTC+5:45) - Kathmandu</option>
-                            <option value="UTC+6">Bangladesh Time (UTC+6) - Dhaka, Almaty</option>
-                            <option value="UTC+6:30">Myanmar Time (UTC+6:30) - Yangon, Cocos Islands</option>
-                            <option value="UTC+7">Indochina Time (UTC+7) - Bangkok, Jakarta</option>
-                            <option value="UTC+8">China Standard Time (UTC+8) - Beijing, Singapore</option>
-                            <option value="UTC+8:45">Australian Central Western Time (UTC+8:45) - Eucla</option>
-                            <option value="UTC+9">Japan Standard Time (UTC+9) - Tokyo, Seoul</option>
-                            <option value="UTC+9:30">Australian Central Time (UTC+9:30) - Adelaide, Darwin</option>
-                            <option value="UTC+10">Australian Eastern Time (UTC+10) - Sydney, Melbourne</option>
-                            <option value="UTC+10:30">Lord Howe Time (UTC+10:30) - Lord Howe Island</option>
-                            <option value="UTC+11">Solomon Islands Time (UTC+11) - Honiara, Noumea</option>
-                            <option value="UTC+12">New Zealand Time (UTC+12) - Auckland, Wellington</option>
-                            <option value="UTC+12:45">Chatham Islands Time (UTC+12:45) - Chatham Islands</option>
-                            <option value="UTC+13">Phoenix Islands Time (UTC+13) - Nuku'alofa, Apia</option>
-                            <option value="UTC+14">Line Islands Time (UTC+14) - Kiritimati</option>
-                        </select>
+<div class="filters">
+        <h2>Find Your Teammates</h2>
+        <div class="filter-row">
+            <!-- Timezone filter -->
+            <div class="filter-group">
+                <label for="timezone">Timezone</label>
+                <div class="filter-dropdown" data-filter="timezone">
+                    <div class="filter-toggle">
+                        <span class="placeholder">Any timezone</span>
                     </div>
-
-                    <!-- Skills filter -->
-                    <div class="filter-group">
-                        <label for="skills">Skills</label>
-                        <select id="skills">
-                            <option value="">Any skills</option>
-                            <option value="Agile Methodology">Agile Methodology</option>
-                            <option value="API Integration">API Integration</option>
-                            <option value="Branding">Branding</option>
-                            <option value="Copywriting">Copywriting</option>
-                            <option value="Data Cleaning">Data Cleaning</option>
-                            <option value="Data Visualization">Data Visualization</option>
-                            <option value="Excel">Excel</option>
-                            <option value="Figma">Figma</option>
-                            <option value="Illustration">Illustration</option>
-                            <option value="Information Architecture">Information Architecture</option>
-                            <option value="JavaScript">JavaScript</option>
-                            <option value="Machine Learning">Machine Learning</option>
-                            <option value="Marketing Strategy">Marketing Strategy</option>
-                            <option value="Node.js">Node.js</option>
-                            <option value="Prototyping">Prototyping</option>
-                            <option value="Project Coordination">Project Coordination</option>
-                            <option value="Public Speaking">Public Speaking</option>
-                            <option value="Python">Python</option>
-                            <option value="React">React</option>
-                            <option value="SEO">SEO</option>
-                            <option value="Scrum">Scrum</option>
-                            <option value="SQL">SQL</option>
-                            <option value="Stakeholder Management">Stakeholder Management</option>
-                            <option value="UI Design">UI Design</option>
-                            <option value="UX Writing">UX Writing</option>
-                            <option value="User Interviews">User Interviews</option>
-                            <option value="User Research">User Research</option>
-                            <option value="Workshop Facilitation">Workshop Facilitation</option>
-                        </select>
-                    </div>
-
-                    <!-- Project Interests filter -->
-                    <div class="filter-group">
-                        <label for="interests">Project Interests</label>
-                        <select id="interests">
-                            <option value="">Any interests</option>
-                            <option value="Accessibility">Accessibility</option>
-                            <option value="AI">AI</option>
-                            <option value="Climate">Climate</option>
-                            <option value="Consumer Behavior">Consumer Behavior</option>
-                            <option value="Education">Education</option>
-                            <option value="E-Commerce">E‑Commerce</option>
-                            <option value="EdTech">EdTech</option>
-                            <option value="Finance">Finance</option>
-                            <option value="Health">Health</option>
-                            <option value="Healthcare">Healthcare</option>
-                            <option value="Mental Health">Mental Health</option>
-                            <option value="Open Source">Open Source</option>
-                            <option value="Productivity">Productivity</option>
-                            <option value="Social Impact">Social Impact</option>
-                            <option value="Smart Cities">Smart Cities</option>
-                            <option value="Startups">Startups</option>
-                            <option value="Sustainability">Sustainability</option>
-                            <option value="Civic Tech">Civic Tech</option>
-                        </select>
-                    </div>
-
-                    <!-- Interested Roles filter -->
-                    <div class="filter-group">
-                        <label for="roles">Interested Roles</label>
-                        <select id="roles">
-                            <option value="">Any roles</option>
-                            <option value="Backend Developer">Backend Developer</option>
-                            <option value="BI Developer">BI Developer</option>
-                            <option value="Business Analyst">Business Analyst</option>
-                            <option value="Community Manager">Community Manager</option>
-                            <option value="Content Strategist">Content Strategist</option>
-                            <option value="Data Analyst">Data Analyst</option>
-                            <option value="Data Scientist">Data Scientist</option>
-                            <option value="Design Researcher">Design Researcher</option>
-                            <option value="Frontend Developer">Frontend Developer</option>
-                            <option value="Full-Stack Engineer">Full‑Stack Engineer</option>
-                            <option value="Interaction Designer">Interaction Designer</option>
-                            <option value="Marketing Lead">Marketing Lead</option>
-                            <option value="Product Designer">Product Designer</option>
-                            <option value="Project Manager">Project Manager</option>
-                            <option value="Technical Writer">Technical Writer</option>
-                            <option value="Team Facilitator">Team Facilitator</option>
-                            <option value="UX Designer">UX Designer</option>
-                            <option value="UX Writer">UX Writer</option>
-                            <option value="Visual Designer">Visual Designer</option>
-                        </select>
+                    <div class="filter-options">
+                        <div class="filter-option" data-value="UTC-12">Baker Island Time (UTC-12) - Baker Island</div>
+                        <div class="filter-option" data-value="UTC-11">Samoa Standard Time (UTC-11) - Pago Pago</div>
+                        <div class="filter-option" data-value="UTC-10">Hawaii-Aleutian Time (UTC-10) - Honolulu, Anchorage</div>
+                        <div class="filter-option" data-value="UTC-9:30">Marquesas Time (UTC-9:30) - Marquesas Islands</div>
+                        <div class="filter-option" data-value="UTC-9">Alaska Time (UTC-9) - Anchorage, Juneau</div>
+                        <div class="filter-option" data-value="UTC-8">Pacific Time (UTC-8) - Los Angeles, Vancouver</div>
+                        <div class="filter-option" data-value="UTC-7">Mountain Time (UTC-7) - Denver, Phoenix</div>
+                        <div class="filter-option" data-value="UTC-6">Central Time (UTC-6) - Chicago, Mexico City</div>
+                        <div class="filter-option" data-value="UTC-5">Eastern Time (UTC-5) - New York, Toronto</div>
+                        <div class="filter-option" data-value="UTC-4">Atlantic Time (UTC-4) - Halifax, Caracas</div>
+                        <div class="filter-option" data-value="UTC-3:30">Newfoundland Time (UTC-3:30) - St. John's</div>
+                        <div class="filter-option" data-value="UTC-3">Argentina Time (UTC-3) - Buenos Aires, São Paulo</div>
+                        <div class="filter-option" data-value="UTC-2">Fernando de Noronha Time (UTC-2) - Fernando de Noronha</div>
+                        <div class="filter-option" data-value="UTC-1">Azores Time (UTC-1) - Azores, Cape Verde</div>
+                        <div class="filter-option" data-value="UTC+0">Greenwich Time (UTC+0) - London, Dublin</div>
+                        <div class="filter-option" data-value="UTC+1">Central European Time (UTC+1) - Paris, Berlin</div>
+                        <div class="filter-option" data-value="UTC+2">Eastern European Time (UTC+2) - Cairo, Helsinki</div>
+                        <div class="filter-option" data-value="UTC+3">Moscow Time (UTC+3) - Moscow, Istanbul</div>
+                        <div class="filter-option" data-value="UTC+3:30">Iran Time (UTC+3:30) - Tehran</div>
+                        <div class="filter-option" data-value="UTC+4">Gulf Time (UTC+4) - Dubai, Baku</div>
+                        <div class="filter-option" data-value="UTC+4:30">Afghanistan Time (UTC+4:30) - Kabul</div>
+                        <div class="filter-option" data-value="UTC+5">Pakistan Time (UTC+5) - Karachi, Tashkent</div>
+                        <div class="filter-option" data-value="UTC+5:30">India Standard Time (UTC+5:30) - Mumbai, Delhi</div>
+                        <div class="filter-option" data-value="UTC+5:45">Nepal Time (UTC+5:45) - Kathmandu</div>
+                        <div class="filter-option" data-value="UTC+6">Bangladesh Time (UTC+6) - Dhaka, Almaty</div>
+                        <div class="filter-option" data-value="UTC+6:30">Myanmar Time (UTC+6:30) - Yangon, Cocos Islands</div>
+                        <div class="filter-option" data-value="UTC+7">Indochina Time (UTC+7) - Bangkok, Jakarta</div>
+                        <div class="filter-option" data-value="UTC+8">China Standard Time (UTC+8) - Beijing, Singapore</div>
+                        <div class="filter-option" data-value="UTC+8:45">Australian Central Western Time (UTC+8:45) - Eucla</div>
+                        <div class="filter-option" data-value="UTC+9">Japan Standard Time (UTC+9) - Tokyo, Seoul</div>
+                        <div class="filter-option" data-value="UTC+9:30">Australian Central Time (UTC+9:30) - Adelaide, Darwin</div>
+                        <div class="filter-option" data-value="UTC+10">Australian Eastern Time (UTC+10) - Sydney, Melbourne</div>
+                        <div class="filter-option" data-value="UTC+10:30">Lord Howe Time (UTC+10:30) - Lord Howe Island</div>
+                        <div class="filter-option" data-value="UTC+11">Solomon Islands Time (UTC+11) - Honiara, Noumea</div>
+                        <div class="filter-option" data-value="UTC+12">New Zealand Time (UTC+12) - Auckland, Wellington</div>
+                        <div class="filter-option" data-value="UTC+12:45">Chatham Islands Time (UTC+12:45) - Chatham Islands</div>
+                        <div class="filter-option" data-value="UTC+13">Phoenix Islands Time (UTC+13) - Nuku'alofa, Apia</div>
+                        <div class="filter-option" data-value="UTC+14">Line Islands Time (UTC+14) - Kiritimati</div>
                     </div>
                 </div>
+                <div class="selected-filters" data-filter="timezone"></div>
             </div>
+
+            <!-- Skills filter -->
+            <div class="filter-group">
+                <label for="skills">Skills</label>
+                <div class="filter-dropdown" data-filter="skills">
+                    <div class="filter-toggle">
+                        <span class="placeholder">Any skills</span>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option" data-value="Agile Methodology">Agile Methodology</div>
+                        <div class="filter-option" data-value="API Integration">API Integration</div>
+                        <div class="filter-option" data-value="Branding">Branding</div>
+                        <div class="filter-option" data-value="Copywriting">Copywriting</div>
+                        <div class="filter-option" data-value="Data Cleaning">Data Cleaning</div>
+                        <div class="filter-option" data-value="Data Visualization">Data Visualization</div>
+                        <div class="filter-option" data-value="Excel">Excel</div>
+                        <div class="filter-option" data-value="Figma">Figma</div>
+                        <div class="filter-option" data-value="Illustration">Illustration</div>
+                        <div class="filter-option" data-value="Information Architecture">Information Architecture</div>
+                        <div class="filter-option" data-value="JavaScript">JavaScript</div>
+                        <div class="filter-option" data-value="Machine Learning">Machine Learning</div>
+                        <div class="filter-option" data-value="Marketing Strategy">Marketing Strategy</div>
+                        <div class="filter-option" data-value="Node.js">Node.js</div>
+                        <div class="filter-option" data-value="Prototyping">Prototyping</div>
+                        <div class="filter-option" data-value="Project Coordination">Project Coordination</div>
+                        <div class="filter-option" data-value="Public Speaking">Public Speaking</div>
+                        <div class="filter-option" data-value="Python">Python</div>
+                        <div class="filter-option" data-value="React">React</div>
+                        <div class="filter-option" data-value="SEO">SEO</div>
+                        <div class="filter-option" data-value="Scrum">Scrum</div>
+                        <div class="filter-option" data-value="SQL">SQL</div>
+                        <div class="filter-option" data-value="Stakeholder Management">Stakeholder Management</div>
+                        <div class="filter-option" data-value="UI Design">UI Design</div>
+                        <div class="filter-option" data-value="UX Writing">UX Writing</div>
+                        <div class="filter-option" data-value="User Interviews">User Interviews</div>
+                        <div class="filter-option" data-value="User Research">User Research</div>
+                        <div class="filter-option" data-value="Workshop Facilitation">Workshop Facilitation</div>
+                    </div>
+                </div>
+                <div class="selected-filters" data-filter="skills"></div>
+            </div>
+
+            <!-- Project Interests filter -->
+            <div class="filter-group">
+                <label for="interests">Project Interests</label>
+                <div class="filter-dropdown" data-filter="interests">
+                    <div class="filter-toggle">
+                        <span class="placeholder">Any interests</span>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option" data-value="Accessibility">Accessibility</div>
+                        <div class="filter-option" data-value="AI">AI</div>
+                        <div class="filter-option" data-value="Climate">Climate</div>
+                        <div class="filter-option" data-value="Consumer Behavior">Consumer Behavior</div>
+                        <div class="filter-option" data-value="Education">Education</div>
+                        <div class="filter-option" data-value="E-Commerce">E‑Commerce</div>
+                        <div class="filter-option" data-value="EdTech">EdTech</div>
+                        <div class="filter-option" data-value="Finance">Finance</div>
+                        <div class="filter-option" data-value="Health">Health</div>
+                        <div class="filter-option" data-value="Healthcare">Healthcare</div>
+                        <div class="filter-option" data-value="Mental Health">Mental Health</div>
+                        <div class="filter-option" data-value="Open Source">Open Source</div>
+                        <div class="filter-option" data-value="Productivity">Productivity</div>
+                        <div class="filter-option" data-value="Social Impact">Social Impact</div>
+                        <div class="filter-option" data-value="Smart Cities">Smart Cities</div>
+                        <div class="filter-option" data-value="Startups">Startups</div>
+                        <div class="filter-option" data-value="Sustainability">Sustainability</div>
+                        <div class="filter-option" data-value="Civic Tech">Civic Tech</div>
+                    </div>
+                </div>
+                <div class="selected-filters" data-filter="interests"></div>
+            </div>
+
+            <!-- Interested Roles filter -->
+            <div class="filter-group">
+                <label for="roles">Interested Roles</label>
+                <div class="filter-dropdown" data-filter="roles">
+                    <div class="filter-toggle">
+                        <span class="placeholder">Any roles</span>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option" data-value="Backend Developer">Backend Developer</div>
+                        <div class="filter-option" data-value="BI Developer">BI Developer</div>
+                        <div class="filter-option" data-value="Business Analyst">Business Analyst</div>
+                        <div class="filter-option" data-value="Community Manager">Community Manager</div>
+                        <div class="filter-option" data-value="Content Strategist">Content Strategist</div>
+                        <div class="filter-option" data-value="Data Analyst">Data Analyst</div>
+                        <div class="filter-option" data-value="Data Scientist">Data Scientist</div>
+                        <div class="filter-option" data-value="Design Researcher">Design Researcher</div>
+                        <div class="filter-option" data-value="Frontend Developer">Frontend Developer</div>
+                        <div class="filter-option" data-value="Full-Stack Engineer">Full‑Stack Engineer</div>
+                        <div class="filter-option" data-value="Interaction Designer">Interaction Designer</div>
+                        <div class="filter-option" data-value="Marketing Lead">Marketing Lead</div>
+                        <div class="filter-option" data-value="Product Designer">Product Designer</div>
+                        <div class="filter-option" data-value="Project Manager">Project Manager</div>
+                        <div class="filter-option" data-value="Technical Writer">Technical Writer</div>
+                        <div class="filter-option" data-value="Team Facilitator">Team Facilitator</div>
+                        <div class="filter-option" data-value="UX Designer">UX Designer</div>
+                        <div class="filter-option" data-value="UX Writer">UX Writer</div>
+                        <div class="filter-option" data-value="Visual Designer">Visual Designer</div>
+                    </div>
+                </div>
+                <div class="selected-filters" data-filter="roles"></div>
+            </div>
+        </div>
+        
+        <button class="clear-all" onclick="clearAllFilters()">Clear All Filters</button>
+    </div>
 
             <div class="teammates-list">
                 <div class="table-header">
