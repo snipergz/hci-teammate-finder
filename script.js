@@ -928,6 +928,7 @@ function handleCreateProfile(event) {
 
   // Check if this is an update (user already has a profile) or new creation
   const isUpdating = hasUserProfile();
+  const existingUserProfile = getUserProfile();
 
   const formData = {
     name: document.getElementById("profile-name").value.trim(),
@@ -938,16 +939,47 @@ function handleCreateProfile(event) {
     about: document.getElementById("profile-about-textarea").value.trim(),
   };
 
-  const newProfile = createProfile(formData);
+  let newProfile;
+  
+  if (isUpdating && existingUserProfile) {
+    // Update existing profile in teammates array
+    const existingIndex = teammates.findIndex(t => t.id === existingUserProfile.id);
+    if (existingIndex !== -1) {
+      // Update the existing profile
+      newProfile = {
+        ...existingUserProfile,
+        name: formData.name,
+        initials: generateInitials(formData.name),
+        timezone: formData.timezone,
+        skills: formData.skills,
+        interests: formData.interests,
+        roles: formData.roles,
+        about: formData.about,
+        email: `${formData.name.toLowerCase().replace(/\s+/g, "")}@gatech.edu`,
+      };
+      teammates[existingIndex] = newProfile;
+    } else {
+      // Fallback: create new profile if existing one not found in teammates
+      newProfile = createProfile(formData);
+    }
+  } else {
+    // Create new profile
+    newProfile = createProfile(formData);
+  }
 
   // Save profile to localStorage
   saveUserProfile(newProfile);
 
   resetForm();
 
-  // Calculate compatibility and render teammates
-  addCompatibilityToTeammates();
-  renderTeammates();
+  // Calculate compatibility and apply current filters
+  const userProfile = getUserProfile();
+  teammates.forEach((teammate) => {
+    teammate.compatibility = calculateCompatibility(userProfile, teammate);
+  });
+  
+  // Apply current filters (this will also exclude user and render teammates)
+  applyFilters();
 
   // Hide the "Create Your Profile" button since profile now exists
   const createProfileButton = document.querySelector(
@@ -1218,7 +1250,7 @@ function clearAllFilters() {
   document
     .querySelectorAll(".filter-option.selected")
     .forEach((opt) => opt.classList.remove("selected"));
-  document.querySelectorAll(".filter-tag").forEach((ch) => ch.remove());
+  document.querySelectorAll(".filter-chip").forEach((ch) => ch.remove());
   document.querySelectorAll(".filter-toggle .placeholder").forEach((ph) => {
     const parent = ph.closest(".filter-dropdown").dataset.filter;
     ph.textContent = `Any ${parent}`;
@@ -1619,9 +1651,12 @@ document.addEventListener("DOMContentLoaded", function () {
       connectionsButton.style.display = "none";
     }
   } else {
-    // Add compatibility scores and show main view
-    addCompatibilityToTeammates();
-    renderTeammates();
+    // Add compatibility scores and apply filters (initially no filters, so shows all)
+    const userProfile = getUserProfile();
+    teammates.forEach((teammate) => {
+      teammate.compatibility = calculateCompatibility(userProfile, teammate);
+    });
+    applyFilters();
 
     // Hide the "Create Your Profile" button since profile exists
     const createProfileButton = document.querySelector(
